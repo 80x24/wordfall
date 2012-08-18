@@ -1,0 +1,17 @@
+Some other fonts for consideration
+
+----Futura----
+The problem with Futura is that I don't know if it is proprietary, and I only have a weird apple font format on my computer right now.
+
+----Ubuntu----
+The Ubuntu font is always a possibility but it is a little too iconic.
+
+----Junction----
+Good, open source font. All I have to do is include the License. I just don't think it quite fits what the game is about right now.
+
+---- News Cycle----
+Another good open source font under the OFL. Still not amazing though.
+
+---- Roboto and Droid Sans----
+Roboto is always a choice because it is one of my favorite fonts. The fonts are Apache so were good, just redistribute the licenses.
+

@@ -1,0 +1,13 @@
+// Code Todo
+
+collision detection -- muy importante
+
+Get a better intro screen from kevin
+
+Dictionary checks
+
+Add the container and submit buttons in the play state
+
+lots more that I will add later.
+
+code cleanup.

@@ -1,0 +1,191 @@
+################################################################################
+ _       _     _     ____     ___       _____   ____    _      _
+| |  _  | |  /   \  |  _  \  |  _ \    | ____| /    \  | |    | |
+| | | | | | | / \ | | |_| /  | | | \   | __|  |  /\  | | |    | |
+ \ \|_|/ /  | \ / | | | \ \  | |_| /   | |    | |  | | | |__  | |__
+  \_/ \_/    \ _ /  |_|  \_| |___ /    |_|    |_|  |_| |____| |____| 
+################################################################################
+Started Friday, May 25, 2012
+
+===============================================================================
+DESCRIPTION
+===============================================================================
+Word Fall is a twist on the ever so popular word games like words with friends
+and scramble with friends. The objective is simple. Users try to spell words as
+quickly as possible by lining up letters that are falling from the screen.
+Letters fall from the top of the screen and the user has to pull them down to a
+word tray where they can be lined up to spell words. Less common letters will
+award more points, longer words will also award more points, and finally,
+writing words quickly will award more points. The game is going to be based on
+time rounds like fruit ninja arcade mode where you try to spell as many words as
+you can in the allotted time. Just like in fruit ninja arcade, unused letters
+won’t count against you. If I really want to get crazy I can do objectives where
+you have to spell a certain amount of words in the time given. I could also do a
+fruit ninja like classic mode where if you don’t use a letter to spell a word,
+then you lose a life/points. This is going to be harder to implement though
+because I have to make sure I am giving players the right letters and not just
+vowels.
+
+================================================================================
+Look And Feel
+================================================================================
+Hopefully this game will be fast paced, with users frantically pulling down
+letters to spell different words. I want this game to look relatively “cutesy”
+without looking childish. That is going to be tough, but I want this to be a
+game that can be played by everyone. Concept art for the game is on the
+following page.
+
+--------------------------------------------------------------------------------
+Concept Art Thoughts And Possible Changes
+--------------------------------------------------------------------------------
+(1) The clouds still look awkward where they are positioned by the pause and
+settings button.
+
+(2) I am going to need to show a countdown timer as well as a score which should
+probably be in a row in line with the settings and pause buttons. This would
+mean that I should move the clouds down a bit.
+
+(3) This would leave me with a row with settings, pause, score, timer
+
+(4) Then the main game area
+
+(5) And finally the grass and word container, which is currently ok, but could
+use improvement.
+
+(6) I also might want to add a sun in the top right corner. Probably not going
+to happen.
+
+(7) The letters I have now are good, but the size of the point values is small.
+The point values aren't super crucial for the user to see, but it would be nice.
+
+(8) I also need a menu screen but I don’t know what it is going to look like.
+
+(9) It will probably end up just being the same background but and clouds but
+without the letter container and information at the top. It will only contain
+what is essentially the background image, and then the start and help buttons.
+
+(10) I should also consider having the clouds move back and forth so it would
+look like it is raining letters. The clouds slowly moving would also just look
+good in general on the title screen.
+
+(11) The other thing I need to standardize is the image resolutions
+the image resolutions needs to be the same size, but I don’t want to hard code
+numbers in so that I can adapt to resizing screens and Android troubles. I also
+don’t want to have to hard code the positions into the game although I could
+cheat and hard code them on the pc versions, but that won’t be possible with the
+mobile versions (especially Android). The image sizes for the PC version are
+basically set, I will worry about the Android versions later.
+
+(12) Right now I think that the letters and the letter containers are 40x40 for
+the PC version. I want to make the letter containers bigger so that users can
+drag images into them more easily, but 40x40 is about as big as I can make them
+to fit on a 360x640 screen. The containers are basically just going to have to
+be good enough. All I need to do now is resize them.
+
+(13) The window is not going to be resizable on the desktop version unless I get
+really creative and have a ton of extra time.
+
+(14) After spending about 4 hours on the concept art this game is already
+shaping up to be the best looking yet.
+
+(15) Also, I need an image editor way better than pixelmator because you can’t
+lock layers and it crashes all the time.
+
+================================================================================
+Technical Challenges and Code
+================================================================================
+All of my commentary and code challenges should go into this document, but if
+the document becomes too big and I get sick of it I might separate it into
+design.txt and code.txt. I also moved away from the Google Doc format because
+you just can't beat plain text. The concept art will just have to go somewhere
+else. 
+
+--------------------------------------------------------------------------------
+Animations
+--------------------------------------------------------------------------------
+My biggest initial hurdle is going to be animations and transitions. When a word
+is complete points should nicely fade up on the screen, and the completed word
+can maybe poof away. I currently haven’t figured out how to do animations yet,
+but they are going to be crucial to add that extra layer of polish that puts the
+game over the top. I want this app to be good. This isn’t amateur hour. 
+
+--------------------------------------------------------------------------------
+Image Size
+--------------------------------------------------------------------------------
+Determining a good screen resolution is going to be challenging. Because this
+game is eventually going to be for Windows, Mac, Linux, Android, iPhone, and
+iPad, having one set screen resolution and artwork size isn’t going to work.
+On the pc version that I am building first I could cheat and set a fixed
+resolution and lay out everything statically, but what I really should do is
+make all of the placements relative so that the windows can be resized. This is
+also what needs to happen for Android and potentially iOS. To handle screen
+resizes, I am going to need to position the images, using a variable with a
+fixed width, that way the boxes stay the same size, but they move with the
+window position. I will probably still position the boxes as if the window were
+going to be resizable, but I am most likely not going to resize the window
+because I think that would throw off the sizes of the art.
+
+--------------------------------------------------------------------------------
+Dictionary Word Checks
+--------------------------------------------------------------------------------
+The other big thing is going to be checking if it is a correct word. I am going
+to need to include a dictionary of words either within the code, or that can be
+accessed externally that will be called to check if the word is a valid word in
+the dictionary. The dictionary is only going to be checked after the user
+presses the submit button. This may slow the gameplay down a little, but it will
+reduce the amount of dictionary requests that I have to make, as well as fix the
+issue of determining if the user wanted to spell word vs. words.
+Just remember... “premature optimization is the root of all evil” - Donald Knuth
+
+--------------------------------------------------------------------------------
+Checking For Updates
+--------------------------------------------------------------------------------
+The game is going to check for updates by using the curl libraries. On
+application startup the game will check mopiz for a file that contains a number
+string of the latest version. Each version will have its own version number that
+I will compare to the number downloaded from Mopiz. If the version number is
+different, I will prompt the user to update. All of the version downloads will
+go over TLS to make it secure although it isn’t really necessary.
+
+--------------------------------------------------------------------------------
+Saving User Scores
+--------------------------------------------------------------------------------
+I am going to want to save the user's scores/fastest times or whatever. I could
+go the XML route, but I would have to figure out how to use an XML parser.
+I could also just use a custom file format that would be easier
+(especially in C++, but not in C) or I could use sqlite, which might be
+complicated but if used correctly, would probably provide the best solution.
+
+--------------------------------------------------------------------------------
+Other Notes
+--------------------------------------------------------------------------------
+
+If I really want to make this game good I can add networked turn based
+multiplayer like Draw something and Words with friends. If I actually made this
+app stellar I could be bought by Zynga because they buy every single multiplayer
+word game. This is really just a dream though. I don’t actually expect it to
+happen (although it would be really nice).
+                              
+Probably not going to do this ▽
+For closed source Linux distribution I can redistribute the SDL .so files with
+the application. I would need to make a .sh script that sets LD_LIBRARY_PATH
+to search for .so files in the current directory. Then after the program is done
+executing I would need to unset LD_LIBRARY_PATH so that I don't mess up the
+system. Also look at $ORIGIN for info about relative shared object libraries.
+
+
+The closed source information is probably not going to be necessary because
+I will most likely open source the game. Distribution isn’t going to be a
+problem on Windows or Mac because all of the files can be dynamically linked.
+The dll’s will be installed with the application just like they were with the
+windows distribution on Connect It! and the Mac version can be packaged into a
+.app. The Linux version is the only place that I run into a problem by dynamic
+linking. What I am going to have to do is build a custom install script that
+will check forthe .so files, and if they don’t have them, install them. Then I
+will move the game to /usr/local/games or whatever to “install” the binary on
+Linux. The proprietary installer is going to need root(which is bad but I don’t
+see a way around it.) It is also going to need to install the SDL .so files from
+the local repositories. I can probably support Debian, Fedora, and maybe Arch
+packaging systems within the script, but weird package managers are not going to
+be supported. All of this is assuming that I am going to close source the
+application which I might not even do.
