@@ -7,6 +7,8 @@
 #include "gamestates.h"
 #define FPS 60
 
+// Comment from linux box
+
 int main(int argc, char *argv[])
 {
 	int start;

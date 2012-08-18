@@ -5,25 +5,6 @@
 		[
 		]
 	},
-	"buffers":
-	[
-		{
-			"file": "main.c",
-			"settings":
-			{
-				"buffer_size": 5786,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/kyle/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-			"settings":
-			{
-				"buffer_size": 13151,
-				"line_ending": "Unix"
-			}
-		}
-	],
 	"build_system": "",
 	"command_palette":
 	{
@@ -48,6 +29,7 @@
 	},
 	"file_history":
 	[
+		"/home/kyle/word-fall/main.c",
 		"/Users/kyle/Documents/thoughts-and-info/mountain-lion-sucks.txt",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/kyle/word-fall/main.c",
@@ -103,70 +85,6 @@
 		"whole_word": false,
 		"wrap": true
 	},
-	"groups":
-	[
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"file": "main.c",
-					"settings":
-					{
-						"buffer_size": 5786,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 134.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/Users/kyle/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-					"settings":
-					{
-						"buffer_size": 13151,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3862.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		}
-	],
 	"incremental_find":
 	{
 		"height": 34.0
