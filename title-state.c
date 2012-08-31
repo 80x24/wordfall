@@ -23,7 +23,6 @@ SDL_Rect optionsRect;
 
 void title_events()
 {
-	//printf("title\n");
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
 			set_next_state(STATE_EXIT);
