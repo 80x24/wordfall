@@ -26,4 +26,9 @@ void title_transition_events();
 void title_transition_logic();
 void title_transition_render();
 
+// title words falling
+void title_fall_events();
+void title_fall_logic();
+void title_fall_render();
+
 #endif

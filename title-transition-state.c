@@ -24,7 +24,7 @@ void title_transition_logic()
 	//printf("title alpha: %d\n", alpha);
 	alpha -= 5;
 	if(alpha <= 0) {
-		set_next_state(STATE_TITLE);
+		set_next_state(STATE_TITLE_FALL);
 	}
 }
 

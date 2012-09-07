@@ -6,16 +6,6 @@
 #include "render.h"
 #include "main.h"
 
-int wTitleY = -50;
-int oTitleY = -75;
-int rTitleY = -100;
-int dTitleY = -125;
-int fTitleY = -175;
-int aTitleY = -200;
-int lTitleY = -225;
-int l2TitleY = -250;
-int wordY = 150;
-int fallY = 200;
 
 SDL_Rect playRect;
 SDL_Rect optionsRect;
@@ -53,46 +43,6 @@ void title_events()
 
 void title_logic()
 {
-	// The code below is atrocious but I don't know how to fix it.
-	if(wTitleY < wordY)
-		wTitleY += 5;
-	if(wTitleY > wordY)
-		wTitleY = wordY;
-	
-	if(oTitleY < wordY)
-		oTitleY += 5;
-	if(oTitleY > wordY)
-		oTitleY = wordY;
-	
-	if(rTitleY < wordY)
-		rTitleY += 5;
-	if(rTitleY > wordY)
-		rTitleY = wordY;
-	
-	if(dTitleY < wordY)
-		dTitleY += 5;
-	if(dTitleY > wordY)
-		dTitleY = wordY;
-	
-	if(fTitleY < fallY)
-		fTitleY += 5;
-	if(fTitleY > fallY)
-		fTitleY = fallY;
-	
-	if(aTitleY < fallY)
-		aTitleY += 5;
-	if(aTitleY > fallY)
-		aTitleY = fallY;
-	
-	if(lTitleY < fallY)
-		lTitleY += 5;
-	if(lTitleY > fallY)
-		lTitleY = fallY;
-	
-	if(l2TitleY < fallY)
-		l2TitleY += 5;
-	if(l2TitleY > fallY)
-		l2TitleY = fallY;
 
 }
 
@@ -104,20 +54,20 @@ void title_render()
 	render_image(215,-5,cloud3,screen);
 	render_image(105,5,cloud2,screen);
 	
-	render_image(75,wTitleY,wTitle,screen);
-	render_image(118,oTitleY,oTitle,screen);
-	render_image(161,rTitleY,rTitle,screen);
-	render_image(204,dTitleY,dTitle,screen);
+	render_image(75,150,wTitle,screen);
+	render_image(118,150,oTitle,screen);
+	render_image(161,150,rTitle,screen);
+	render_image(204,150,dTitle,screen);
 	
-	render_image(118,fTitleY,fTitle,screen);
-	render_image(161,aTitleY,aTitle,screen);
-	render_image(204,lTitleY,lTitle,screen);
-	render_image(247,l2TitleY,l2Title,screen);
+	render_image(118,200,fTitle,screen);
+	render_image(161,200,aTitle,screen);
+	render_image(204,200,lTitle,screen);
+	render_image(247,200,l2Title,screen);
 	
 	render_image(0,560,grass,screen);
 	
 	SDL_Color playColor = {0,0,0};
-	SDL_Color hoverColor = {254,210,6};
+	//SDL_Color hoverColor = {254,210,6};
 	play = render_font(playFont, "Play", playColor);
 	render_image(148, 300, play, screen);
 	options = render_font(optionsFont, "Options", playColor);

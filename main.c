@@ -37,6 +37,9 @@ int main(int argc, char *argv[])
 			case STATE_TITLE_TRANSITION:
 				title_transition_events();
 				break;
+			case STATE_TITLE_FALL:
+				title_fall_events();
+				break;
 			case STATE_TITLE:
 				title_events();
 				break;
@@ -57,6 +60,9 @@ int main(int argc, char *argv[])
 				break;
 			case STATE_TITLE_TRANSITION:
 				title_transition_logic();
+				break;
+			case STATE_TITLE_FALL:
+				title_fall_logic();
 				break;
 			case STATE_TITLE:
 				title_logic();
@@ -80,6 +86,9 @@ int main(int argc, char *argv[])
 				break;
 			case STATE_TITLE_TRANSITION:
 				title_transition_render();
+				break;
+			case STATE_TITLE_FALL:
+				title_fall_render();
 				break;
 			case STATE_TITLE:
 				title_render();

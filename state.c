@@ -27,6 +27,9 @@ void change_state()
 			case STATE_TITLE_TRANSITION:
 				currentState = STATE_TITLE_TRANSITION;
 				break;
+			case STATE_TITLE_FALL:
+				currentState = STATE_TITLE_FALL;
+				break;
 			case STATE_TITLE:
 				currentState = STATE_TITLE;
 				break;
