@@ -5,6 +5,17 @@
 		[
 		]
 	},
+	"buffers":
+	[
+		{
+			"file": "code-todo.txt",
+			"settings":
+			{
+				"buffer_size": 826,
+				"line_ending": "Unix"
+			}
+		}
+	],
 	"build_system": "",
 	"command_palette":
 	{
@@ -29,28 +40,33 @@
 	},
 	"file_history":
 	[
+		"/Users/kyle/word-fall/title-state.c",
+		"/Users/kyle/word-fall/main.h",
+		"/Users/kyle/word-fall/gamestates.h",
+		"/Users/kyle/word-fall/title-highlight-options-state.c",
+		"/Users/kyle/word-fall/title-highlight-play-state.c",
+		"/Users/kyle/word-fall/title-fall-state.c",
+		"/Users/kyle/word-fall/main.c",
+		"/Users/kyle/word-fall/state.c",
+		"/Users/kyle/word-fall/Makefile",
+		"/Users/kyle/word-fall/state.h",
+		"/Users/kyle/word-fall/title-transition-state.c",
+		"/Users/kyle/word-fall/code-todo.txt",
+		"/Users/kyle/word-fall/title-highlight-state.c",
 		"/home/kyle/word-fall/main.c",
 		"/Users/kyle/Documents/thoughts-and-info/mountain-lion-sucks.txt",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/kyle/word-fall/main.c",
-		"/Users/kyle/word-fall/Makefile",
 		"/Users/kyle/word-fall/build.sublime-build",
-		"/Users/kyle/word-fall/title-state.c",
-		"/Users/kyle/word-fall/state.h",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/Users/kyle/word-fall/intro-state.c",
-		"/Users/kyle/word-fall/gamestates.h",
 		"/Users/kyle/word-fall/intro-transition-state.c",
 		"/Users/kyle/word-fall/load.c",
 		"/Users/kyle/word-fall/load.h",
-		"/Users/kyle/word-fall/main.h",
 		"/Users/kyle/word-fall/other-fonts.txt",
 		"/Users/kyle/word-fall/render.c",
 		"/Users/kyle/word-fall/render.h",
 		"/Users/kyle/word-fall/SDLMain.h",
 		"/Users/kyle/word-fall/SDLMain.m",
-		"/Users/kyle/word-fall/state.c",
-		"/Users/kyle/word-fall/title-transition-state.c",
 		"/Users/kyle/word-fall/word-fall-design-doc.txt"
 	],
 	"find":
@@ -85,6 +101,41 @@
 		"whole_word": false,
 		"wrap": true
 	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "code-todo.txt",
+					"settings":
+					{
+						"buffer_size": 826,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								248,
+								248
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
 	"incremental_find":
 	{
 		"height": 34.0

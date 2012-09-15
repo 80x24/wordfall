@@ -3,25 +3,19 @@ Code Todo
 This document should theoretically only be for the collision branch so I
 shouldn't have to worry about modifying my main code-todo.txt
 
-##Collision Detection##
-Basically implemented. Currently, the only checks for collision are on the
-main title screen, but I can check for more late. set_next_state variables
-have not been updated for any of the collision checks.
+## Collision Detection ##
+# DONE #
+See title-state.c for example collison detection.
 
-##Highlighting Options with Mouse##
-This is going to be cumbersome because it looks like I am going to have
-to create three new states. One state will be a static state, bascially
-the title state, but after the letters have fallen down. Then I need to
-create two more states, one for the highlighting of the play button and
-another for the options button. There is a lot of repeated code here so
-I should probably try to find a solution that doesn't involve me creating
-a different state. I also really want to switch to oop and C++ because the
-amount of states is getting ridiculous.
+## Highlighting Options with Mouse ##
+#DONE#
+May want to consider using less states.
 
-This feature is not completely crucial, but I think that it would look
-really nice.
 
-##Highlight for Options with Keyboard##
+## Highlight for Options with Keyboard ##
+### May not be implemented due to issues of when to highlight when using a
+keyboard. ###
+
 This should theoretically be the same but I may have to make a state to
 check for keyboard input, instead of mouse click. This is a lower priority
 change because although it would be nice, and most games have it, you have
