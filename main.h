@@ -20,10 +20,12 @@ enum gameStates {
 	STATE_NULL,
 	STATE_EXIT,
 	STATE_INTRO_TRANSITION,
-	STATE_INTRO,
 	STATE_INTRO_TRANSITION_FADE,
+	STATE_INTRO,
 	STATE_TITLE_TRANSITION,
 	STATE_TITLE_FALL,
+	STATE_TITLE_HIGHLIGHT_PLAY,
+	STATE_TITLE_HIGHLIGHT_OPTIONS,
 	STATE_TITLE,
 };
 
@@ -31,6 +33,18 @@ int currentState;
 int nextState;
 int running;
 int alpha;
+
+// Word Fall logo globals
+int wTitleY;
+int oTitleY;
+int rTitleY;
+int dTitleY;
+int fTitleY;
+int aTitleY;
+int lTitleY;
+int l2TitleY;
+int wordY;
+int fallY;
 
 int init();
 void quit();

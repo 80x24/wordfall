@@ -30,6 +30,12 @@ void change_state()
 			case STATE_TITLE_FALL:
 				currentState = STATE_TITLE_FALL;
 				break;
+			case STATE_TITLE_HIGHLIGHT_PLAY:
+				currentState = STATE_TITLE_HIGHLIGHT_PLAY;
+				break;
+			case STATE_TITLE_HIGHLIGHT_OPTIONS:
+				currentState = STATE_TITLE_HIGHLIGHT_OPTIONS;
+				break;
 			case STATE_TITLE:
 				currentState = STATE_TITLE;
 				break;

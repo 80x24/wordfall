@@ -31,4 +31,13 @@ void title_fall_events();
 void title_fall_logic();
 void title_fall_render();
 
+// title highlight
+void title_highlight_play_events();
+void title_highlight_play_logic();
+void title_highlight_play_render();
+
+void title_highlight_options_events();
+void title_highlight_options_logic();
+void title_highlight_options_render();
+
 #endif

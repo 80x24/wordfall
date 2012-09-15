@@ -6,12 +6,14 @@
 #include "render.h"
 #include "main.h"
 
+// Play Highlight
 
 SDL_Rect playRect;
 SDL_Rect optionsRect;
 
-void title_fall_events()
-{	
+
+void title_highlight_play_events()
+{
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
 			set_next_state(STATE_EXIT);
@@ -24,16 +26,7 @@ void title_fall_events()
 				(event.motion.x > playRect.x + playRect.w) ||
 				(event.motion.y < playRect.y) ||
 				(event.motion.y > playRect.y + playRect.h)) {
-				printf("play back to black\n");
-				set_next_state(STATE_TITLE);
-			}
-		}
-		else if(event.type == SDL_MOUSEMOTION) {
-			if((event.motion.x < optionsRect.x) ||
-				(event.motion.x > optionsRect.x + optionsRect.w) ||
-				(event.motion.y < optionsRect.y) ||
-				(event.motion.y > optionsRect.y + optionsRect.h)) {
-				printf("options back to black\n");
+				//printf("play back to black\n");
 				set_next_state(STATE_TITLE);
 			}
 		}
@@ -58,56 +51,14 @@ void title_fall_events()
 	}
 }
 
-void title_fall_logic()
+void title_highlight_play_logic()
 {
-	// The code below is atrocious but I don't know how to fix it.
-	if(wTitleY < wordY)
-		wTitleY += 5;
-	if(wTitleY > wordY)
-		wTitleY = wordY;
-	
-	if(oTitleY < wordY)
-		oTitleY += 5;
-	if(oTitleY > wordY)
-		oTitleY = wordY;
-	
-	if(rTitleY < wordY)
-		rTitleY += 5;
-	if(rTitleY > wordY)
-		rTitleY = wordY;
-	
-	if(dTitleY < wordY)
-		dTitleY += 5;
-	if(dTitleY > wordY)
-		dTitleY = wordY;
-	
-	if(fTitleY < fallY)
-		fTitleY += 5;
-	if(fTitleY > fallY)
-		fTitleY = fallY;
-	
-	if(aTitleY < fallY)
-		aTitleY += 5;
-	if(aTitleY > fallY)
-		aTitleY = fallY;
-	
-	if(lTitleY < fallY)
-		lTitleY += 5;
-	if(lTitleY > fallY)
-		lTitleY = fallY;
-	
-	if(l2TitleY < fallY)
-		l2TitleY += 5;
-	if(l2TitleY > fallY)
-		l2TitleY = fallY;
-
-	if(l2TitleY == fallY) {
-		set_next_state(STATE_TITLE);
+	if(l2TitleY != fallY) {
+		title_fall_logic();
 	}
-
 }
 
-void title_fall_render()
+void title_highlight_play_render()
 {	
 	render_image(0,0,background,screen);
 	
@@ -128,11 +79,13 @@ void title_fall_render()
 	render_image(0,560,grass,screen);
 	
 	SDL_Color playColor = {0,0,0};
-	play = render_font(playFont, "Play", playColor);
+	SDL_Color hoverColor = {254,210,6};
+	play = render_font(playFont, "Play", hoverColor);
 	render_image(148, 300, play, screen);
 	options = render_font(optionsFont, "Options", playColor);
 	render_image(115, 350, options, screen);
-
+	
+	
 	// Collision rects for play and option buttons
 	playRect.x = 148;
 	playRect.y = 300;

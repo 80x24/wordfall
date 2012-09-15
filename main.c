@@ -40,6 +40,12 @@ int main(int argc, char *argv[])
 			case STATE_TITLE_FALL:
 				title_fall_events();
 				break;
+			case STATE_TITLE_HIGHLIGHT_PLAY:
+				title_highlight_play_events();
+				break;
+			case STATE_TITLE_HIGHLIGHT_OPTIONS:
+				title_highlight_options_events();
+				break;
 			case STATE_TITLE:
 				title_events();
 				break;
@@ -63,6 +69,12 @@ int main(int argc, char *argv[])
 				break;
 			case STATE_TITLE_FALL:
 				title_fall_logic();
+				break;
+			case STATE_TITLE_HIGHLIGHT_PLAY:
+				title_highlight_play_logic();
+				break;
+			case STATE_TITLE_HIGHLIGHT_OPTIONS:
+				title_highlight_options_logic();
 				break;
 			case STATE_TITLE:
 				title_logic();
@@ -90,6 +102,12 @@ int main(int argc, char *argv[])
 			case STATE_TITLE_FALL:
 				title_fall_render();
 				break;
+			case STATE_TITLE_HIGHLIGHT_PLAY:
+				title_highlight_play_render();
+				break;
+			case STATE_TITLE_HIGHLIGHT_OPTIONS:
+				title_highlight_options_render();
+				break;
 			case STATE_TITLE:
 				title_render();
 				break;
@@ -110,6 +128,19 @@ int init()
 {
 	alpha = 255;
 	running = 1;
+
+	// word fall logo globals
+	wTitleY = -50;
+	oTitleY = -75;
+	rTitleY = -100;
+	dTitleY = -125;
+	fTitleY = -175;
+	aTitleY = -200;
+	lTitleY = -225;
+	l2TitleY = -250;
+	wordY = 150;
+	fallY = 200;
+
 	currentState = STATE_INTRO_TRANSITION;
 	nextState = STATE_NULL;
 
