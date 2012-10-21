@@ -295,9 +295,14 @@ int load_content()
 		return 1;
 	}
 
-	optionsFontSoundOff = load_font("assets/fonts/Roboto-Bold.ttf", 36);
+	optionsSoundFontOff = load_font("assets/fonts/Roboto-Bold.ttf", 36);
 	if(optionsSoundFontOff == NULL) {
 		fprintf(stderr, "options sound font off loading failed\n%s\n", TTF_GetError());
+		return 1;
+	}
+	optionsBackFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
+	if(optionsBackFont == NULL) {
+		fprintf(stderr, "options back font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
 	

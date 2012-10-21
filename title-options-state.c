@@ -6,10 +6,9 @@
 #include "render.h"
 #include "main.h"
 
-
-SDL_Rect playRect;
-SDL_Rect optionsRect;
-
+SDL_Rect soundOnRect;
+SDL_Rect soundOffRect;
+SDL_Rect optionsBackRect;
 
 void title_options_events()
 {
@@ -20,37 +19,70 @@ void title_options_events()
 		else if(event.key.keysym.sym == SDLK_ESCAPE) {
 			set_next_state(STATE_EXIT);
 		}
+		
 		else if(event.type == SDL_MOUSEMOTION) {
-			if((event.motion.x > playRect.x) &&
-				(event.motion.x < playRect.x + playRect.w) &&
-				(event.motion.y > playRect.y) &&
-				(event.motion.y < playRect.y + playRect.h)) {
-				//printf("title state play highlight\n");
-				set_next_state(STATE_TITLE_HIGHLIGHT_PLAY);
+			// turn on highlighting
+			if((event.motion.x > soundOnRect.x) &&
+				(event.motion.x < soundOnRect.x + soundOnRect.w) &&
+				(event.motion.y > soundOnRect.y) &&
+				(event.motion.y < soundOnRect.y + soundOnRect.h)) {
+				soundOnHighlight = 1;
 			}
-			else if((event.motion.x > optionsRect.x) &&
-				(event.motion.x < optionsRect.x + optionsRect.w) &&
-				(event.motion.y > optionsRect.y) &&
-				(event.motion.y < optionsRect.y + optionsRect.h)) {
-				//printf("title state options highlight\n");
-				set_next_state(STATE_TITLE_HIGHLIGHT_OPTIONS);
+			if((event.motion.x > soundOffRect.x) &&
+				(event.motion.x < soundOffRect.x + soundOffRect.w) &&
+				(event.motion.y > soundOffRect.y) &&
+				(event.motion.y < soundOffRect.y + soundOffRect.h)) {
+				soundOffHighlight = 1;
+			}
+			if((event.motion.x > optionsBackRect.x) &&
+				(event.motion.x < optionsBackRect.x + optionsBackRect.w) &&
+				(event.motion.y > optionsBackRect.y) &&
+				(event.motion.y < optionsBackRect.y + optionsBackRect.h)) {
+				backHighlight = 1;
+			}
+			// Turn off Highlighting
+			if((event.motion.x < soundOnRect.x) ||
+				(event.motion.x > soundOnRect.x + soundOnRect.w) ||
+				(event.motion.y < soundOnRect.y) ||
+				(event.motion.y > soundOnRect.y + soundOnRect.h)) {
+				soundOnHighlight = 0;
+			}
+			if((event.motion.x < soundOffRect.x) ||
+				(event.motion.x > soundOffRect.x + soundOffRect.w) ||
+				(event.motion.y < soundOffRect.y) ||
+				(event.motion.y > soundOffRect.y + soundOffRect.h)) {
+				soundOffHighlight = 0;
+			}
+			if((event.motion.x < optionsBackRect.x) ||
+				(event.motion.x > optionsBackRect.x + optionsBackRect.w) ||
+				(event.motion.y < optionsBackRect.y) ||
+				(event.motion.y > optionsBackRect.y + optionsBackRect.h)) {
+				backHighlight = 0;
 			}
 		}
 		else if(event.type == SDL_MOUSEBUTTONDOWN) {
 			if(event.button.button == SDL_BUTTON_LEFT) {
-				if((event.motion.x > playRect.x) &&
-					(event.motion.x < playRect.x + playRect.w) &&
-					(event.motion.y > playRect.y) &&
-					(event.motion.y < playRect.y + playRect.h)) {
-					// set_next_state(STATE_PLAY);
-					printf("Play button clicked\n");
+				// back button to title screen
+				if((event.motion.x > optionsBackRect.x) &&
+					(event.motion.x < optionsBackRect.x + optionsBackRect.w) &&
+					(event.motion.y > optionsBackRect.y) &&
+					(event.motion.y < optionsBackRect.y + optionsBackRect.h)) {
+					set_next_state(STATE_TITLE);
+					//printf("back button clicked\n");
 				}
-				else if((event.motion.x > optionsRect.x) &&
-					(event.motion.x < optionsRect.x + optionsRect.w) &&
-					(event.motion.y > optionsRect.y) &&
-					(event.motion.y < optionsRect.y + optionsRect.h)) {
-					// set_next_state(STATE_OPTIONS);
-					printf("options button clicked\n");
+				// click sound on
+				else if((event.motion.x > soundOnRect.x) &&
+					(event.motion.x < soundOnRect.x + soundOnRect.w) &&
+					(event.motion.y > soundOnRect.y) &&
+					(event.motion.y < soundOnRect.y + soundOnRect.h)) {
+					printf("sound turned on\n");
+				}
+				// click sound off
+				else if((event.motion.x > soundOffRect.x) &&
+					(event.motion.x < soundOffRect.x + soundOffRect.w) &&
+					(event.motion.y > soundOffRect.y) &&
+					(event.motion.y < soundOffRect.y + soundOffRect.h)) {
+					printf("sound turned off\n");
 				}
 			}
 		}
@@ -84,25 +116,51 @@ void title_options_render()
 	
 	render_image(0,560,grass,screen);
 	
-	SDL_Color opitonsColor = {0,0,0};
-	//SDL_Color hoverColor = {254,210,6};
-	optionsSound = render_font(optionsSound, "Sound:", optionsColor);
-	render_image(100, 200, optionsSound, screen);
-	optionsSoundOn = render_font(optionsSoundOn, "On", optionsColor);
-	render_image(165, 200, optionsSoundOn, screen);
-	optionsSoundOff = render_font(optionsSoundOff, "Off", optionsColor);
-	render_image(180, 200, optionsSoundOff, screen);
+	SDL_Color optionsColor = {0,0,0};
+	SDL_Color hoverColor = {254,210,6};
+	optionsSound = render_font(optionsSoundFont, "Sound:", optionsColor);
+	render_image(60, 275, optionsSound, screen);
+
+	if(soundOnHighlight == 1) {
+		optionsSoundOn = render_font(optionsSoundFontOn, "On", hoverColor);
+		render_image(180, 275, optionsSoundOn, screen);
+	}
+	if(soundOnHighlight != 1) {
+		optionsSoundOn = render_font(optionsSoundFontOn, "On", optionsColor);
+		render_image(180, 275, optionsSoundOn, screen);
+	}
+	if(soundOffHighlight == 1) {
+		optionsSoundOff = render_font(optionsSoundFontOff, "Off", hoverColor);
+		render_image(230, 275, optionsSoundOff, screen);
+	}
+	if(soundOffHighlight != 1) {
+		optionsSoundOff = render_font(optionsSoundFontOff, "Off", optionsColor);
+		render_image(230, 275, optionsSoundOff, screen);
+	}
+	if(backHighlight == 1) {
+		optionsBack = render_font(optionsBackFont, "Back", hoverColor);
+		render_image(140, 500, optionsBack, screen);
+	}
+	if(backHighlight != 1) {
+		optionsBack = render_font(optionsBackFont, "Back", optionsColor);
+		render_image(140, 500, optionsBack, screen);
+	}
 	
-	
-	// Collision rects for play and option buttons
-	playRect.x = 148;
-	playRect.y = 300;
-	playRect.w = play->clip_rect.w;
-	playRect.h = play->clip_rect.h;
-	optionsRect.x = 115;
-	optionsRect.y = 350;
-	optionsRect.w = options->clip_rect.w;
-	optionsRect.h = options->clip_rect.h;
+	// Collision rects
+	soundOnRect.x = 180;
+	soundOnRect.y = 275;
+	soundOnRect.w = optionsSoundOn->clip_rect.w;
+	soundOnRect.h = optionsSoundOn->clip_rect.h;
+
+	soundOffRect.x = 230;
+	soundOffRect.y = 275;
+	soundOffRect.w = optionsSoundOff->clip_rect.w;
+	soundOffRect.h = optionsSoundOff->clip_rect.h;
+
+	optionsBackRect.x = 140;
+	optionsBackRect.y = 500;
+	optionsBackRect.w = optionsBack->clip_rect.w;
+	optionsBackRect.h = optionsBack->clip_rect.h;
 
 	if(SDL_Flip(screen) != 0) {
 		fprintf(stderr, "screen update failed\n");

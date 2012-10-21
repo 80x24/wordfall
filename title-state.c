@@ -43,14 +43,14 @@ void title_events()
 					(event.motion.y > playRect.y) &&
 					(event.motion.y < playRect.y + playRect.h)) {
 					// set_next_state(STATE_PLAY);
-					printf("Play button clicked\n");
+					//printf("Play button clicked\n");
 				}
 				else if((event.motion.x > optionsRect.x) &&
 					(event.motion.x < optionsRect.x + optionsRect.w) &&
 					(event.motion.y > optionsRect.y) &&
 					(event.motion.y < optionsRect.y + optionsRect.h)) {
-					// set_next_state(STATE_OPTIONS);
-					printf("options button clicked\n");
+					//set_next_state(STATE_TITLE_OPTIONS);
+					//printf("options button clicked\n");
 				}
 			}
 		}
@@ -59,6 +59,7 @@ void title_events()
 
 void title_logic()
 {
+	backHighlight = 0;
 	if(l2TitleY != fallY) {
 		title_fall_logic();
 	}

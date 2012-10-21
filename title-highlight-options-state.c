@@ -43,8 +43,8 @@ void title_highlight_options_events()
 					(event.motion.x < optionsRect.x + optionsRect.w) &&
 					(event.motion.y > optionsRect.y) &&
 					(event.motion.y < optionsRect.y + optionsRect.h)) {
-					// set_next_state(STATE_OPTIONS);
-					printf("options button clicked\n");
+					set_next_state(STATE_TITLE_OPTIONS);
+					//printf("options button clicked\n");
 				}
 			}
 		}

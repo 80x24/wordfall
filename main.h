@@ -47,6 +47,13 @@ int l2TitleY;
 int wordY;
 int fallY;
 
+// options highlight globals. These are currently global due to a bug where
+// the back button on the options screen will stay yellow until the mouse is
+// moved. May be able to figure out how to make these local later.
+int soundOnHighlight;
+int soundOffHighlight;
+int backHighlight;
+
 int init();
 void quit();
 int load_content();
@@ -85,12 +92,14 @@ SDL_Surface *options;
 SDL_Surface *optionsSound;
 SDL_Surface *optionsSoundOn;
 SDL_Surface *optionsSoundOff;
+SDL_Surface *optionsBack;
 
 TTF_Font *playFont;
 TTF_Font *optionsFont;
 TTF_Font *optionsSoundFont;
 TTF_Font *optionsSoundFontOn;
 TTF_Font *optionsSoundFontOff;
+TTF_Font *optionsBackFont;
 // =================================================
 SDL_Event event;
 

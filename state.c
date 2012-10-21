@@ -37,7 +37,7 @@ void change_state()
 				currentState = STATE_TITLE_HIGHLIGHT_OPTIONS;
 				break;
 			case STATE_TITLE_OPTIONS:
-				currentSTate = STATE_TITLE_OPTIONS;
+				currentState = STATE_TITLE_OPTIONS;
 				break;
 			case STATE_TITLE:
 				currentState = STATE_TITLE;
