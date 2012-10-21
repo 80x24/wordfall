@@ -40,4 +40,9 @@ void title_highlight_options_events();
 void title_highlight_options_logic();
 void title_highlight_options_render();
 
+// title options menu
+void title_options_events();
+void title_options_logic();
+void title_options_render();
+
 #endif

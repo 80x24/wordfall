@@ -46,6 +46,9 @@ int main(int argc, char *argv[])
 			case STATE_TITLE_HIGHLIGHT_OPTIONS:
 				title_highlight_options_events();
 				break;
+			case STATE_TITLE_OPTIONS:
+				title_options_events();
+				break;
 			case STATE_TITLE:
 				title_events();
 				break;
@@ -75,6 +78,9 @@ int main(int argc, char *argv[])
 				break;
 			case STATE_TITLE_HIGHLIGHT_OPTIONS:
 				title_highlight_options_logic();
+				break;
+			case STATE_TITLE_OPTIONS:
+				title_options_logic();
 				break;
 			case STATE_TITLE:
 				title_logic();
@@ -107,6 +113,9 @@ int main(int argc, char *argv[])
 				break;
 			case STATE_TITLE_HIGHLIGHT_OPTIONS:
 				title_highlight_options_render();
+				break;
+			case STATE_TITLE_OPTIONS:
+				title_options_render();
 				break;
 			case STATE_TITLE:
 				title_render();
@@ -271,6 +280,24 @@ int load_content()
 	optionsFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
 	if(optionsFont == NULL) {
 		fprintf(stderr, "options font loading failed\n%s\n",TTF_GetError());
+		return 1;
+	}
+
+	optionsSoundFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
+	if(optionsSoundFont == NULL) {
+		fprintf(stderr, "options sound font loading failed\n%s\n", TTF_GetError());
+		return 1;
+	}
+
+	optionsSoundFontOn = load_font("assets/fonts/Roboto-Bold.ttf", 36);
+	if(optionsSoundFontOn == NULL) {
+		fprintf(stderr, "options sound font on loading failed\n%s\n", TTF_GetError());
+		return 1;
+	}
+
+	optionsFontSoundOff = load_font("assets/fonts/Roboto-Bold.ttf", 36);
+	if(optionsSoundFontOff == NULL) {
+		fprintf(stderr, "options sound font off loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
 	

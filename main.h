@@ -26,6 +26,7 @@ enum gameStates {
 	STATE_TITLE_FALL,
 	STATE_TITLE_HIGHLIGHT_PLAY,
 	STATE_TITLE_HIGHLIGHT_OPTIONS,
+	STATE_TITLE_OPTIONS,
 	STATE_TITLE,
 };
 
@@ -53,6 +54,12 @@ void trainsition(int miliseconds);
 
 // ============= SDL Surfaces =====================
 // Everything is loaded at startup
+// These are essentially all global variables. There should actually be a
+// funtion in each state where I do loading and initialization, but I am kind of
+// too far in to implement that now. I might have to implement it in the future
+// if the main ganme states get too complicated, but the way I am currently
+// implementing states is very stupid. I am copy pasting code, and it is turning
+// into spaghetti.
 SDL_Surface *screen;
 SDL_Surface *introBackground;
 SDL_Surface *introTransition;
@@ -75,8 +82,15 @@ SDL_Surface *grass;
 
 SDL_Surface *play;
 SDL_Surface *options;
+SDL_Surface *optionsSound;
+SDL_Surface *optionsSoundOn;
+SDL_Surface *optionsSoundOff;
+
 TTF_Font *playFont;
 TTF_Font *optionsFont;
+TTF_Font *optionsSoundFont;
+TTF_Font *optionsSoundFontOn;
+TTF_Font *optionsSoundFontOff;
 // =================================================
 SDL_Event event;
 
