@@ -1,23 +1,6 @@
 Code Todo
-=================
-This document should theoretically only be for the collision branch so I
-shouldn't have to worry about modifying my main code-todo.txt
+===============
+Make sure to unstage this file when merging branches, or one of the files
+will be lost.
 
-## Collision Detection ##
-# DONE #
-See title-state.c for example collison detection.
-
-## Highlighting Options with Mouse ##
-#DONE#
-May want to consider using less states.
-
-
-## Highlight for Options with Keyboard ##
-### May not be implemented due to issues of when to highlight when using a
-keyboard. ###
-
-This should theoretically be the same but I may have to make a state to
-check for keyboard input, instead of mouse click. This is a lower priority
-change because although it would be nice, and most games have it, you have
-to use the mouse to play the game immediately after anyway, so it's not 
-like it would be a problem to just click the options buttons.
+--- Begin main gameplay development in the development branch ---
