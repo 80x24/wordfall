@@ -40,12 +40,6 @@ int main(int argc, char *argv[])
 			case STATE_TITLE_FALL:
 				title_fall_events();
 				break;
-			case STATE_TITLE_HIGHLIGHT_PLAY:
-				title_highlight_play_events();
-				break;
-			case STATE_TITLE_HIGHLIGHT_OPTIONS:
-				title_highlight_options_events();
-				break;
 			case STATE_TITLE_OPTIONS:
 				title_options_events();
 				break;
@@ -72,12 +66,6 @@ int main(int argc, char *argv[])
 				break;
 			case STATE_TITLE_FALL:
 				title_fall_logic();
-				break;
-			case STATE_TITLE_HIGHLIGHT_PLAY:
-				title_highlight_play_logic();
-				break;
-			case STATE_TITLE_HIGHLIGHT_OPTIONS:
-				title_highlight_options_logic();
 				break;
 			case STATE_TITLE_OPTIONS:
 				title_options_logic();
@@ -107,12 +95,6 @@ int main(int argc, char *argv[])
 				break;
 			case STATE_TITLE_FALL:
 				title_fall_render();
-				break;
-			case STATE_TITLE_HIGHLIGHT_PLAY:
-				title_highlight_play_render();
-				break;
-			case STATE_TITLE_HIGHLIGHT_OPTIONS:
-				title_highlight_options_render();
 				break;
 			case STATE_TITLE_OPTIONS:
 				title_options_render();
@@ -312,9 +294,38 @@ int load_content()
 void quit()
 {
 	//printf("I'm quitting!!\n");
+
+	// There must be a better way to do this
+	SDL_FreeSurface(background);
+	SDL_FreeSurface(cloud1);
+	SDL_FreeSurface(cloud2);
+	SDL_FreeSurface(cloud3);
+	SDL_FreeSurface(wTitle);
+	SDL_FreeSurface(oTitle);
+	SDL_FreeSurface(rTitle);
+	SDL_FreeSurface(dTitle);
+	SDL_FreeSurface(fTitle);
+	SDL_FreeSurface(aTitle);
+	SDL_FreeSurface(lTitle);
+	SDL_FreeSurface(l2Title);
+	SDL_FreeSurface(grass);
+	SDL_FreeSurface(play);
+	SDL_FreeSurface(options);
+	SDL_FreeSurface(optionsSound);
+	SDL_FreeSurface(optionsSoundOn);
+	SDL_FreeSurface(optionsSoundOff);
+	SDL_FreeSurface(optionsBack);
 	SDL_FreeSurface(introBackground);
 	SDL_FreeSurface(introTransition);
 	SDL_FreeSurface(screen);
+
+	TTF_CloseFont(playFont);
+	TTF_CloseFont(optionsFont);
+	TTF_CloseFont(optionsSoundFont);
+	TTF_CloseFont(optionsSoundFontOn);
+	TTF_CloseFont(optionsSoundFontOff);
+	TTF_CloseFont(optionsBackFont);
+
 	TTF_Quit();
 	SDL_Quit();
 }

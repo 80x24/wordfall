@@ -24,8 +24,6 @@ enum gameStates {
 	STATE_INTRO,
 	STATE_TITLE_TRANSITION,
 	STATE_TITLE_FALL,
-	STATE_TITLE_HIGHLIGHT_PLAY,
-	STATE_TITLE_HIGHLIGHT_OPTIONS,
 	STATE_TITLE_OPTIONS,
 	STATE_TITLE,
 };
@@ -53,6 +51,8 @@ int fallY;
 int soundOnHighlight;
 int soundOffHighlight;
 int backHighlight;
+int playRectHighlight;
+int optionsRectHighlight;
 
 int init();
 void quit();

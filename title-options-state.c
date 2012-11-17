@@ -94,6 +94,8 @@ void title_options_logic()
 	if(l2TitleY != fallY) {
 		title_fall_logic();
 	}
+	playRectHighlight = 0;
+	optionsRectHighlight = 0;
 }
 
 void title_options_render()
