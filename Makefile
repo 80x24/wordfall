@@ -1,17 +1,22 @@
 CC=gcc
 CFLAGS=-Wall
-LDFLAGS=-framework SDL -framework SDL_image -framework SDL_ttf -framework SDL_mixer -framework Cocoa
-
-OBJECTS=main.o SDLMain.o load.o render.o state.o intro-state.o intro-transition-state.o title-state.o title-transition-state.o title-fall-state.o title-options-state.o
-
-all: main
-
-main:
-	$(CC) $(CFLAGS) -c main.c SDLMain.m load.c render.c state.c intro-state.c intro-transition-state.c title-state.c title-transition-state.c title-fall-state.c title-options-state.c
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) -o word-fall
-
+LDFLAGSOSX=-framework SDL -framework SDL_image -framework SDL_ttf -framework SDL_mixer -framework Cocoa
+LDFLAGSLINUX=-lSDL -lSDL_image -lSDL_ttf -lSDL_mixer
+OBJECTS=main.o load.o render.o state.o intro-state.o intro-transition-state.o title-state.o title-transition-state.o title-fall-state.o title-options-state.o
+OBJECTSOSX=SDLMain.o
+OBJECTSLINUX=
+CFILES=main.c load.c render.c state.c intro-state.c intro-transition-state.c title-state.c title-transition-state.c title-fall-state.c title-options-state.c
+OSXEXTRA=SDLMain.m
+LINUXEXTRA=
+all:
+	@echo "usage: make osx or make linux"
+osx:
+	$(CC) $(CFLAGS) -c $(CFILES) $(OSXEXTRA)
+	$(CC) $(CFLAGS) $(LDFLAGSOSX) $(OBJECTS) $(OBJECTSOSX) -o word-fall
+linux:
+	$(CC) $(CFLAGS) -c $(CFILES) $(LINUXEXTRA)
+	$(CC) $(CFLAGS) $(LDFLAGSLINUX) $(OBJECTS) $(OBJECTSLINUX) -o word-fall
 clean:
-	rm -rf $(OBJECTS)
-
+	rm -rf $(OBJECTS) $(OBJECTSLINUX) $(OBJECTSOSX)
 install:
 	cp word-fall /usr/local/bin
