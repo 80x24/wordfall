@@ -26,6 +26,7 @@ enum gameStates {
 	STATE_TITLE_FALL,
 	STATE_TITLE_OPTIONS,
 	STATE_TITLE,
+	STATE_GAME,
 };
 
 int currentState;

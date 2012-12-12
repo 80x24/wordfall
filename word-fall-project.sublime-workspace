@@ -44,26 +44,18 @@
 	"buffers":
 	[
 		{
-			"file": "title-state.c",
+			"file": "game-state.c",
 			"settings":
 			{
-				"buffer_size": 3636,
+				"buffer_size": 665,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "title-options-state.c",
+			"file": "state.c",
 			"settings":
 			{
-				"buffer_size": 5239,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "main.h",
-			"settings":
-			{
-				"buffer_size": 2356,
+				"buffer_size": 985,
 				"line_ending": "Unix"
 			}
 		}
@@ -92,23 +84,24 @@
 	},
 	"file_history":
 	[
-		"/Users/kyle/word-fall/Makefile",
+		"/Users/kyle/word-fall/gamestates.h",
+		"/Users/kyle/word-fall/main.c",
+		"/Users/kyle/word-fall/game-state.c",
+		"/Users/kyle/word-fall/title-fall-state.c",
+		"/Users/kyle/word-fall/title-transition-state.c",
 		"/Users/kyle/word-fall/title-options-state.c",
+		"/Users/kyle/word-fall/title-state.c",
+		"/Users/kyle/word-fall/Makefile",
+		"/Users/kyle/word-fall/state.h",
 		"/Users/kyle/word-fall/state.c",
 		"/Users/kyle/word-fall/main.h",
-		"/Users/kyle/word-fall/main.c",
 		"/Users/kyle/word-fall/intro-state.c",
-		"/Users/kyle/word-fall/title-fall-state.c",
 		"/Users/kyle/word-fall/title-highlight-options-state.c",
 		"/Users/kyle/word-fall/title-highlight-play-state.c",
-		"/Users/kyle/word-fall/title-state.c",
-		"/Users/kyle/word-fall/state.h",
 		"/Users/kyle/word-fall/code-todo.txt",
 		"/Users/kyle/word-fall/load.h",
 		"/Users/kyle/word-fall/word-fall-design-doc.txt",
 		"/Users/kyle/word-fall/render.c",
-		"/Users/kyle/word-fall/gamestates.h",
-		"/Users/kyle/word-fall/title-transition-state.c",
 		"/Users/kyle/word-fall/title-highlight-state.c",
 		"/home/kyle/word-fall/main.c",
 		"/Users/kyle/Documents/thoughts-and-info/mountain-lion-sucks.txt",
@@ -128,7 +121,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			""
@@ -139,6 +132,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"back to black",
+			"play",
 			"SDL Rect",
 			"state"
 		],
@@ -163,18 +158,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "title-state.c",
+					"file": "game-state.c",
 					"settings":
 					{
-						"buffer_size": 3636,
+						"buffer_size": 665,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1361,
-								1336
+								163,
+								163
 							]
 						],
 						"settings":
@@ -190,18 +185,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "title-options-state.c",
+					"file": "state.c",
 					"settings":
 					{
-						"buffer_size": 5239,
+						"buffer_size": 985,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3024,
-								3024
+								868,
+								868
 							]
 						],
 						"settings":
@@ -210,34 +205,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1327.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "main.h",
-					"settings":
-					{
-						"buffer_size": 2356,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 476.0,
+						"translation.y": 44.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

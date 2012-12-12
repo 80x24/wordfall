@@ -24,7 +24,6 @@ void title_fall_events()
 				(event.motion.x > playRect.x + playRect.w) ||
 				(event.motion.y < playRect.y) ||
 				(event.motion.y > playRect.y + playRect.h)) {
-				printf("play back to black\n");
 				set_next_state(STATE_TITLE);
 			}
 		}
@@ -33,7 +32,6 @@ void title_fall_events()
 				(event.motion.x > optionsRect.x + optionsRect.w) ||
 				(event.motion.y < optionsRect.y) ||
 				(event.motion.y > optionsRect.y + optionsRect.h)) {
-				printf("options back to black\n");
 				set_next_state(STATE_TITLE);
 			}
 		}
@@ -43,8 +41,8 @@ void title_fall_events()
 					(event.motion.x < playRect.x + playRect.w) &&
 					(event.motion.y > playRect.y) &&
 					(event.motion.y < playRect.y + playRect.h)) {
-					// set_next_state(STATE_PLAY);
-					printf("Play button clicked\n");
+					set_next_state(STATE_GAME);
+					//printf("Play button clicked\n");
 				}
 				else if((event.motion.x > optionsRect.x) &&
 					(event.motion.x < optionsRect.x + optionsRect.w) &&
