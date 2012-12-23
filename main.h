@@ -63,9 +63,9 @@ void trainsition(int miliseconds);
 // ============= SDL Surfaces =====================
 // Everything is loaded at startup
 // These are essentially all global variables. There should actually be a
-// funtion in each state where I do loading and initialization, but I am kind of
+// function in each state where I do loading and initialization, but I am kind of
 // too far in to implement that now. I might have to implement it in the future
-// if the main ganme states get too complicated, but the way I am currently
+// if the main game states get too complicated, but the way I am currently
 // implementing states is very stupid. I am copy pasting code, and it is turning
 // into spaghetti.
 SDL_Surface *screen;
@@ -86,14 +86,18 @@ SDL_Surface *aTitle;
 SDL_Surface *lTitle;
 SDL_Surface *l2Title;
 
-SDL_Surface *grass;
+SDL_Surface *container[8];
+SDL_Surface *letters[27];
 
+SDL_Surface *grass;
 SDL_Surface *play;
 SDL_Surface *options;
 SDL_Surface *optionsSound;
 SDL_Surface *optionsSoundOn;
 SDL_Surface *optionsSoundOff;
 SDL_Surface *optionsBack;
+SDL_Surface *pause;
+
 
 TTF_Font *playFont;
 TTF_Font *optionsFont;
@@ -101,6 +105,7 @@ TTF_Font *optionsSoundFont;
 TTF_Font *optionsSoundFontOn;
 TTF_Font *optionsSoundFontOff;
 TTF_Font *optionsBackFont;
+TTF_Font *pauseFont;
 // =================================================
 SDL_Event event;
 

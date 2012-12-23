@@ -296,7 +296,10 @@ int load_content()
 		fprintf(stderr, "options back font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
-	
+	pauseFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
+	if(pauseFont == NULL) {
+		fprintf(stderr, "Pause font loading failed\n%s\n", TTF_GetError());
+	}
 	return 0;
 }
 
@@ -326,6 +329,14 @@ void quit()
 	SDL_FreeSurface(optionsBack);
 	SDL_FreeSurface(introBackground);
 	SDL_FreeSurface(introTransition);
+	SDL_FreeSurface(pause);
+	int i;
+	for(i = 0; i < 8; i++) {
+		SDL_FreeSurface(container[i]);
+	}
+	for(i = 0; i < 27; i++) {
+		SDL_FreeSurface(letters[i]);
+	}
 	SDL_FreeSurface(screen);
 
 	TTF_CloseFont(playFont);
@@ -334,6 +345,7 @@ void quit()
 	TTF_CloseFont(optionsSoundFontOn);
 	TTF_CloseFont(optionsSoundFontOff);
 	TTF_CloseFont(optionsBackFont);
+	TTF_CloseFont(pauseFont);
 
 	TTF_Quit();
 	SDL_Quit();

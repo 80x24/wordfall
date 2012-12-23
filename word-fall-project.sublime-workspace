@@ -43,35 +43,23 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "game-state.c",
-			"settings":
-			{
-				"buffer_size": 665,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "state.c",
-			"settings":
-			{
-				"buffer_size": 985,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"",
+				"Set Syntax: C"
+			]
 		],
-		"width": 0.0
+		"width": 392.0
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 125.0
 	},
 	"distraction_free":
 	{
@@ -84,6 +72,12 @@
 	},
 	"file_history":
 	[
+		"/home/kyle/word-fall/Makefile",
+		"/home/kyle/word-fall/word-fall-project.sublime-project",
+		"/home/kyle/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/kyle/word-fall/game-state.c",
+		"/home/kyle/word-fall/state.c",
+		"/home/kyle/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
 		"/Users/kyle/word-fall/gamestates.h",
 		"/Users/kyle/word-fall/main.c",
 		"/Users/kyle/word-fall/game-state.c",
@@ -121,7 +115,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -153,63 +147,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "game-state.c",
-					"settings":
-					{
-						"buffer_size": 665,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								163,
-								163
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "state.c",
-					"settings":
-					{
-						"buffer_size": 985,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								868,
-								868
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 44.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -269,7 +208,7 @@
 		],
 		"width": 0.0
 	},
-	"show_minimap": false,
+	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
