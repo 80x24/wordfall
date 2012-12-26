@@ -262,6 +262,31 @@ int load_content()
 		return 1;
 	}
 
+	// =========== LOADING FOR LETTERS AND CONTAINERS =================
+	int i = 0;
+	for(i = 0; i < 26; i++) {
+		// This function converts the array number to the corresponding
+		// ascii value.
+		int asciiCode = i+65;
+		// I really have no idea how this line works so I should probably
+		// do some more invesitgating.
+		char *letter = (char*)&asciiCode;
+		char *location = "assets/images/letters/";
+		char *png = ".png";
+		char *final = malloc(sizeof(char)*strlen(location)+strlen(png)+1);
+		strcpy(final, location);
+		strcat(final, letter);
+		strcat(final, png);
+		letters[i] = load_image(final);
+		if(letters[i] == NULL) {
+			fprintf(stderr, "Letter loading failed\n%s\n", IMG_GetError());
+			return 1;
+		}
+		free(final);
+	}
+
+	
+
 	playFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
 	if(playFont == NULL) {
 		fprintf(stderr, "play font loading failed\n%s\n",TTF_GetError());
