@@ -19,9 +19,9 @@ award more points, longer words will also award more points, and finally,
 writing words quickly will award more points. The game is going to be based on
 time rounds like fruit ninja arcade mode where you try to spell as many words as
 you can in the allotted time. Just like in fruit ninja arcade, unused letters
-won’t count against you. If I really want to get crazy I can do objectives where
+won't count against you. If I really want to get crazy I can do objectives where
 you have to spell a certain amount of words in the time given. I could also do a
-fruit ninja like classic mode where if you don’t use a letter to spell a word,
+fruit ninja like classic mode where if you don't use a letter to spell a word,
 then you lose a life/points. This is going to be harder to implement though
 because I have to make sure I am giving players the right letters and not just
 vowels.
@@ -49,7 +49,7 @@ mean that I should move the clouds down a bit.
 
 (4) Then the main game area
 
-(5) And finally the grass and word container, which is currently ok, but could
+(5) And finally the grass and word container, which is currently okay, but could
 use improvement.
 
 (6) I also might want to add a sun in the top right corner. Probably not going
@@ -58,7 +58,7 @@ to happen.
 (7) The letters I have now are good, but the size of the point values is small.
 The point values aren't super crucial for the user to see, but it would be nice.
 
-(8) I also need a menu screen but I don’t know what it is going to look like.
+(8) I also need a menu screen but I don't know what it is going to look like.
 
 (9) It will probably end up just being the same background but and clouds but
 without the letter container and information at the top. It will only contain
@@ -69,10 +69,10 @@ look like it is raining letters. The clouds slowly moving would also just look
 good in general on the title screen.
 
 (11) The other thing I need to standardize is the image resolutions
-the image resolutions needs to be the same size, but I don’t want to hard code
+the image resolutions needs to be the same size, but I don't want to hard code
 numbers in so that I can adapt to resizing screens and Android troubles. I also
-don’t want to have to hard code the positions into the game although I could
-cheat and hard code them on the pc versions, but that won’t be possible with the
+don't want to have to hard code the positions into the game although I could
+cheat and hard code them on the pc versions, but that won't be possible with the
 mobile versions (especially Android). The image sizes for the PC version are
 basically set, I will worry about the Android versions later.
 
@@ -88,7 +88,7 @@ really creative and have a ton of extra time.
 (14) After spending about 4 hours on the concept art this game is already
 shaping up to be the best looking yet.
 
-(15) Also, I need an image editor way better than pixelmator because you can’t
+(15) Also, I need an image editor way better than pixelmator because you can't
 lock layers and it crashes all the time.
 
 ================================================================================
@@ -105,16 +105,16 @@ Animations
 --------------------------------------------------------------------------------
 My biggest initial hurdle is going to be animations and transitions. When a word
 is complete points should nicely fade up on the screen, and the completed word
-can maybe poof away. I currently haven’t figured out how to do animations yet,
+can maybe poof away. I currently haven't figured out how to do animations yet,
 but they are going to be crucial to add that extra layer of polish that puts the
-game over the top. I want this app to be good. This isn’t amateur hour. 
+game over the top. I want this app to be good. This isn't amateur hour. 
 
 --------------------------------------------------------------------------------
 Image Size
 --------------------------------------------------------------------------------
 Determining a good screen resolution is going to be challenging. Because this
 game is eventually going to be for Windows, Mac, Linux, Android, iPhone, and
-iPad, having one set screen resolution and artwork size isn’t going to work.
+iPad, having one set screen resolution and artwork size isn't going to work.
 On the pc version that I am building first I could cheat and set a fixed
 resolution and lay out everything statically, but what I really should do is
 make all of the placements relative so that the windows can be resized. This is
@@ -145,7 +145,7 @@ application startup the game will check mopiz for a file that contains a number
 string of the latest version. Each version will have its own version number that
 I will compare to the number downloaded from Mopiz. If the version number is
 different, I will prompt the user to update. All of the version downloads will
-go over TLS to make it secure although it isn’t really necessary.
+go over TLS to make it secure although it isn't really necessary.
 
 --------------------------------------------------------------------------------
 Saving User Scores
@@ -163,7 +163,7 @@ Other Notes
 If I really want to make this game good I can add networked turn based
 multiplayer like Draw something and Words with friends. If I actually made this
 app stellar I could be bought by Zynga because they buy every single multiplayer
-word game. This is really just a dream though. I don’t actually expect it to
+word game. This is really just a dream though. I don't actually expect it to
 happen (although it would be really nice).
                               
 Probably not going to do this ▽
@@ -175,15 +175,15 @@ system. Also look at $ORIGIN for info about relative shared object libraries.
 
 
 The closed source information is probably not going to be necessary because
-I will most likely open source the game. Distribution isn’t going to be a
+I will most likely open source the game. Distribution isn't going to be a
 problem on Windows or Mac because all of the files can be dynamically linked.
-The dll’s will be installed with the application just like they were with the
+The dlls will be installed with the application just like they were with the
 windows distribution on Connect It! and the Mac version can be packaged into a
 .app. The Linux version is the only place that I run into a problem by dynamic
 linking. What I am going to have to do is build a custom install script that
-will check forthe .so files, and if they don’t have them, install them. Then I
+will check for the .so files, and if they don't have them, install them. Then I
 will move the game to /usr/local/games or whatever to “install” the binary on
-Linux. The proprietary installer is going to need root(which is bad but I don’t
+Linux. The proprietary installer is going to need root(which is bad but I don't
 see a way around it.) It is also going to need to install the SDL .so files from
 the local repositories. I can probably support Debian, Fedora, and maybe Arch
 packaging systems within the script, but weird package managers are not going to
