@@ -262,6 +262,12 @@ int load_content()
 		return 1;
 	}
 
+	submit = load_image("assets/images/yellow-check-yellow.png");
+	if(submit == NULL) {
+		fprintf(stderr, "Check submit button loading failed\n%s\n", IMG_GetError());
+		return 1;
+	}
+
 	// =========== LOADING FOR LETTERS AND CONTAINERS =================
 	int i = 0;
 	for(i = 0; i < 26; i++) {
@@ -283,6 +289,13 @@ int load_content()
 			return 1;
 		}
 		free(final);
+	}
+
+	for(i = 0; i < 7; i++) {
+		container[i] = load_image("assets/images/container.png");
+		if(container[i] == NULL) {
+			fprintf(stderr, "Container loading failed\n%s\n", IMG_GetError());
+		}
 	}
 
 	

@@ -86,7 +86,7 @@ SDL_Surface *aTitle;
 SDL_Surface *lTitle;
 SDL_Surface *l2Title;
 
-SDL_Surface *container[8];
+SDL_Surface *container[7];
 SDL_Surface *letters[27];
 
 SDL_Surface *grass;
@@ -97,6 +97,7 @@ SDL_Surface *optionsSoundOn;
 SDL_Surface *optionsSoundOff;
 SDL_Surface *optionsBack;
 SDL_Surface *pause;
+SDL_Surface *submit;
 
 
 TTF_Font *playFont;
