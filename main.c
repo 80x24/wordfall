@@ -368,13 +368,17 @@ void quit()
 	SDL_FreeSurface(introBackground);
 	SDL_FreeSurface(introTransition);
 	SDL_FreeSurface(pause);
-	int i;
-	for(i = 0; i < 8; i++) {
+	SDL_FreeSurface(submit);
+	
+	int i = 0;
+	for(i = 0; i < 7; i++) {
 		SDL_FreeSurface(container[i]);
 	}
+	
 	for(i = 0; i < 27; i++) {
 		SDL_FreeSurface(letters[i]);
 	}
+	
 	SDL_FreeSurface(screen);
 
 	TTF_CloseFont(playFont);
