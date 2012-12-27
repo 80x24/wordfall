@@ -103,11 +103,19 @@ else.
 --------------------------------------------------------------------------------
 Animations
 --------------------------------------------------------------------------------
-My biggest initial hurdle is going to be animations and transitions. When a word
-is complete points should nicely fade up on the screen, and the completed word
-can maybe poof away. I currently haven't figured out how to do animations yet,
-but they are going to be crucial to add that extra layer of polish that puts the
-game over the top. I want this app to be good. This isn't amateur hour. 
+Some animations and transitions have already been implemented.
+
+I would like to have some "fancy" animations for when the user clicks the play
+button. Basically, I want to keep all of the background images, and just have
+the UI elements disappear. The Word Fall title can crumble and fall away, and
+the play and options buttons can fly out to either the left or the right. Then
+the container and submit button can float in from the bottom. I think this is
+going to look good, I just have to make sure not to over-do it and make it look
+like a really bad power point from 2005.
+
+Another idea would be to have a whole bunch of letters form a grid transition
+like in Portal 2 where the screen is covered for a second to signify a
+transition.
 
 --------------------------------------------------------------------------------
 Image Size

@@ -69,6 +69,11 @@
 	},
 	"file_history":
 	[
+		"/home/kyle/word-fall/intro-state.c",
+		"/home/kyle/word-fall/render.h",
+		"/home/kyle/word-fall/render.c",
+		"/home/kyle/word-fall/main.h",
+		"/home/kyle/word-fall/main.c",
 		"/home/kyle/word-fall/Makefile",
 		"/home/kyle/word-fall/word-fall-project.sublime-project",
 		"/home/kyle/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
@@ -94,7 +99,6 @@
 		"/Users/kyle/word-fall/word-fall-design-doc.txt",
 		"/Users/kyle/word-fall/render.c",
 		"/Users/kyle/word-fall/title-highlight-state.c",
-		"/home/kyle/word-fall/main.c",
 		"/Users/kyle/Documents/thoughts-and-info/mountain-lion-sucks.txt",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/kyle/word-fall/build.sublime-build",
