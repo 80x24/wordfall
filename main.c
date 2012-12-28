@@ -58,6 +58,8 @@ int main(int argc, char *argv[])
 		// Logic
 		// =============================
 		switch(currentState) {
+			case STATE_EXIT:
+				running = 0;
 			case STATE_INTRO_TRANSITION:
 				intro_transition_logic();
 				break;
@@ -85,6 +87,7 @@ int main(int argc, char *argv[])
 			case STATE_GAME:
 				game_logic();
 				break;
+
 		}
 		
 		change_state();

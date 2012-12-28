@@ -32,7 +32,6 @@ enum gameStates {
 
 int currentState;
 int nextState;
-int running;
 
 // Word Fall logo globals
 int titleX[8];

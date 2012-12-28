@@ -44,7 +44,6 @@ void change_state()
 				break;
 			case STATE_EXIT:
 				currentState = STATE_EXIT;
-				running = 0;
 				break;
 		}
 		
