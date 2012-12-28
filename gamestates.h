@@ -50,4 +50,8 @@ void game_events();
 void game_logic();
 void game_render();
 
+void game_transition_events();
+void game_transition_logic();
+void game_transition_render();
+
 #endif

@@ -54,7 +54,7 @@ void title_events()
 					(event.motion.x < playRect.x + playRect.w) &&
 					(event.motion.y > playRect.y) &&
 					(event.motion.y < playRect.y + playRect.h)) {
-					set_next_state(STATE_GAME);
+					set_next_state(STATE_GAME_TRANSITION);
 					//printf("Play button clicked\n");
 				}
 				else if((event.motion.x > optionsRect.x) &&

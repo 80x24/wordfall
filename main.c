@@ -46,6 +46,9 @@ int main(int argc, char *argv[])
 			case STATE_TITLE:
 				title_events();
 				break;
+			case STATE_GAME_TRANSITION:
+				game_transition_events();
+				break;
 			case STATE_GAME:
 				game_events();
 				break;
@@ -75,6 +78,9 @@ int main(int argc, char *argv[])
 				break;
 			case STATE_TITLE:
 				title_logic();
+				break;
+			case STATE_GAME_TRANSITION:
+				game_transition_logic();
 				break;
 			case STATE_GAME:
 				game_logic();
@@ -107,6 +113,9 @@ int main(int argc, char *argv[])
 				break;
 			case STATE_TITLE:
 				title_render();
+				break;
+			case STATE_GAME_TRANSITION:
+				game_transition_render();
 				break;
 			case STATE_GAME:
 				game_render();

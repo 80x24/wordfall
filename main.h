@@ -27,6 +27,7 @@ enum gameStates {
 	STATE_TITLE_OPTIONS,
 	STATE_TITLE,
 	STATE_GAME,
+	STATE_GAME_TRANSITION,
 };
 
 int currentState;
