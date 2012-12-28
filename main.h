@@ -33,19 +33,10 @@ enum gameStates {
 int currentState;
 int nextState;
 int running;
-int alpha;
 
 // Word Fall logo globals
-int wTitleY;
-int oTitleY;
-int rTitleY;
-int dTitleY;
-int fTitleY;
-int aTitleY;
-int lTitleY;
-int l2TitleY;
-int wordY;
-int fallY;
+int titleX[8];
+int titleY[8];
 
 // options highlight globals. These are currently global due to a bug where
 // the back button on the options screen will stay yellow until the mouse is
@@ -59,7 +50,6 @@ int optionsRectHighlight;
 int init();
 void quit();
 int load_content();
-void trainsition(int miliseconds);
 
 // ============= SDL Surfaces =====================
 // Everything is loaded at startup
@@ -77,15 +67,7 @@ SDL_Surface *cloud1;
 SDL_Surface *cloud2;
 SDL_Surface *cloud3;
 
-SDL_Surface *wTitle;
-SDL_Surface *oTitle;
-SDL_Surface *rTitle;
-SDL_Surface *dTitle;
-
-SDL_Surface *fTitle;
-SDL_Surface *aTitle;
-SDL_Surface *lTitle;
-SDL_Surface *l2Title;
+SDL_Surface *title[8];
 
 SDL_Surface *container[7];
 SDL_Surface *letters[27];

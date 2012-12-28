@@ -91,7 +91,7 @@ void title_options_events()
 
 void title_options_logic()
 {
-	if(l2TitleY != fallY) {
+	if(titleY[7] != 200) {
 		title_fall_logic();
 	}
 	playRectHighlight = 0;
@@ -106,15 +106,9 @@ void title_options_render()
 	render_image(215,-5,cloud3,screen);
 	render_image(105,5,cloud2,screen);
 	
-	render_image(75,wTitleY,wTitle,screen);
-	render_image(118,oTitleY,oTitle,screen);
-	render_image(161,rTitleY,rTitle,screen);
-	render_image(204,dTitleY,dTitle,screen);
-	
-	render_image(118,fTitleY,fTitle,screen);
-	render_image(161,aTitleY,aTitle,screen);
-	render_image(204,lTitleY,lTitle,screen);
-	render_image(247,lTitleY,l2Title,screen);
+	for(int i = 0; i < 8; i++) {
+		render_image(titleX[i], titleY[i], title[i], screen);
+	}
 	
 	render_image(0,560,grass,screen);
 	

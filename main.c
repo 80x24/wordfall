@@ -135,20 +135,28 @@ int main(int argc, char *argv[])
 
 int init()
 {
-	alpha = 255;
 	running = 1;
 
 	// word fall logo globals
-	wTitleY = -50;
-	oTitleY = -75;
-	rTitleY = -100;
-	dTitleY = -125;
-	fTitleY = -175;
-	aTitleY = -200;
-	lTitleY = -225;
-	l2TitleY = -250;
-	wordY = 150;
-	fallY = 200;
+	titleX[0] = 75;
+	titleX[1] = 118;
+	titleX[2] = 161;
+	titleX[3] = 204;
+	titleX[4] = 118;
+	titleX[5] = 161;
+	titleX[6] = 204;
+	titleX[7] = 247;
+
+	titleY[0] = -50;
+	titleY[1] = -75;
+	titleY[2] = -100;
+	titleY[3] = -125;
+	titleY[4] = -175;
+	titleY[5] = -200;
+	titleY[6] = -225;
+	titleY[7] = -250;
+	//int titleX[8] = {75, 118, 161, 204, 118, 161, 204, 247};
+	//int titleY[8] = {-50, -75, -100, -125, -175, -200, -225, -250};
 
 	currentState = STATE_INTRO_TRANSITION;
 	nextState = STATE_NULL;
@@ -224,43 +232,43 @@ int load_content()
 	}
 	
 	// --- TITLE WORD FALL ---
-	wTitle = load_image("assets/images/letters/W.png");
-	if(wTitle == NULL) {
+	title[0] = load_image("assets/images/letters/W.png");
+	if(title[0] == NULL) {
 		fprintf(stderr, "w title letter loading failed\n%s\n",IMG_GetError());
 		return 1;
 	}
-	oTitle = load_image("assets/images/letters/O.png");
-	if(oTitle == NULL) {
+	title[1] = load_image("assets/images/letters/O.png");
+	if(title[1] == NULL) {
 		fprintf(stderr, "o title letter loading failed\n%s\n",IMG_GetError());
 		return 1;
 	}
-	rTitle = load_image("assets/images/letters/R.png");
-	if(rTitle == NULL) {
+	title[2] = load_image("assets/images/letters/R.png");
+	if(title[2] == NULL) {
 		fprintf(stderr, "r title letter loading failed\n%s\n",IMG_GetError());
 		return 1;
 	}
-	dTitle = load_image("assets/images/letters/D.png");
-	if(dTitle == NULL) {
+	title[3] = load_image("assets/images/letters/D.png");
+	if(title[3] == NULL) {
 		fprintf(stderr, "d title letter loading failed\n%s\n",IMG_GetError());
 		return 1;
 	}
-	fTitle = load_image("assets/images/letters/F.png");
-	if(fTitle == NULL) {
+	title[4] = load_image("assets/images/letters/F.png");
+	if(title[4] == NULL) {
 		fprintf(stderr, "f title letter loading failed\n%s\n",IMG_GetError());
 		return 1;
 	}
-	aTitle = load_image("assets/images/letters/A.png");
-	if(aTitle == NULL) {
+	title[5] = load_image("assets/images/letters/A.png");
+	if(title[5] == NULL) {
 		fprintf(stderr, "a title letter loading failed\n%s\n",IMG_GetError());
 		return 1;
 	}
-	lTitle = load_image("assets/images/letters/L.png");
-	if(lTitle == NULL) {
+	title[6] = load_image("assets/images/letters/L.png");
+	if(title[6] == NULL) {
 		fprintf(stderr, "l title letter loading failed\n%s\n",IMG_GetError());
 		return 1;
 	}
-	l2Title = load_image("assets/images/letters/L.png");
-	if(wTitle == NULL) {
+	title[7] = load_image("assets/images/letters/L.png");
+	if(title[7] == NULL) {
 		fprintf(stderr, "L2 title letter loading failed\n%s\n",IMG_GetError());
 		return 1;
 	}
@@ -278,8 +286,7 @@ int load_content()
 	}
 
 	// =========== LOADING FOR LETTERS AND CONTAINERS =================
-	int i = 0;
-	for(i = 0; i < 26; i++) {
+	for(int i = 0; i < 26; i++) {
 		// This function converts the array number to the corresponding
 		// ascii value.
 		int asciiCode = i+65;
@@ -300,14 +307,12 @@ int load_content()
 		free(final);
 	}
 
-	for(i = 0; i < 7; i++) {
+	for(int i = 0; i < 7; i++) {
 		container[i] = load_image("assets/images/container.png");
 		if(container[i] == NULL) {
 			fprintf(stderr, "Container loading failed\n%s\n", IMG_GetError());
 		}
 	}
-
-	
 
 	playFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
 	if(playFont == NULL) {
@@ -359,14 +364,6 @@ void quit()
 	SDL_FreeSurface(cloud1);
 	SDL_FreeSurface(cloud2);
 	SDL_FreeSurface(cloud3);
-	SDL_FreeSurface(wTitle);
-	SDL_FreeSurface(oTitle);
-	SDL_FreeSurface(rTitle);
-	SDL_FreeSurface(dTitle);
-	SDL_FreeSurface(fTitle);
-	SDL_FreeSurface(aTitle);
-	SDL_FreeSurface(lTitle);
-	SDL_FreeSurface(l2Title);
 	SDL_FreeSurface(grass);
 	SDL_FreeSurface(play);
 	SDL_FreeSurface(options);
@@ -378,13 +375,16 @@ void quit()
 	SDL_FreeSurface(introTransition);
 	SDL_FreeSurface(pause);
 	SDL_FreeSurface(submit);
+
+	for(int i = 0; i < 8; i++) {
+		SDL_FreeSurface(title[i]);
+	}
 	
-	int i = 0;
-	for(i = 0; i < 7; i++) {
+	for(int i = 0; i < 7; i++) {
 		SDL_FreeSurface(container[i]);
 	}
 	
-	for(i = 0; i < 27; i++) {
+	for(int i = 0; i < 27; i++) {
 		SDL_FreeSurface(letters[i]);
 	}
 	

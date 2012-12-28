@@ -6,14 +6,7 @@
 #include "render.h"
 #include "main.h"
 
-int wTitleX = 75;
-int oTitleX = 118;
-int rTitleX = 161;
-int dTitleX = 204;
-int fTitleX = 118;
-int aTitleX = 161;
-int lTitleX = 204;
-int l2TitleX = 247;
+
 int timeStart = 0;
 
 int playX = 148;
@@ -47,18 +40,9 @@ void game_transition_logic()
 		set_next_state(STATE_GAME);
 	}
 
-	/*wTitleX -= 1;
-	dTitleX += 1;
-	fTitleX -= 1;
-	l2TitleX += 1;*/
-
-	wTitleY += 5;
-	oTitleY += 5;
-	rTitleY += 5;
-	dTitleY += 5;
-	fTitleY += 5;
-	aTitleY += 5;
-	lTitleY += 5;
+	for(int i = 0; i < 8; i++) {
+		titleY[i] += 5;
+	}
 
 	playX -= 6;
 	optionsX += 6;
@@ -73,15 +57,9 @@ void game_transition_render()
 	render_image(215,-5,cloud3,screen);
 	render_image(105,5,cloud2,screen);
 	
-	render_image(wTitleX,wTitleY,wTitle,screen);
-	render_image(oTitleX,oTitleY,oTitle,screen);
-	render_image(rTitleX,rTitleY,rTitle,screen);
-	render_image(dTitleX,dTitleY,dTitle,screen);
-	
-	render_image(fTitleX,fTitleY,fTitle,screen);
-	render_image(aTitleX,aTitleY,aTitle,screen);
-	render_image(lTitleX,lTitleY,lTitle,screen);
-	render_image(l2TitleX,lTitleY,l2Title,screen);
+	for(int i = 0; i < 8; i++) {
+		render_image(titleX[i], titleY[i], title[i], screen);
+	}
 	
 	render_image(0,560,grass,screen);
 

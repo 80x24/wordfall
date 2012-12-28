@@ -6,6 +6,8 @@
 #include "render.h"
 #include "main.h"
 
+extern int alpha;
+
 void title_transition_events()
 {
 	//printf("title transition\n");

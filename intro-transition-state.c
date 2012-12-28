@@ -6,6 +6,8 @@
 #include "render.h"
 #include "main.h"
 
+int alpha = 255;
+
 void intro_transition_events()
 {
 	//printf("fade in\n");

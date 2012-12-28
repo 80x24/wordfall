@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"STATE_GAME",
+				"STATE_GAME_TRANSITION"
+			],
+			[
 				"STATE",
 				"STATE_PLAY"
 			],
@@ -41,6 +45,9 @@
 			]
 		]
 	},
+	"buffers":
+	[
+	],
 	"build_system": "",
 	"command_palette":
 	{
@@ -69,6 +76,26 @@
 	},
 	"file_history":
 	[
+		"/Users/kyle/word-fall/main.c",
+		"/Users/kyle/word-fall/game-transition-state.c",
+		"/Users/kyle/word-fall/title-state.c",
+		"/Users/kyle/word-fall/title-options-state.c",
+		"/Users/kyle/word-fall/title-fall-state.c",
+		"/Users/kyle/word-fall/state.c",
+		"/Users/kyle/word-fall/gamestates.h",
+		"/Users/kyle/word-fall/title-transition-state.c",
+		"/Users/kyle/word-fall/intro-transition-state.c",
+		"/Users/kyle/word-fall/main.h",
+		"/Users/kyle/word-fall/Makefile",
+		"/Users/kyle/word-fall/intro-state.c",
+		"/Users/kyle/word-fall/SDL_rotozoom.c",
+		"/Users/kyle/word-fall/SDL_rotozoom.h",
+		"/Users/kyle/word-fall/render.c",
+		"/Users/kyle/word-fall/load.c",
+		"/Users/kyle/word-fall/game-state.c",
+		"/Users/kyle/word-fall/state.h",
+		"/Users/kyle/word-fall/.Makefile.swp",
+		"/Users/kyle/word-fall/code-todo.txt",
 		"/home/kyle/word-fall/intro-state.c",
 		"/home/kyle/word-fall/render.h",
 		"/home/kyle/word-fall/render.c",
@@ -80,31 +107,15 @@
 		"/home/kyle/word-fall/game-state.c",
 		"/home/kyle/word-fall/state.c",
 		"/home/kyle/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
-		"/Users/kyle/word-fall/gamestates.h",
-		"/Users/kyle/word-fall/main.c",
-		"/Users/kyle/word-fall/game-state.c",
-		"/Users/kyle/word-fall/title-fall-state.c",
-		"/Users/kyle/word-fall/title-transition-state.c",
-		"/Users/kyle/word-fall/title-options-state.c",
-		"/Users/kyle/word-fall/title-state.c",
-		"/Users/kyle/word-fall/Makefile",
-		"/Users/kyle/word-fall/state.h",
-		"/Users/kyle/word-fall/state.c",
-		"/Users/kyle/word-fall/main.h",
-		"/Users/kyle/word-fall/intro-state.c",
 		"/Users/kyle/word-fall/title-highlight-options-state.c",
 		"/Users/kyle/word-fall/title-highlight-play-state.c",
-		"/Users/kyle/word-fall/code-todo.txt",
 		"/Users/kyle/word-fall/load.h",
 		"/Users/kyle/word-fall/word-fall-design-doc.txt",
-		"/Users/kyle/word-fall/render.c",
 		"/Users/kyle/word-fall/title-highlight-state.c",
 		"/Users/kyle/Documents/thoughts-and-info/mountain-lion-sucks.txt",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/kyle/word-fall/build.sublime-build",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/kyle/word-fall/intro-transition-state.c",
-		"/Users/kyle/word-fall/load.c",
 		"/Users/kyle/word-fall/other-fonts.txt",
 		"/Users/kyle/word-fall/render.h",
 		"/Users/kyle/word-fall/SDLMain.h",
@@ -116,7 +127,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			""
@@ -127,6 +138,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"titleX",
+			"soundOnHighlight",
+			"transition",
+			"wordY",
+			"wTitleY",
+			"rotoZoomSurface",
+			"SDL_Rotozoom",
 			"back to black",
 			"play",
 			"SDL Rect",
@@ -145,6 +163,14 @@
 		"whole_word": false,
 		"wrap": true
 	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
 	"incremental_find":
 	{
 		"height": 34.0

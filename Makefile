@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall
+CFLAGS=-Wall -std=c99
 LDFLAGSOSX=-framework SDL -framework SDL_image -framework SDL_ttf -framework SDL_mixer -framework Cocoa
 LDFLAGSLINUX=-lSDL -lSDL_image -lSDL_ttf -lSDL_mixer
 OBJECTS=main.o load.o render.o state.o intro-state.o intro-transition-state.o \
@@ -10,6 +10,7 @@ OBJECTSLINUX=
 CFILES=main.c load.c render.c state.c intro-state.c intro-transition-state.c \
 title-state.c title-transition-state.c title-fall-state.c title-options-state.c \
 game-state.c game-transition-state.c
+OSXEXTRA=SDLMain.m
 LINUXEXTRA=
 all:
 	@echo "usage: make osx or make linux"
