@@ -12,6 +12,7 @@ SDL_Rect optionsBackRect;
 
 void title_options_events()
 {
+	
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
 			set_next_state(STATE_EXIT);

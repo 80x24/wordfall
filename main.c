@@ -7,12 +7,27 @@
 #include "gamestates.h"
 #define FPS 60
 
-// Comment from linux box!!
+// word fall globals
+int titleX[] = {75, 118, 161, 204, 118, 161, 204, 247};
+int titleY[] = {-50, -75, -100, -125, -175, -200, -225, -250};
+int currentState = STATE_INTRO_TRANSITION;
+int nextState = STATE_NULL;
+
+// highlight globals for bug fix
+// These are currently global because I can't find
+// a good way to make them local.
+// The only files that these variables are modified in are
+// title-options-state.c and title-state.c
+int soundOnHighlight =  0;
+int soundOffHighlight = 0;
+int backHighlight = 0;
+int playRectHighlight = 0;
+int optionsRectHighlight = 0;
 
 int main(int argc, char *argv[])
 {
-	int start;
-	int finish;
+	int start = 0;
+	int finish = 0;
 	int running = 1;
 
 	if(init() != 0) {
@@ -139,31 +154,6 @@ int main(int argc, char *argv[])
 
 int init()
 {
-
-	// word fall logo globals
-	titleX[0] = 75;
-	titleX[1] = 118;
-	titleX[2] = 161;
-	titleX[3] = 204;
-	titleX[4] = 118;
-	titleX[5] = 161;
-	titleX[6] = 204;
-	titleX[7] = 247;
-
-	titleY[0] = -50;
-	titleY[1] = -75;
-	titleY[2] = -100;
-	titleY[3] = -125;
-	titleY[4] = -175;
-	titleY[5] = -200;
-	titleY[6] = -225;
-	titleY[7] = -250;
-	//int titleX[8] = {75, 118, 161, 204, 118, 161, 204, 247};
-	//int titleY[8] = {-50, -75, -100, -125, -175, -200, -225, -250};
-
-	currentState = STATE_INTRO_TRANSITION;
-	nextState = STATE_NULL;
-
 	if(SDL_Init(SDL_INIT_EVERYTHING) == -1) {
 		fprintf(stderr, "SDL Initialization failed\n %s\n", SDL_GetError());
 		return 1;

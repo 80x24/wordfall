@@ -6,13 +6,12 @@
 #include "render.h"
 #include "main.h"
 
-
 SDL_Rect playRect;
 SDL_Rect optionsRect;
 
-
 void title_events()
 {
+	
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
 			set_next_state(STATE_EXIT);

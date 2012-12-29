@@ -30,21 +30,19 @@ enum gameStates {
 	STATE_GAME_TRANSITION,
 };
 
-int currentState;
-int nextState;
+// state globals
+extern int currentState;
+extern int nextState;
 
 // Word Fall logo globals
-int titleX[8];
-int titleY[8];
+extern int titleX[];
+extern int titleY[];
 
-// options highlight globals. These are currently global due to a bug where
-// the back button on the options screen will stay yellow until the mouse is
-// moved. May be able to figure out how to make these local later.
-int soundOnHighlight;
-int soundOffHighlight;
-int backHighlight;
-int playRectHighlight;
-int optionsRectHighlight;
+extern int soundOnHighlight;
+extern int soundOffHighlight;
+extern int backHighlight;
+extern int playRectHighlight;
+extern int optionsRectHighlight;
 
 int init();
 void quit();
@@ -56,8 +54,8 @@ int load_content();
 // function in each state where I do loading and initialization, but I am kind of
 // too far in to implement that now. I might have to implement it in the future
 // if the main game states get too complicated, but the way I am currently
-// implementing states is very stupid. I am copy pasting code, and it is turning
-// into spaghetti.
+// implementing states is very stupid.
+
 SDL_Surface *screen;
 SDL_Surface *introBackground;
 SDL_Surface *introTransition;
