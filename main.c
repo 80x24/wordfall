@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 {
 	int start;
 	int finish;
+	int running = 1;
 
 	if(init() != 0) {
 		fprintf(stderr, "Initialization failed\n");
@@ -138,7 +139,6 @@ int main(int argc, char *argv[])
 
 int init()
 {
-	running = 1;
 
 	// word fall logo globals
 	titleX[0] = 75;

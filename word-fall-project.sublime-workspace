@@ -76,16 +76,17 @@
 	},
 	"file_history":
 	[
+		"/Users/kyle/word-fall/state.h",
+		"/Users/kyle/word-fall/main.h",
 		"/Users/kyle/word-fall/main.c",
+		"/Users/kyle/word-fall/gamestates.h",
+		"/Users/kyle/word-fall/state.c",
 		"/Users/kyle/word-fall/game-transition-state.c",
 		"/Users/kyle/word-fall/title-state.c",
 		"/Users/kyle/word-fall/title-options-state.c",
 		"/Users/kyle/word-fall/title-fall-state.c",
-		"/Users/kyle/word-fall/state.c",
-		"/Users/kyle/word-fall/gamestates.h",
 		"/Users/kyle/word-fall/title-transition-state.c",
 		"/Users/kyle/word-fall/intro-transition-state.c",
-		"/Users/kyle/word-fall/main.h",
 		"/Users/kyle/word-fall/Makefile",
 		"/Users/kyle/word-fall/intro-state.c",
 		"/Users/kyle/word-fall/SDL_rotozoom.c",
@@ -93,7 +94,6 @@
 		"/Users/kyle/word-fall/render.c",
 		"/Users/kyle/word-fall/load.c",
 		"/Users/kyle/word-fall/game-state.c",
-		"/Users/kyle/word-fall/state.h",
 		"/Users/kyle/word-fall/.Makefile.swp",
 		"/Users/kyle/word-fall/code-todo.txt",
 		"/home/kyle/word-fall/intro-state.c",
@@ -138,6 +138,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"nextState",
+			"running",
+			"load_content",
 			"titleX",
 			"soundOnHighlight",
 			"transition",
