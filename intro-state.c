@@ -29,7 +29,6 @@ void intro_logic()
 	}
 	
 	if(SDL_GetTicks() - introTimeStart >= 1000) {
-		alpha = 255;
 		set_next_state(STATE_INTRO_TRANSITION_FADE);
 	}
 }

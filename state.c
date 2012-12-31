@@ -36,9 +36,14 @@ void change_state()
 			case STATE_TITLE:
 				currentState = STATE_TITLE;
 				break;
+			case STATE_GAME:
+				currentState = STATE_GAME;
+				break;
+			case STATE_GAME_TRANSITION:
+				currentState = STATE_GAME_TRANSITION;
+				break;
 			case STATE_EXIT:
 				currentState = STATE_EXIT;
-				running = 0;
 				break;
 		}
 		

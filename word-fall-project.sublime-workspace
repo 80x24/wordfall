@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"STATE_GAME",
+				"STATE_GAME_TRANSITION"
+			],
+			[
 				"STATE",
 				"STATE_PLAY"
 			],
@@ -41,45 +45,22 @@
 			]
 		]
 	},
-	"buffers":
-	[
-		{
-			"file": "title-state.c",
-			"settings":
-			{
-				"buffer_size": 3636,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "title-options-state.c",
-			"settings":
-			{
-				"buffer_size": 5239,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "main.h",
-			"settings":
-			{
-				"buffer_size": 2356,
-				"line_ending": "Unix"
-			}
-		}
-	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"",
+				"Set Syntax: C"
+			]
 		],
-		"width": 0.0
+		"width": 392.0
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 125.0
 	},
 	"distraction_free":
 	{
@@ -92,31 +73,47 @@
 	},
 	"file_history":
 	[
-		"/Users/kyle/word-fall/Makefile",
-		"/Users/kyle/word-fall/title-options-state.c",
-		"/Users/kyle/word-fall/state.c",
+		"/home/kyle/word-fall/main.h",
+		"/home/kyle/word-fall/title-state.c",
+		"/home/kyle/word-fall/main.c",
+		"/Users/kyle/word-fall/state.h",
 		"/Users/kyle/word-fall/main.h",
 		"/Users/kyle/word-fall/main.c",
-		"/Users/kyle/word-fall/intro-state.c",
+		"/Users/kyle/word-fall/gamestates.h",
+		"/Users/kyle/word-fall/state.c",
+		"/Users/kyle/word-fall/game-transition-state.c",
+		"/Users/kyle/word-fall/title-state.c",
+		"/Users/kyle/word-fall/title-options-state.c",
 		"/Users/kyle/word-fall/title-fall-state.c",
+		"/Users/kyle/word-fall/title-transition-state.c",
+		"/Users/kyle/word-fall/intro-transition-state.c",
+		"/Users/kyle/word-fall/Makefile",
+		"/Users/kyle/word-fall/intro-state.c",
+		"/Users/kyle/word-fall/SDL_rotozoom.c",
+		"/Users/kyle/word-fall/SDL_rotozoom.h",
+		"/Users/kyle/word-fall/render.c",
+		"/Users/kyle/word-fall/load.c",
+		"/Users/kyle/word-fall/game-state.c",
+		"/Users/kyle/word-fall/.Makefile.swp",
+		"/Users/kyle/word-fall/code-todo.txt",
+		"/home/kyle/word-fall/intro-state.c",
+		"/home/kyle/word-fall/render.h",
+		"/home/kyle/word-fall/render.c",
+		"/home/kyle/word-fall/Makefile",
+		"/home/kyle/word-fall/word-fall-project.sublime-project",
+		"/home/kyle/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/kyle/word-fall/game-state.c",
+		"/home/kyle/word-fall/state.c",
+		"/home/kyle/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
 		"/Users/kyle/word-fall/title-highlight-options-state.c",
 		"/Users/kyle/word-fall/title-highlight-play-state.c",
-		"/Users/kyle/word-fall/title-state.c",
-		"/Users/kyle/word-fall/state.h",
-		"/Users/kyle/word-fall/code-todo.txt",
 		"/Users/kyle/word-fall/load.h",
 		"/Users/kyle/word-fall/word-fall-design-doc.txt",
-		"/Users/kyle/word-fall/render.c",
-		"/Users/kyle/word-fall/gamestates.h",
-		"/Users/kyle/word-fall/title-transition-state.c",
 		"/Users/kyle/word-fall/title-highlight-state.c",
-		"/home/kyle/word-fall/main.c",
 		"/Users/kyle/Documents/thoughts-and-info/mountain-lion-sucks.txt",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/kyle/word-fall/build.sublime-build",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/kyle/word-fall/intro-transition-state.c",
-		"/Users/kyle/word-fall/load.c",
 		"/Users/kyle/word-fall/other-fonts.txt",
 		"/Users/kyle/word-fall/render.h",
 		"/Users/kyle/word-fall/SDLMain.h",
@@ -139,6 +136,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"nextState",
+			"running",
+			"load_content",
+			"titleX",
+			"soundOnHighlight",
+			"transition",
+			"wordY",
+			"wTitleY",
+			"rotoZoomSurface",
+			"SDL_Rotozoom",
+			"back to black",
+			"play",
 			"SDL Rect",
 			"state"
 		],
@@ -155,96 +164,6 @@
 		"whole_word": false,
 		"wrap": true
 	},
-	"groups":
-	[
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"file": "title-state.c",
-					"settings":
-					{
-						"buffer_size": 3636,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1361,
-								1336
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "title-options-state.c",
-					"settings":
-					{
-						"buffer_size": 5239,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3024,
-								3024
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1327.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "main.h",
-					"settings":
-					{
-						"buffer_size": 2356,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 476.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		}
-	],
 	"incremental_find":
 	{
 		"height": 34.0

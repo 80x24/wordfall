@@ -45,4 +45,13 @@ void title_options_events();
 void title_options_logic();
 void title_options_render();
 
+// --- Game ---
+void game_events();
+void game_logic();
+void game_render();
+
+void game_transition_events();
+void game_transition_logic();
+void game_transition_render();
+
 #endif

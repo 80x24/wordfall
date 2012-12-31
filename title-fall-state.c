@@ -5,10 +5,8 @@
 #include "state.h"
 #include "render.h"
 #include "main.h"
+#include "title-state.h"
 
-
-SDL_Rect playRect;
-SDL_Rect optionsRect;
 
 void title_fall_events()
 {	
@@ -24,7 +22,6 @@ void title_fall_events()
 				(event.motion.x > playRect.x + playRect.w) ||
 				(event.motion.y < playRect.y) ||
 				(event.motion.y > playRect.y + playRect.h)) {
-				printf("play back to black\n");
 				set_next_state(STATE_TITLE);
 			}
 		}
@@ -33,7 +30,6 @@ void title_fall_events()
 				(event.motion.x > optionsRect.x + optionsRect.w) ||
 				(event.motion.y < optionsRect.y) ||
 				(event.motion.y > optionsRect.y + optionsRect.h)) {
-				printf("options back to black\n");
 				set_next_state(STATE_TITLE);
 			}
 		}
@@ -43,8 +39,8 @@ void title_fall_events()
 					(event.motion.x < playRect.x + playRect.w) &&
 					(event.motion.y > playRect.y) &&
 					(event.motion.y < playRect.y + playRect.h)) {
-					// set_next_state(STATE_PLAY);
-					printf("Play button clicked\n");
+					//set_next_state(STATE_GAME_TRANSITION);
+					//printf("Play button clicked\n");
 				}
 				else if((event.motion.x > optionsRect.x) &&
 					(event.motion.x < optionsRect.x + optionsRect.w) &&
@@ -61,50 +57,24 @@ void title_fall_events()
 void title_fall_logic()
 {
 	// The code below is atrocious but I don't know how to fix it.
-	if(wTitleY < wordY)
-		wTitleY += 5;
-	if(wTitleY > wordY)
-		wTitleY = wordY;
-	
-	if(oTitleY < wordY)
-		oTitleY += 5;
-	if(oTitleY > wordY)
-		oTitleY = wordY;
-	
-	if(rTitleY < wordY)
-		rTitleY += 5;
-	if(rTitleY > wordY)
-		rTitleY = wordY;
-	
-	if(dTitleY < wordY)
-		dTitleY += 5;
-	if(dTitleY > wordY)
-		dTitleY = wordY;
-	
-	if(fTitleY < fallY)
-		fTitleY += 5;
-	if(fTitleY > fallY)
-		fTitleY = fallY;
-	
-	if(aTitleY < fallY)
-		aTitleY += 5;
-	if(aTitleY > fallY)
-		aTitleY = fallY;
-	
-	if(lTitleY < fallY)
-		lTitleY += 5;
-	if(lTitleY > fallY)
-		lTitleY = fallY;
-	
-	if(l2TitleY < fallY)
-		l2TitleY += 5;
-	if(l2TitleY > fallY)
-		l2TitleY = fallY;
+	int wordY = 150;
+	int fallY = 200;
 
-	if(l2TitleY == fallY) {
+	for(int i = 0; i < 4; i++) {
+		titleY[i] += 5;
+		if(titleY[i] > wordY) {
+			titleY[i] = wordY;
+		}
+	}
+	for(int i = 4; i < 8; i++) {
+		titleY[i] += 5;
+		if(titleY[i] > fallY) {
+			titleY[i] = fallY;
+		}
+	}
+	if(titleY[7] == fallY) {
 		set_next_state(STATE_TITLE);
 	}
-
 }
 
 void title_fall_render()
@@ -115,17 +85,11 @@ void title_fall_render()
 	render_image(215,-5,cloud3,screen);
 	render_image(105,5,cloud2,screen);
 	
-	render_image(75,wTitleY,wTitle,screen);
-	render_image(118,oTitleY,oTitle,screen);
-	render_image(161,rTitleY,rTitle,screen);
-	render_image(204,dTitleY,dTitle,screen);
+	for(int i = 0; i < 8; i++) {
+		render_image(titleX[i], titleY[i], title[i], screen);
+	}
 	
-	render_image(118,fTitleY,fTitle,screen);
-	render_image(161,aTitleY,aTitle,screen);
-	render_image(204,lTitleY,lTitle,screen);
-	render_image(247,l2TitleY,l2Title,screen);
-	
-	render_image(0,560,grass,screen);
+	render_image(0,GRASS_X,grass,screen);
 	
 	SDL_Color playColor = {0,0,0};
 	play = render_font(playFont, "Play", playColor);

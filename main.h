@@ -16,6 +16,8 @@
 
 #endif
 
+#define GRASS_X 540
+
 enum gameStates {
 	STATE_NULL,
 	STATE_EXIT,
@@ -26,47 +28,39 @@ enum gameStates {
 	STATE_TITLE_FALL,
 	STATE_TITLE_OPTIONS,
 	STATE_TITLE,
+	STATE_GAME,
+	STATE_GAME_TRANSITION,
 };
 
-int currentState;
-int nextState;
-int running;
-int alpha;
+// state globals
+extern int currentState;
+extern int nextState;
 
 // Word Fall logo globals
-int wTitleY;
-int oTitleY;
-int rTitleY;
-int dTitleY;
-int fTitleY;
-int aTitleY;
-int lTitleY;
-int l2TitleY;
-int wordY;
-int fallY;
+/*
+extern int titleX[];
+extern int titleY[];
 
-// options highlight globals. These are currently global due to a bug where
-// the back button on the options screen will stay yellow until the mouse is
-// moved. May be able to figure out how to make these local later.
-int soundOnHighlight;
-int soundOffHighlight;
-int backHighlight;
-int playRectHighlight;
-int optionsRectHighlight;
+
+extern int soundOnHighlight;
+extern int soundOffHighlight;
+extern int backHighlight;
+extern int playRectHighlight;
+extern int optionsRectHighlight;
+*/
 
 int init();
 void quit();
 int load_content();
-void trainsition(int miliseconds);
 
 // ============= SDL Surfaces =====================
 // Everything is loaded at startup
 // These are essentially all global variables. There should actually be a
-// funtion in each state where I do loading and initialization, but I am kind of
+// function in each state where I do loading and initialization, but I am kind of
 // too far in to implement that now. I might have to implement it in the future
-// if the main ganme states get too complicated, but the way I am currently
-// implementing states is very stupid. I am copy pasting code, and it is turning
-// into spaghetti.
+// if the main game states get too complicated, but the way I am currently
+// implementing states is very stupid.
+
 SDL_Surface *screen;
 SDL_Surface *introBackground;
 SDL_Surface *introTransition;
@@ -75,24 +69,21 @@ SDL_Surface *cloud1;
 SDL_Surface *cloud2;
 SDL_Surface *cloud3;
 
-SDL_Surface *wTitle;
-SDL_Surface *oTitle;
-SDL_Surface *rTitle;
-SDL_Surface *dTitle;
+SDL_Surface *title[8];
 
-SDL_Surface *fTitle;
-SDL_Surface *aTitle;
-SDL_Surface *lTitle;
-SDL_Surface *l2Title;
+SDL_Surface *container[7];
+SDL_Surface *letters[27];
 
 SDL_Surface *grass;
-
 SDL_Surface *play;
 SDL_Surface *options;
 SDL_Surface *optionsSound;
 SDL_Surface *optionsSoundOn;
 SDL_Surface *optionsSoundOff;
 SDL_Surface *optionsBack;
+SDL_Surface *pause;
+SDL_Surface *submit;
+
 
 TTF_Font *playFont;
 TTF_Font *optionsFont;
