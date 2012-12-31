@@ -5,10 +5,8 @@
 #include "state.h"
 #include "render.h"
 #include "main.h"
+#include "title-state.h"
 
-
-SDL_Rect playRect;
-SDL_Rect optionsRect;
 
 void title_fall_events()
 {	
@@ -91,7 +89,7 @@ void title_fall_render()
 		render_image(titleX[i], titleY[i], title[i], screen);
 	}
 	
-	render_image(0,560,grass,screen);
+	render_image(0,GRASS_X,grass,screen);
 	
 	SDL_Color playColor = {0,0,0};
 	play = render_font(playFont, "Play", playColor);

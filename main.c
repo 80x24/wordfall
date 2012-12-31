@@ -7,22 +7,9 @@
 #include "gamestates.h"
 #define FPS 60
 
-// word fall globals
-int titleX[] = {75, 118, 161, 204, 118, 161, 204, 247};
-int titleY[] = {-50, -75, -100, -125, -175, -200, -225, -250};
+// state globals
 int currentState = STATE_INTRO_TRANSITION;
 int nextState = STATE_NULL;
-
-// highlight globals for bug fix
-// These are currently global because I can't find
-// a good way to make them local.
-// The only files that these variables are modified in are
-// title-options-state.c and title-state.c
-int soundOnHighlight =  0;
-int soundOffHighlight = 0;
-int backHighlight = 0;
-int playRectHighlight = 0;
-int optionsRectHighlight = 0;
 
 int main(int argc, char *argv[])
 {
@@ -266,15 +253,21 @@ int load_content()
 		return 1;
 	}
 	
-	grass = load_image("assets/images/grass-small.png");
+	grass = load_image("assets/images/grass-medium.png");
 	if(grass == NULL) {
 		fprintf(stderr, "grass loading failed\n%s\n",IMG_GetError());
 		return 1;
 	}
 
-	submit = load_image("assets/images/yellow-check-yellow.png");
+	submit = load_image("assets/images/yellow-check-yellow-small.png");
 	if(submit == NULL) {
 		fprintf(stderr, "Check submit button loading failed\n%s\n", IMG_GetError());
+		return 1;
+	}
+
+	pause = load_image("assets/images/pause-black.png");
+	if(submit == NULL) {
+		fprintf(stderr, "Pause button loading failed\n%s\n", IMG_GetError());
 		return 1;
 	}
 
@@ -301,7 +294,7 @@ int load_content()
 	}
 
 	for(int i = 0; i < 7; i++) {
-		container[i] = load_image("assets/images/container.png");
+		container[i] = load_image("assets/images/container-2.png");
 		if(container[i] == NULL) {
 			fprintf(stderr, "Container loading failed\n%s\n", IMG_GetError());
 		}
@@ -340,10 +333,6 @@ int load_content()
 	if(optionsBackFont == NULL) {
 		fprintf(stderr, "options back font loading failed\n%s\n", TTF_GetError());
 		return 1;
-	}
-	pauseFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
-	if(pauseFont == NULL) {
-		fprintf(stderr, "Pause font loading failed\n%s\n", TTF_GetError());
 	}
 	return 0;
 }
@@ -389,7 +378,6 @@ void quit()
 	TTF_CloseFont(optionsSoundFontOn);
 	TTF_CloseFont(optionsSoundFontOff);
 	TTF_CloseFont(optionsBackFont);
-	TTF_CloseFont(pauseFont);
 
 	TTF_Quit();
 	SDL_Quit();

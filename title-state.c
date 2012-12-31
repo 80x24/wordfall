@@ -5,9 +5,18 @@
 #include "state.h"
 #include "render.h"
 #include "main.h"
+#include "title-state.h"
 
-SDL_Rect playRect;
-SDL_Rect optionsRect;
+// word fall titles
+int titleX[] = {75, 118, 161, 204, 118, 161, 204, 247};
+int titleY[] = {-50, -75, -100, -125, -175, -200, -225, -250};
+
+// highlights
+int soundOnHighlight =  0;
+int soundOffHighlight = 0;
+int backHighlight = 0;
+int playRectHighlight = 0;
+int optionsRectHighlight = 0;
 
 void title_events()
 {
@@ -88,7 +97,7 @@ void title_render()
 		render_image(titleX[i], titleY[i], title[i], screen);
 	}
 	
-	render_image(0,560,grass,screen);
+	render_image(0,GRASS_X,grass,screen);
 	
 	SDL_Color playColor = {0,0,0};
 	SDL_Color hoverColor = {254,210,6};

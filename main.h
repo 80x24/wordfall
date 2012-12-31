@@ -16,6 +16,8 @@
 
 #endif
 
+#define GRASS_X 540
+
 enum gameStates {
 	STATE_NULL,
 	STATE_EXIT,
@@ -35,14 +37,17 @@ extern int currentState;
 extern int nextState;
 
 // Word Fall logo globals
+/*
 extern int titleX[];
 extern int titleY[];
+
 
 extern int soundOnHighlight;
 extern int soundOffHighlight;
 extern int backHighlight;
 extern int playRectHighlight;
 extern int optionsRectHighlight;
+*/
 
 int init();
 void quit();
@@ -86,7 +91,6 @@ TTF_Font *optionsSoundFont;
 TTF_Font *optionsSoundFontOn;
 TTF_Font *optionsSoundFontOff;
 TTF_Font *optionsBackFont;
-TTF_Font *pauseFont;
 // =================================================
 SDL_Event event;
 

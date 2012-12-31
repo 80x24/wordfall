@@ -5,15 +5,24 @@
 #include "state.h"
 #include "render.h"
 #include "main.h"
-
+#include "title-state.h"
+#include "game-state.h"
 
 int timeStart = 0;
 
 int playX = 148;
 int playY = 300;
 
+int pauseX = 5;
+int pauseY = -25;
+
 int optionsX = 115;
 int optionsY = 350;
+
+int containerX[7] = {0+2, 45+2, 90+2, 135+2, 180+2, 225+2, 270+2};
+int containerY = 685;
+int submitX = 320;
+int submitY = 685;
 
 void game_transition_events()
 {
@@ -46,6 +55,24 @@ void game_transition_logic()
 
 	playX -= 6;
 	optionsX += 6;
+	if(containerY > 580) {
+		containerY -= 5;
+	}
+	else if(containerY <= 580) {
+		containerY = 580;
+	}
+	if(submitY > 590) {
+		submitY -= 5;
+	}
+	else if(submitY <= 590) {
+		submitY = 590;
+	}
+	if(pauseY < 5) {
+		pauseY += 5;
+	}
+	else if(pauseY >= 5) {
+		pauseY = 5;
+	}
 
 }
 
@@ -57,14 +84,27 @@ void game_transition_render()
 	render_image(215,-5,cloud3,screen);
 	render_image(105,5,cloud2,screen);
 	
+	// Word Fall Title fly down
 	for(int i = 0; i < 8; i++) {
 		render_image(titleX[i], titleY[i], title[i], screen);
 	}
 	
-	render_image(0,560,grass,screen);
+	render_image(0,GRASS_X,grass,screen);
+
+	// Containers Fly up
+	for(int i = 0; i < 7; i++) {
+		render_image(containerX[i], containerY, container[i], screen);
+	}
+
+	// Submit check
+	render_image(submitX, submitY, submit, screen);
+
+	// Pause button
+	render_image(pauseX, pauseY, pause, screen);
 
 	SDL_Color playColor = {0,0,0};
 
+	// Transition for Play and Options to float away.
 	play = render_font(playFont, "Play", playColor);
 	render_image(playX, playY, play, screen);
 

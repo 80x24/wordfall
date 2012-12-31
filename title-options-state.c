@@ -5,10 +5,7 @@
 #include "state.h"
 #include "render.h"
 #include "main.h"
-
-SDL_Rect soundOnRect;
-SDL_Rect soundOffRect;
-SDL_Rect optionsBackRect;
+#include "title-state.h"
 
 void title_options_events()
 {
@@ -107,11 +104,12 @@ void title_options_render()
 	render_image(215,-5,cloud3,screen);
 	render_image(105,5,cloud2,screen);
 	
+	// Word Fall title
 	for(int i = 0; i < 8; i++) {
 		render_image(titleX[i], titleY[i], title[i], screen);
 	}
 	
-	render_image(0,560,grass,screen);
+	render_image(0,GRASS_X,grass,screen);
 	
 	SDL_Color optionsColor = {0,0,0};
 	SDL_Color hoverColor = {254,210,6};
