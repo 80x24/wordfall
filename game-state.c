@@ -9,8 +9,7 @@
 
 
 void game_events()
-{	
-	printf("current state: %d\n", currentState);
+{
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
 			set_next_state(STATE_EXIT);
