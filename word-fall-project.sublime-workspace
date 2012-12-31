@@ -45,33 +45,6 @@
 			]
 		]
 	},
-	"buffers":
-	[
-		{
-			"file": "main.h",
-			"settings":
-			{
-				"buffer_size": 2206,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "main.c",
-			"settings":
-			{
-				"buffer_size": 9947,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "title-state.c",
-			"settings":
-			{
-				"buffer_size": 3393,
-				"line_ending": "Unix"
-			}
-		}
-	],
 	"build_system": "",
 	"command_palette":
 	{
@@ -100,6 +73,9 @@
 	},
 	"file_history":
 	[
+		"/home/kyle/word-fall/main.h",
+		"/home/kyle/word-fall/title-state.c",
+		"/home/kyle/word-fall/main.c",
 		"/Users/kyle/word-fall/state.h",
 		"/Users/kyle/word-fall/main.h",
 		"/Users/kyle/word-fall/main.c",
@@ -123,8 +99,6 @@
 		"/home/kyle/word-fall/intro-state.c",
 		"/home/kyle/word-fall/render.h",
 		"/home/kyle/word-fall/render.c",
-		"/home/kyle/word-fall/main.h",
-		"/home/kyle/word-fall/main.c",
 		"/home/kyle/word-fall/Makefile",
 		"/home/kyle/word-fall/word-fall-project.sublime-project",
 		"/home/kyle/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
@@ -190,96 +164,6 @@
 		"whole_word": false,
 		"wrap": true
 	},
-	"groups":
-	[
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"file": "main.h",
-					"settings":
-					{
-						"buffer_size": 2206,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								575,
-								575
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 203.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "main.c",
-					"settings":
-					{
-						"buffer_size": 9947,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2737,
-								2737
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1874.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "title-state.c",
-					"settings":
-					{
-						"buffer_size": 3393,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		}
-	],
 	"incremental_find":
 	{
 		"height": 34.0
