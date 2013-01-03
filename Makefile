@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -std=c99
+CFLAGS=-Wall -std=c99 -pedantic
 LDFLAGSOSX=-framework SDL -framework SDL_image -framework SDL_ttf -framework SDL_mixer -framework Cocoa
 LDFLAGSLINUX=-lSDL -lSDL_image -lSDL_ttf -lSDL_mixer
 OBJECTS=main.o load.o render.o state.o intro-state.o intro-transition-state.o \
