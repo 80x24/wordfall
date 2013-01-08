@@ -89,9 +89,6 @@ void title_options_events()
 
 void title_options_logic()
 {
-	if(titleY[7] != 200) {
-		title_fall_logic();
-	}
 	playRectHighlight = 0;
 	optionsRectHighlight = 0;
 }

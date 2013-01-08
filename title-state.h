@@ -11,10 +11,12 @@ extern int backHighlight;
 extern int playRectHighlight;
 extern int optionsRectHighlight;
 
-SDL_Rect playRect;
-SDL_Rect optionsRect;
-SDL_Rect soundOnRect;
-SDL_Rect soundOffRect;
-SDL_Rect optionsBackRect;
+extern int wordY, fallY;
+
+extern SDL_Rect playRect;
+extern SDL_Rect optionsRect;
+extern SDL_Rect soundOnRect;
+extern SDL_Rect soundOffRect;
+extern SDL_Rect optionsBackRect;
 
 #endif

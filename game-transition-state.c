@@ -21,8 +21,12 @@ int optionsY = 350;
 
 int containerX[7] = {0+2, 45+2, 90+2, 135+2, 180+2, 225+2, 270+2};
 int containerY = 685;
+
 int submitX = 320;
 int submitY = 685;
+
+SDL_Rect submitRect;
+
 
 void game_transition_events()
 {

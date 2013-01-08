@@ -56,11 +56,12 @@ int load_content();
 // ============= SDL Surfaces =====================
 // Everything is loaded at startup
 // These are essentially all global variables. There should actually be a
-// function in each state where I do loading and initialization, but I am kind of
-// too far in to implement that now. I might have to implement it in the future
-// if the main game states get too complicated, but the way I am currently
-// implementing states is very stupid.
+// function in each state where I do loading and initialization, but I am kind
+// of too far in to implement that now. I might have to implement it in the
+// future if the main game states get too complicated, but the way I am
+// currently implementing states is very stupid.
 
+// These need to be externs
 SDL_Surface *screen;
 SDL_Surface *introBackground;
 SDL_Surface *introTransition;

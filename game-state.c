@@ -17,11 +17,27 @@ void game_events()
 		else if(event.key.keysym.sym == SDLK_ESCAPE) {
 			set_next_state(STATE_EXIT);
 		}
+		else if(event.type == SDL_MOUSEBUTTONDOWN) {
+			if(event.button.button == SDL_BUTTON_LEFT) {
+				if((event.motion.x > submitRect.x) &&
+					(event.motion.x < submitRect.x + submitRect.w) &&
+					(event.motion.y > submitRect.y) &&
+					(event.motion.y < submitRect.y + submitRect.h)) {
+					printf("Submit button clicked\n");
+				}
+			}
+		}
 	}
 }
 
 void game_logic()
 {
+	// Initialize Submit Rect
+	// This can be improved
+	submitRect.x = submitX;
+	submitRect.y = submitY;
+	submitRect.w = submit->clip_rect.w;
+	submitRect.h = submit->clip_rect.h;
 
 }
 

@@ -18,6 +18,12 @@ int backHighlight = 0;
 int playRectHighlight = 0;
 int optionsRectHighlight = 0;
 
+SDL_Rect playRect;
+SDL_Rect optionsRect;
+SDL_Rect soundOnRect;
+SDL_Rect soundOffRect;
+SDL_Rect optionsBackRect;
+
 void title_events()
 {
 	
@@ -80,9 +86,6 @@ void title_events()
 void title_logic()
 {
 	backHighlight = 0;
-	if(titleY[7] != 200) {
-		title_fall_logic();
-	}
 }
 
 void title_render()
@@ -117,7 +120,6 @@ void title_render()
 		options = render_font(optionsFont, "Options", playColor);
 		render_image(115, 350, options, screen);
 	}
-	
 	
 	// Collision rects for play and option buttons
 	playRect.x = 148;

@@ -18,5 +18,6 @@ extern int containerY;
 extern int submitX;
 extern int submitY;
 
+extern SDL_Rect submitRect;
 
 #endif
