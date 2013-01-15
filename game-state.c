@@ -8,7 +8,7 @@
 #include "game-state.h"
 
 
-void game_events()
+void game_events(void)
 {
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
@@ -30,7 +30,7 @@ void game_events()
 	}
 }
 
-void game_logic()
+void game_logic(void)
 {
 	// Initialize Submit Rect
 	// This can be improved
@@ -41,7 +41,7 @@ void game_logic()
 
 }
 
-void game_render()
+void game_render(void)
 {	
 	render_image(0,0,background,screen);
 	
