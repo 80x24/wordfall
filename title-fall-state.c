@@ -10,7 +10,7 @@
 int wordY = 150;
 int fallY = 200;
 
-void title_fall_events()
+void title_fall_events(void)
 {	
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
@@ -68,7 +68,7 @@ void title_fall_events()
 	}
 }
 
-void title_fall_logic()
+void title_fall_logic(void)
 {
 	for(int i = 0; i < 4; i++) {
 		titleY[i] += 5;
@@ -87,7 +87,7 @@ void title_fall_logic()
 	}
 }
 
-void title_fall_render()
+void title_fall_render(void)
 {	
 	render_image(0,0,background,screen);
 	

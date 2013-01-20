@@ -8,7 +8,7 @@
 
 extern int alpha;
 
-void title_transition_events()
+void title_transition_events(void)
 {
 	//printf("title transition\n");
 	while(SDL_PollEvent(&event)) {
@@ -21,7 +21,7 @@ void title_transition_events()
 	}
 }
 
-void title_transition_logic()
+void title_transition_logic(void)
 {
 	//printf("title alpha: %d\n", alpha);
 	alpha -= 5;
@@ -30,7 +30,7 @@ void title_transition_logic()
 	}
 }
 
-void title_transition_render()
+void title_transition_render(void)
 {
 	SDL_SetAlpha(introTransition, SDL_SRCALPHA, alpha);
 	

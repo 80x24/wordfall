@@ -3,14 +3,13 @@
 #include <string.h>
 #include "state.h"
 #include "main.h"
-#include "render.h"
 
 void set_next_state(int newState)
 {
 	nextState = newState;
 }
 
-void change_state()
+void change_state(void)
 {
 	if(nextState != STATE_NULL) {
 		

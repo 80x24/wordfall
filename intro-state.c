@@ -7,7 +7,7 @@
 #include "main.h"
 
 
-void intro_events()
+void intro_events(void)
 {
 	//printf("intro\n");
 	while(SDL_PollEvent(&event)) {
@@ -20,7 +20,7 @@ void intro_events()
 	}
 }
 
-void intro_logic()
+void intro_logic(void)
 {
 	static int tmp = 1;
 	if(tmp == 1) {
@@ -33,7 +33,7 @@ void intro_logic()
 	}
 }
 
-void intro_render()
+void intro_render(void)
 {
 	render_image(0,0,introBackground,screen);
 	if(SDL_Flip(screen) != 0) {

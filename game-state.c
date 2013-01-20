@@ -20,7 +20,7 @@ int lettersX [26];
 SDL_Rect lettersRect[26];
 SDL_Rect submitRect;
 
-void game_events()
+void game_events(void)
 {
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
@@ -52,7 +52,7 @@ void game_events()
 	}
 }
 
-void game_logic()
+void game_logic(void)
 {
 	if(!gameInit) {
 		// I'm currently using this for one time
@@ -96,7 +96,7 @@ void game_logic()
 	lettersY[0]++;
 }
 
-void game_render()
+void game_render(void)
 {	
 	render_image(0,0,background,screen);
 

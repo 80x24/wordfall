@@ -24,7 +24,7 @@ SDL_Rect soundOnRect;
 SDL_Rect soundOffRect;
 SDL_Rect optionsBackRect;
 
-void title_events()
+void title_events(void)
 {
 	
 	while(SDL_PollEvent(&event)) {
@@ -83,12 +83,12 @@ void title_events()
 	}
 }
 
-void title_logic()
+void title_logic(void)
 {
 	backHighlight = 0;
 }
 
-void title_render()
+void title_render(void)
 {	
 	render_image(0,0,background,screen);
 	

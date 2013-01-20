@@ -26,7 +26,7 @@ int submitX = 320;
 int submitY = 685;
 
 
-void game_transition_events()
+void game_transition_events(void)
 {
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
@@ -38,7 +38,7 @@ void game_transition_events()
 	}
 }
 
-void game_transition_logic()
+void game_transition_logic(void)
 {
 	
 	static int tmp = 1;
@@ -78,7 +78,7 @@ void game_transition_logic()
 
 }
 
-void game_transition_render()
+void game_transition_render(void)
 {	
 	render_image(0,0,background,screen);
 	

@@ -8,7 +8,7 @@
 
 int alpha = 255;
 
-void intro_transition_events()
+void intro_transition_events(void)
 {
 	//printf("fade in\n");
 	while(SDL_PollEvent(&event)) {
@@ -22,7 +22,7 @@ void intro_transition_events()
 	
 }
 
-void intro_transition_logic()
+void intro_transition_logic(void)
 {
 	alpha -= 5;
 	//printf("alpha: %d\n",alpha);
@@ -31,7 +31,7 @@ void intro_transition_logic()
 	}
 }
 
-void intro_transition_render()
+void intro_transition_render(void)
 {
 	SDL_SetAlpha(introTransition, SDL_SRCALPHA, alpha);
 	
@@ -43,7 +43,7 @@ void intro_transition_render()
 	}
 }
 
-void intro_transition_fade_events()
+void intro_transition_fade_events(void)
 {
 	//printf("fade out\n");
 	while(SDL_PollEvent(&event)) {
@@ -56,7 +56,7 @@ void intro_transition_fade_events()
 	}
 }
 
-void intro_transition_fade_logic()
+void intro_transition_fade_logic(void)
 {
 	//printf("transition fade alpha: %d\n",alpha);
 	alpha -= 5;
@@ -66,7 +66,7 @@ void intro_transition_fade_logic()
 	}
 }
 
-void intro_transition_fade_render()
+void intro_transition_fade_render(void)
 {
 	SDL_SetAlpha(introBackground, SDL_SRCALPHA, alpha);
 	

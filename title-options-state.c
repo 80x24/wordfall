@@ -7,7 +7,7 @@
 #include "main.h"
 #include "title-state.h"
 
-void title_options_events()
+void title_options_events(void)
 {
 	
 	while(SDL_PollEvent(&event)) {
@@ -87,13 +87,13 @@ void title_options_events()
 	}
 }
 
-void title_options_logic()
+void title_options_logic(void)
 {
 	playRectHighlight = 0;
 	optionsRectHighlight = 0;
 }
 
-void title_options_render()
+void title_options_render(void)
 {	
 	render_image(0,0,background,screen);
 	
