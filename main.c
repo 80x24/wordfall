@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "main.h"
 #include "state.h"
 #include "load.h"
@@ -141,6 +142,8 @@ int main(int argc, char *argv[])
 
 int init()
 {
+	srand(time(NULL));
+
 	if(SDL_Init(SDL_INIT_EVERYTHING) == -1) {
 		fprintf(stderr, "SDL Initialization failed\n %s\n", SDL_GetError());
 		return 1;

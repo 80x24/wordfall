@@ -9,6 +9,8 @@
 
 int gameInit = 0;
 int letterDrag = 0;
+int letter = 0;
+int randomLetter = 0;
 
 char words[7] = {0,0,0,0,0,0,0};
 
@@ -19,6 +21,8 @@ int lettersX [26];
 
 SDL_Rect lettersRect[26];
 SDL_Rect submitRect;
+
+int fallStart = 0;
 
 void game_events(void)
 {
@@ -37,12 +41,14 @@ void game_events(void)
 					(event.motion.y < submitRect.y + submitRect.h)) {
 					printf("Submit button clicked\n");
 				}
-				int i = 0;
-				if((event.motion.x > lettersRect[i].x) &&
-					(event.motion.x < lettersRect[i].x + lettersRect[i].w) &&
-					(event.motion.y > lettersRect[i].y) &&
-					(event.motion.y < lettersRect[i].y + lettersRect[i].h)) {
-					letterDrag = 1;
+				for(int i = 0; i < 26; i++) {
+					if((event.motion.x > lettersRect[i].x) &&
+						(event.motion.x < lettersRect[i].x + lettersRect[i].w) &&
+						(event.motion.y > lettersRect[i].y) &&
+						(event.motion.y < lettersRect[i].y + lettersRect[i].h)) {
+						letterDrag = 1;
+						letter = i;
+					}
 				}
 			}
 		}
@@ -55,6 +61,7 @@ void game_events(void)
 void game_logic(void)
 {
 	if(!gameInit) {
+		timeStart = SDL_GetTicks();
 		// I'm currently using this for one time
 		// initialization which is bad. 
 		submitRect.x = submitX;
@@ -64,7 +71,7 @@ void game_logic(void)
 
 		for(int i = 0; i < 26; i++) {
 			lettersAscii[i] = 97+i;
-			lettersX[i] = 50;
+			lettersX[i] = 75;
 			lettersY[i] = 50;
 			lettersRect[i].x = lettersX[i];
 			lettersRect[i].y = lettersY[i];
@@ -72,18 +79,16 @@ void game_logic(void)
 			lettersRect[i].h = letters[i]->clip_rect.h;
 		}
 
+		randomLetter = rand() % 25;
+		printf("randomLetter: %d\n", randomLetter);
+		lettersY[randomLetter]++;
+		// between 50-360
+		int randomXPos = rand() % 260+50;
+		lettersX[randomLetter] = randomXPos;
 		gameInit += 1;
 	}
 	if(letterDrag) {
-		//printf("x: %d\n", event.motion.x);
-		//printf("y: %d\n", event.motion.y);
-		int i = 0;
-		lettersX[i] = event.motion.x;
-		lettersY[i] = event.motion.y;
-		//printf("lettersX[%d] %d\n", i, lettersX[i]);
-		//printf("lettersY[%d] %d\n", i, lettersY[i]);
-		lettersRect[i].x = event.motion.x;
-		lettersRect[i].y = event.motion.y;
+		drag_letter(letter);
 	}
 
 	// This for loop within the main loop might be bad.
@@ -91,33 +96,36 @@ void game_logic(void)
 		lettersRect[i].x = lettersX[i];
 		lettersRect[i].y = lettersY[i];
 	}
-	//printf("lettersRect[%d].x: %d\n", i, lettersRect[i].x);
-	//printf("lettersRect[%d].y: %d\n", i, lettersRect[i].y);
-	lettersY[0]++;
+	lettersY[randomLetter]++;
 }
 
 void game_render(void)
 {	
 	render_image(0,0,background,screen);
 
+	if(gameInit) {
+		for(int i = 0; i < 26; i++) {
+			if(lettersY[i] <= GRASS_Y - lettersRect[0].h) {
+				render_image(lettersX[i], lettersY[i], letters[i], screen);
+			}
+		}
+	}
+
 	render_image(-5,-5,cloud1,screen);
 	render_image(215,-5,cloud3,screen);
 	render_image(105,5,cloud2,screen);
 
-	if(lettersY[0] <= 500) {
-		render_image(lettersX[0], lettersY[0], letters[0], screen);
-	}
-
-	render_image(0,GRASS_X,grass,screen);
+	render_image(0,GRASS_Y,grass,screen);
 
 	// Containers
 	for(int i = 0; i < 7; i++) {
 		render_image(containerX[i], containerY, container[i], screen);
 	}
-
-	if(lettersY[0] >= 500) {
-		// Falling Letters
-		render_image(lettersX[0], lettersY[0], letters[0], screen);
+	
+	for(int i = 0; i < 26; i++) {
+		if(lettersY[i] >= GRASS_Y - lettersRect[0].h){
+			render_image(lettersX[i], lettersY[i], letters[i], screen);
+		}
 	}
 
 	// Submit check
@@ -130,5 +138,25 @@ void game_render(void)
 
 	if(SDL_Flip(screen) != 0) {
 		fprintf(stderr, "screen update failed\n");
+	}
+}
+
+void drag_letter(int letter)
+{
+	// There are serious issues with this code right now
+	// but it is good enough for now. For the majority of the
+	// time the user isn't going to be dragging the letter
+	// off of the screen.
+	if(event.motion.x >= 360 - lettersRect[0].w) {
+		event.motion.x = 360 - lettersRect[0].w;
+	}
+	else if(event.motion.y >= 640 - lettersRect[0].h) {
+		event.motion.y = 640 - lettersRect[0].h;
+	}
+	if(event.motion.x && event.motion.y != 0) {
+		lettersX[letter] = event.motion.x;
+		lettersY[letter] = event.motion.y;
+		lettersRect[letter].x = event.motion.x;
+		lettersRect[letter].y = event.motion.y;
 	}
 }

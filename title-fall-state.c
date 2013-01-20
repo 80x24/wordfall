@@ -99,7 +99,7 @@ void title_fall_render(void)
 		render_image(titleX[i], titleY[i], title[i], screen);
 	}
 	
-	render_image(0,GRASS_X,grass,screen);
+	render_image(0,GRASS_Y,grass,screen);
 	
 	SDL_Color playColor = {0,0,0};
 	SDL_Color hoverColor = {254,210,6};

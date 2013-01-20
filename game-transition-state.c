@@ -91,7 +91,7 @@ void game_transition_render(void)
 		render_image(titleX[i], titleY[i], title[i], screen);
 	}
 	
-	render_image(0,GRASS_X,grass,screen);
+	render_image(0,GRASS_Y,grass,screen);
 
 	// Containers Fly up
 	for(int i = 0; i < 7; i++) {

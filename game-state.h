@@ -24,7 +24,11 @@ extern SDL_Rect lettersRect[26];
 extern int lettersY[26];
 extern int lettersX[26];
 
+extern int fallStart;
+extern int randomLetter;
+extern int randomXPos;
 
+void drag_letter(int letter);
 /*
 --- Note on the Submit Container ---
 When the user drops the letter into a container, I am going to have to

@@ -48,10 +48,18 @@
 	"buffers":
 	[
 		{
-			"file": "title-state.c",
+			"file": "game-state.c",
 			"settings":
 			{
-				"buffer_size": 3731,
+				"buffer_size": 3155,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game-state.h",
+			"settings":
+			{
+				"buffer_size": 846,
 				"line_ending": "Unix"
 			}
 		}
@@ -84,19 +92,19 @@
 	},
 	"file_history":
 	[
-		"/Users/kyle/word-fall/title-fall-state.c",
-		"/Users/kyle/word-fall/title-options-state.c",
-		"/Users/kyle/word-fall/game-state.c",
-		"/Users/kyle/word-fall/main.h",
-		"/Users/kyle/word-fall/game-state.h",
-		"/Users/kyle/word-fall/title-state.h",
-		"/Users/kyle/word-fall/title-state.c",
-		"/Users/kyle/word-fall/intro-transition-state.c",
 		"/Users/kyle/word-fall/Makefile",
+		"/Users/kyle/word-fall/main.h",
+		"/Users/kyle/word-fall/title-options-state.c",
+		"/Users/kyle/word-fall/game-transition-state.c",
+		"/Users/kyle/word-fall/title-state.c",
+		"/Users/kyle/word-fall/main.c",
+		"/Users/kyle/word-fall/game-state.h",
+		"/Users/kyle/word-fall/title-fall-state.c",
+		"/Users/kyle/word-fall/game-state.c",
+		"/Users/kyle/word-fall/title-state.h",
+		"/Users/kyle/word-fall/intro-transition-state.c",
 		"/Users/kyle/word-fall/SDLMain.h",
 		"/Users/kyle/word-fall/SDLMain.m",
-		"/Users/kyle/word-fall/main.c",
-		"/Users/kyle/word-fall/game-transition-state.c",
 		"/home/kyle/word-fall/main.h",
 		"/home/kyle/word-fall/title-state.c",
 		"/home/kyle/word-fall/main.c",
@@ -185,24 +193,51 @@
 			[
 				{
 					"buffer": 0,
-					"file": "title-state.c",
+					"file": "game-state.c",
 					"settings":
 					{
-						"buffer_size": 3731,
+						"buffer_size": 3155,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2470,
-								2470
+								2834,
+								2834
 							]
 						],
 						"settings":
 						{
+							"spell_check": false,
 							"syntax": "Packages/C++/C.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1294.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "game-state.h",
+					"settings":
+					{
+						"buffer_size": 846,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								388,
+								388
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

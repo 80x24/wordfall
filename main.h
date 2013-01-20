@@ -16,7 +16,7 @@
 
 #endif
 
-#define GRASS_X 540
+#define GRASS_Y 540
 
 enum gameStates {
 	STATE_NULL,
