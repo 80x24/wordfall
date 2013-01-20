@@ -25,8 +25,6 @@ int containerY = 685;
 int submitX = 320;
 int submitY = 685;
 
-SDL_Rect submitRect;
-
 
 void game_transition_events()
 {
