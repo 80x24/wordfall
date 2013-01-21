@@ -47,30 +47,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "game-state.c",
-			"settings":
-			{
-				"buffer_size": 5041,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "game-state.h",
-			"settings":
-			{
-				"buffer_size": 972,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "main.c",
-			"settings":
-			{
-				"buffer_size": 9668,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -100,17 +76,17 @@
 	},
 	"file_history":
 	[
+		"/Users/kyle/word-fall/game-transition-state.c",
+		"/Users/kyle/word-fall/game-state.h",
+		"/Users/kyle/word-fall/game-state.c",
+		"/Users/kyle/word-fall/main.c",
 		"/Users/kyle/word-fall/intro-state.c",
 		"/Users/kyle/word-fall/main.h",
-		"/Users/kyle/word-fall/main.c",
 		"/Users/kyle/word-fall/title-transition-state.c",
 		"/Users/kyle/word-fall/intro-transition-state.c",
 		"/Users/kyle/word-fall/title-state.c",
 		"/Users/kyle/word-fall/title-options-state.c",
 		"/Users/kyle/word-fall/title-fall-state.c",
-		"/Users/kyle/word-fall/game-transition-state.c",
-		"/Users/kyle/word-fall/game-state.c",
-		"/Users/kyle/word-fall/game-state.h",
 		"/Users/kyle/word-fall/Makefile",
 		"/Users/kyle/word-fall/title-state.h",
 		"/Users/kyle/word-fall/SDLMain.h",
@@ -200,89 +176,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "game-state.c",
-					"settings":
-					{
-						"buffer_size": 5041,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4252,
-								4252
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1893.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "game-state.h",
-					"settings":
-					{
-						"buffer_size": 972,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								565,
-								565
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "main.c",
-					"settings":
-					{
-						"buffer_size": 9668,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7123,
-								7123
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3364.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],

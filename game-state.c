@@ -14,8 +14,8 @@ int letter2 = 0;
 int randomLetter = 0;
 int randomFallSpot = 0;
 
-int lettersY[4][26];
-int lettersX[4][26];
+int lettersY[4][26] = {{0}};
+int lettersX[4][26] = {{0}};
 
 SDL_Rect lettersRect[4][26];
 SDL_Rect submitRect;
@@ -55,6 +55,17 @@ void game_events(void)
 			}
 		}
 		else if(event.type == SDL_MOUSEBUTTONUP) {
+			for(int i = 0; i < 7; i++) {
+				if((lettersX[letter1][letter2] > containerRect[i].x) &&
+				(lettersX[letter1][letter2] < containerRect[i].x + containerRect[i].w) &&
+				(lettersY[letter1][letter2] > containerRect[i].y) &&
+				(lettersY[letter1][letter2] < containerRect[i].y + containerRect[i].h)) {
+			
+				lettersX[letter1][letter2] = containerRect[i].x;
+				lettersY[letter1][letter2] = containerRect[i].y;
+				containerLetters[i] = letters[letter1][letter2];
+				}
+			}
 			letterDrag = 0;
 		}
 	}
@@ -121,7 +132,7 @@ void game_logic(void)
 			if(lettersY[i][j] != 45) {
 				lettersY[i][j]++;
 			}
-			if(lettersY[i][j] >= GRASS_Y+lettersRect[i][j].h+20) {
+			if((lettersY[i][j] >= (GRASS_Y+lettersRect[i][j].h+20)) && letters[i][j] != letters[letter1][letter2]) {
 				lettersY[i][j] = 45;
 			}
 		}
@@ -150,6 +161,9 @@ void game_render(void)
 
 	// Containers
 	for(int i = 0; i < 7; i++) {
+		if(containerLetters[i] != NULL) {
+			render_image(containerX[i]+2, containerY+2, containerLetters[i], screen);
+		}
 		render_image(containerX[i], containerY, container[i], screen);
 	}
 	// Submit check
@@ -162,6 +176,7 @@ void game_render(void)
 		if(lettersY[letter1][letter2] >= GRASS_Y - lettersRect[0][0].h) {
 			render_image(lettersX[letter1][letter2], lettersY[letter1][letter2], letters[letter1][letter2], screen);
 		}
+		printf("(%d,%d)\n", lettersX[letter1][letter2], lettersY[letter1][letter2]);
 	}
 
 	if(SDL_Flip(screen) != 0) {
@@ -178,7 +193,7 @@ void drag_letter(int letter1, int letter2)
 	if(event.motion.x >= 360 - lettersRect[0][0].w) {
 		event.motion.x = 360 - lettersRect[0][0].w;
 	}
-	if(event.motion.y >= 640 - lettersRect[0][0].h) {
+	else if(event.motion.y >= 640 - lettersRect[0][0].h) {
 		event.motion.y = 640 - lettersRect[0][0].h;
 	}
 	if(event.motion.x && event.motion.y != 0) {
@@ -186,16 +201,5 @@ void drag_letter(int letter1, int letter2)
 		lettersY[letter1][letter2] = event.motion.y;
 		lettersRect[letter1][letter2].x = event.motion.x;
 		lettersRect[letter1][letter2].y = event.motion.y;
-	}
-
-	for(int i = 0; i < 7; i++) {
-		if((lettersX[letter1][letter2] > containerRect[i].x) &&
-			(lettersX[letter1][letter2] < containerRect[i].x + containerRect[i].w) &&
-			(lettersY[letter1][letter2] > containerRect[i].y) &&
-			(lettersY[letter1][letter2] < containerRect[i].y + containerRect[i].h)) {
-			
-			lettersX[letter1][letter2] = containerRect[i].x;
-			lettersY[letter1][letter2] = containerRect[i].y;
-		}
 	}
 }

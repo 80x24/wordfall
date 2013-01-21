@@ -62,37 +62,37 @@ int load_content();
 // currently implementing states is very stupid.
 
 // These need to be externs
-SDL_Surface *screen;
-SDL_Surface *introBackground;
-SDL_Surface *introTransition;
-SDL_Surface *background;
-SDL_Surface *cloud1;
-SDL_Surface *cloud2;
-SDL_Surface *cloud3;
+extern SDL_Surface *screen;
+extern SDL_Surface *introBackground;
+extern SDL_Surface *introTransition;
+extern SDL_Surface *background;
+extern SDL_Surface *cloud1;
+extern SDL_Surface *cloud2;
+extern SDL_Surface *cloud3;
 
-SDL_Surface *title[8];
+extern SDL_Surface *title[8];
 
-SDL_Surface *container[7];
-SDL_Surface *letters[4][26];
+extern SDL_Surface *container[7];
+extern SDL_Surface *letters[4][26];
+extern SDL_Surface *containerLetters[7];
 
-SDL_Surface *grass;
-SDL_Surface *play;
-SDL_Surface *options;
-SDL_Surface *optionsSound;
-SDL_Surface *optionsSoundOn;
-SDL_Surface *optionsSoundOff;
-SDL_Surface *optionsBack;
-SDL_Surface *pause;
-SDL_Surface *submit;
+extern SDL_Surface *grass;
+extern SDL_Surface *play;
+extern SDL_Surface *options;
+extern SDL_Surface *optionsSound;
+extern SDL_Surface *optionsSoundOn;
+extern SDL_Surface *optionsSoundOff;
+extern SDL_Surface *optionsBack;
+extern SDL_Surface *pause;
+extern SDL_Surface *submit;
 
-
-TTF_Font *playFont;
-TTF_Font *optionsFont;
-TTF_Font *optionsSoundFont;
-TTF_Font *optionsSoundFontOn;
-TTF_Font *optionsSoundFontOff;
-TTF_Font *optionsBackFont;
+extern TTF_Font *playFont;
+extern TTF_Font *optionsFont;
+extern TTF_Font *optionsSoundFont;
+extern TTF_Font *optionsSoundFontOn;
+extern TTF_Font *optionsSoundFontOff;
+extern TTF_Font *optionsBackFont;
 // =================================================
-SDL_Event event;
+extern SDL_Event event;
 
 #endif

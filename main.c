@@ -12,6 +12,41 @@
 int currentState = STATE_INTRO_TRANSITION;
 int nextState = STATE_NULL;
 
+// Surface Globals
+// These should probably be reduced in scope
+SDL_Surface *screen = 0;
+SDL_Surface *introBackground = 0;
+SDL_Surface *introTransition = 0;
+SDL_Surface *background = 0;
+SDL_Surface *cloud1 = 0;
+SDL_Surface *cloud2 = 0;
+SDL_Surface *cloud3 = 0;
+
+SDL_Surface *title[8] = {0};
+
+SDL_Surface *container[7] = {0};
+SDL_Surface *letters[4][26] = {{0}};
+SDL_Surface *containerLetters[7] = {0};
+
+SDL_Surface *grass = 0;
+SDL_Surface *play = 0;
+SDL_Surface *options = 0;
+SDL_Surface *optionsSound = 0;
+SDL_Surface *optionsSoundOn = 0;
+SDL_Surface *optionsSoundOff = 0;
+SDL_Surface *optionsBack = 0;
+SDL_Surface *pause = 0;
+SDL_Surface *submit = 0;
+
+TTF_Font *playFont = 0;
+TTF_Font *optionsFont = 0;
+TTF_Font *optionsSoundFont = 0;
+TTF_Font *optionsSoundFontOn = 0;
+TTF_Font *optionsSoundFontOff = 0;
+TTF_Font *optionsBackFont = 0;
+
+SDL_Event event;
+
 int main(int argc, char *argv[])
 {
 	int start = 0;
@@ -375,6 +410,7 @@ void quit()
 			SDL_FreeSurface(letters[i][j]);
 		}
 	}
+	// containerLetters may need to be freed here.
 	
 	SDL_FreeSurface(screen);
 
