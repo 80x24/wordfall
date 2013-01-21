@@ -73,7 +73,7 @@ SDL_Surface *cloud3;
 SDL_Surface *title[8];
 
 SDL_Surface *container[7];
-SDL_Surface *letters[27];
+SDL_Surface *letters[4][26];
 
 SDL_Surface *grass;
 SDL_Surface *play;

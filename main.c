@@ -275,25 +275,26 @@ int load_content()
 	}
 
 	// =========== LOADING FOR LETTERS AND CONTAINERS =================
-	for(int i = 0; i < 26; i++) {
-		// This function converts the array number to the corresponding
-		// ascii value.
-		int asciiCode = i+65;
-		// I really have no idea how this line works so I should probably
-		// do some more invesitgating.
-		char *letter = (char*)&asciiCode;
-		char *location = "assets/images/letters/";
-		char *png = ".png";
-		char *final = malloc(sizeof(char)*strlen(location)+strlen(png)+1);
-		strcpy(final, location);
-		strcat(final, letter);
-		strcat(final, png);
-		letters[i] = load_image(final);
-		if(letters[i] == NULL) {
-			fprintf(stderr, "Letter loading failed\n%s\n", IMG_GetError());
-			return 1;
+	for(int i = 0; i < 4; i++) {
+		for(int j = 0; j < 26; j++) {
+			// This converts the array number to the corresponding ascii value.
+			int asciiCode = i+65;
+			// I really have no idea how this line works so I should probably
+			// do some more invesitgating.
+			char *letter = (char*)&asciiCode;
+			char *location = "assets/images/letters/";
+			char *png = ".png";
+			char *final = malloc(sizeof(char)*strlen(location)+strlen(png)+1);
+			strcpy(final, location);
+			strcat(final, letter);
+			strcat(final, png);
+			letters[i][j] = load_image(final);
+			if(letters[i][j] == NULL) {
+				fprintf(stderr, "Letter loading failed\n%s\n", IMG_GetError());
+				return 1;
+			}
+			free(final);
 		}
-		free(final);
 	}
 
 	for(int i = 0; i < 7; i++) {
@@ -369,8 +370,10 @@ void quit()
 		SDL_FreeSurface(container[i]);
 	}
 	
-	for(int i = 0; i < 27; i++) {
-		SDL_FreeSurface(letters[i]);
+	for(int i = 0; i < 4; i++) {
+		for(int j = 0; j < 26; j++) {
+			SDL_FreeSurface(letters[i][j]);
+		}
 	}
 	
 	SDL_FreeSurface(screen);
