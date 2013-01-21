@@ -80,12 +80,28 @@ void game_logic(void)
 				lettersRect[i][j].h = letters[i][j]->clip_rect.h;
 			}
 		}
-
-		randomFallSpot = rand() % 3;
-		randomLetter = rand() % 25;
+		randomFallSpot = rand() % 4;
+		randomLetter = rand() % 26;
 		lettersY[randomFallSpot][randomLetter]++;
+		printf("Random init letter is [%d][%d]\n", randomFallSpot, randomLetter);
 		gameInit += 1;
 	}
+
+	// This is going to be a problem if it randomly picks a letter that
+	// is already on the screen, but I will deal with that later.
+	// Basically if it picks a letter that is already on the screen all it
+	// is going to do is add one to the letter instead of introducing another
+	// letter. Preliminary testing is showing that this isn't going to be
+	// a problem, but this could definitely be improved with some sort of list
+	// that is storing the current letters.
+	if(SDL_GetTicks() - timeStart >= 1000) {
+		randomFallSpot = rand() % 4;
+		randomLetter = rand() % 26;
+		lettersY[randomFallSpot][randomLetter]++;
+		printf("Random letter chosen from timer [%d][%d]\n", randomFallSpot, randomLetter);
+		timeStart = SDL_GetTicks();
+	}
+
 	if(letterDrag) {
 		drag_letter(letter1, letter2);
 	}
@@ -97,7 +113,16 @@ void game_logic(void)
 			lettersRect[i][j].y = lettersY[i][j];
 		}
 	}
-	lettersY[randomFallSpot][randomLetter]++;
+	for(int i = 0; i < 4; i++) {
+		for(int j = 0; j < 26; j++) {
+			if(lettersY[i][j] != 45) {
+				lettersY[i][j]++;
+			}
+			if(lettersY[i][j] >= 640) {
+				lettersY[i][j] = 45;
+			}
+		}
+	}
 }
 
 void game_render(void)
@@ -131,12 +156,8 @@ void game_render(void)
 	render_image(pauseX, pauseY, pause, screen);
 	
 	if(letterDrag) { 
-		for(int i = 0; i < 4; i++) {
-			for(int j = 0; j < 26; j++) {
-				if(lettersY[i][j] >= GRASS_Y - lettersRect[0][0].h){
-					render_image(lettersX[i][j], lettersY[i][j], letters[i][j], screen);
-				}
-			}
+		if(lettersY[letter1][letter2] >= GRASS_Y - lettersRect[0][0].h){
+			render_image(lettersX[letter1][letter2], lettersY[letter1][letter2], letters[letter1][letter2], screen);
 		}
 	}
 

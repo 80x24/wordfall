@@ -278,7 +278,7 @@ int load_content()
 	for(int i = 0; i < 4; i++) {
 		for(int j = 0; j < 26; j++) {
 			// This converts the array number to the corresponding ascii value.
-			int asciiCode = i+65;
+			int asciiCode = j+65;
 			// I really have no idea how this line works so I should probably
 			// do some more invesitgating.
 			char *letter = (char*)&asciiCode;
@@ -289,6 +289,9 @@ int load_content()
 			strcat(final, letter);
 			strcat(final, png);
 			letters[i][j] = load_image(final);
+			if(i == 3 && j == 25) {
+				printf("%s\n", final);
+			}
 			if(letters[i][j] == NULL) {
 				fprintf(stderr, "Letter loading failed\n%s\n", IMG_GetError());
 				return 1;
