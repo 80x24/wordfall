@@ -51,7 +51,7 @@
 			"file": "game-state.c",
 			"settings":
 			{
-				"buffer_size": 4118,
+				"buffer_size": 5041,
 				"line_ending": "Unix"
 			}
 		},
@@ -67,7 +67,7 @@
 			"file": "main.c",
 			"settings":
 			{
-				"buffer_size": 9609,
+				"buffer_size": 9668,
 				"line_ending": "Unix"
 			}
 		}
@@ -154,7 +154,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -208,15 +208,15 @@
 					"file": "game-state.c",
 					"settings":
 					{
-						"buffer_size": 4118,
+						"buffer_size": 5041,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3113,
-								3113
+								4252,
+								4252
 							]
 						],
 						"settings":
@@ -225,7 +225,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1068.0,
+						"translation.y": 1893.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -261,15 +261,15 @@
 					"file": "main.c",
 					"settings":
 					{
-						"buffer_size": 9609,
+						"buffer_size": 9668,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9345,
-								9345
+								7123,
+								7123
 							]
 						],
 						"settings":
@@ -278,7 +278,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5121.0,
+						"translation.y": 3364.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -20,6 +20,7 @@ extern int submitY;
 
 extern SDL_Rect submitRect;
 extern SDL_Rect lettersRect[4][26];
+extern SDL_Rect containerRect[7];
 
 extern int lettersY[4][26];
 extern int lettersX[4][26];

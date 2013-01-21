@@ -289,9 +289,6 @@ int load_content()
 			strcat(final, letter);
 			strcat(final, png);
 			letters[i][j] = load_image(final);
-			if(i == 3 && j == 25) {
-				printf("%s\n", final);
-			}
 			if(letters[i][j] == NULL) {
 				fprintf(stderr, "Letter loading failed\n%s\n", IMG_GetError());
 				return 1;

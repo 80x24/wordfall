@@ -19,6 +19,7 @@ int lettersX[4][26];
 
 SDL_Rect lettersRect[4][26];
 SDL_Rect submitRect;
+SDL_Rect containerRect[7];
 
 int fallStart = 0;
 
@@ -69,6 +70,12 @@ void game_logic(void)
 		submitRect.y = submitY;
 		submitRect.w = submit->clip_rect.w;
 		submitRect.h = submit->clip_rect.h;
+		for(int i = 0; i < 7; i++) {
+			containerRect[i].x = containerX[i];
+			containerRect[i].y = containerY;
+			containerRect[i].w = container[i]->clip_rect.w;
+			containerRect[i].h = container[i]->clip_rect.h;
+		}
 
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 26; j++) {
@@ -80,10 +87,10 @@ void game_logic(void)
 				lettersRect[i][j].h = letters[i][j]->clip_rect.h;
 			}
 		}
-		randomFallSpot = rand() % 4;
+		/*randomFallSpot = rand() % 4;
 		randomLetter = rand() % 26;
 		lettersY[randomFallSpot][randomLetter]++;
-		printf("Random init letter is [%d][%d]\n", randomFallSpot, randomLetter);
+		printf("Random init letter is [%d][%d]\n", randomFallSpot, randomLetter);*/
 		gameInit += 1;
 	}
 
@@ -98,7 +105,7 @@ void game_logic(void)
 		randomFallSpot = rand() % 4;
 		randomLetter = rand() % 26;
 		lettersY[randomFallSpot][randomLetter]++;
-		printf("Random letter chosen from timer [%d][%d]\n", randomFallSpot, randomLetter);
+		//printf("Random letter chosen from timer [%d][%d]\n", randomFallSpot, randomLetter);
 		timeStart = SDL_GetTicks();
 	}
 
@@ -111,14 +118,10 @@ void game_logic(void)
 		for(int j = 0; j < 26; j++) {
 			lettersRect[i][j].x = lettersX[i][j];
 			lettersRect[i][j].y = lettersY[i][j];
-		}
-	}
-	for(int i = 0; i < 4; i++) {
-		for(int j = 0; j < 26; j++) {
 			if(lettersY[i][j] != 45) {
 				lettersY[i][j]++;
 			}
-			if(lettersY[i][j] >= 640) {
+			if(lettersY[i][j] >= GRASS_Y+lettersRect[i][j].h+20) {
 				lettersY[i][j] = 45;
 			}
 		}
@@ -156,7 +159,7 @@ void game_render(void)
 	render_image(pauseX, pauseY, pause, screen);
 	
 	if(letterDrag) { 
-		if(lettersY[letter1][letter2] >= GRASS_Y - lettersRect[0][0].h){
+		if(lettersY[letter1][letter2] >= GRASS_Y - lettersRect[0][0].h) {
 			render_image(lettersX[letter1][letter2], lettersY[letter1][letter2], letters[letter1][letter2], screen);
 		}
 	}
@@ -175,7 +178,7 @@ void drag_letter(int letter1, int letter2)
 	if(event.motion.x >= 360 - lettersRect[0][0].w) {
 		event.motion.x = 360 - lettersRect[0][0].w;
 	}
-	else if(event.motion.y >= 640 - lettersRect[0][0].h) {
+	if(event.motion.y >= 640 - lettersRect[0][0].h) {
 		event.motion.y = 640 - lettersRect[0][0].h;
 	}
 	if(event.motion.x && event.motion.y != 0) {
@@ -183,5 +186,16 @@ void drag_letter(int letter1, int letter2)
 		lettersY[letter1][letter2] = event.motion.y;
 		lettersRect[letter1][letter2].x = event.motion.x;
 		lettersRect[letter1][letter2].y = event.motion.y;
+	}
+
+	for(int i = 0; i < 7; i++) {
+		if((lettersX[letter1][letter2] > containerRect[i].x) &&
+			(lettersX[letter1][letter2] < containerRect[i].x + containerRect[i].w) &&
+			(lettersY[letter1][letter2] > containerRect[i].y) &&
+			(lettersY[letter1][letter2] < containerRect[i].y + containerRect[i].h)) {
+			
+			lettersX[letter1][letter2] = containerRect[i].x;
+			lettersY[letter1][letter2] = containerRect[i].y;
+		}
 	}
 }
