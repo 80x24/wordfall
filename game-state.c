@@ -53,17 +53,34 @@ void game_events(void)
 					}
 				}
 			}
+			if(event.button.button == SDL_BUTTON_RIGHT) {
+				for(int i = 0; i < 7; i++) {
+					if((event.motion.x > containerRect[i].x) &&
+					(event.motion.x < containerRect[i].x + containerRect[i].w) &&
+					(event.motion.y > containerRect[i].y) &&
+					(event.motion.y < containerRect[i].y + containerRect[i].h)) {
+						containerLetters[i] = 0;
+					}
+				}
+			}
 		}
 		else if(event.type == SDL_MOUSEBUTTONUP) {
 			for(int i = 0; i < 7; i++) {
 				if((lettersX[letter1][letter2] > containerRect[i].x) &&
 				(lettersX[letter1][letter2] < containerRect[i].x + containerRect[i].w) &&
+				(lettersY[letter1][letter2]+lettersRect[0][0].h > containerRect[i].y) &&
+				(lettersY[letter1][letter2]+lettersRect[0][0].h < containerRect[i].y + containerRect[i].h)) {
+					lettersX[letter1][letter2] = containerRect[i].x;
+					lettersY[letter1][letter2] = containerRect[i].y;
+					containerLetters[i] = letters[letter1][letter2];
+				}
+				else if((lettersX[letter1][letter2] > containerRect[i].x) &&
+				(lettersX[letter1][letter2] < containerRect[i].x + containerRect[i].w) &&
 				(lettersY[letter1][letter2] > containerRect[i].y) &&
-				(lettersY[letter1][letter2] < containerRect[i].y + containerRect[i].h)) {
-			
-				lettersX[letter1][letter2] = containerRect[i].x;
-				lettersY[letter1][letter2] = containerRect[i].y;
-				containerLetters[i] = letters[letter1][letter2];
+				(lettersY[letter1][letter2] < (containerRect[i].y + containerRect[i].h))) {
+					lettersX[letter1][letter2] = containerRect[i].x;
+					lettersY[letter1][letter2] = containerRect[i].y;
+					containerLetters[i] = letters[letter1][letter2];
 				}
 			}
 			letterDrag = 0;
@@ -176,7 +193,6 @@ void game_render(void)
 		if(lettersY[letter1][letter2] >= GRASS_Y - lettersRect[0][0].h) {
 			render_image(lettersX[letter1][letter2], lettersY[letter1][letter2], letters[letter1][letter2], screen);
 		}
-		printf("(%d,%d)\n", lettersX[letter1][letter2], lettersY[letter1][letter2]);
 	}
 
 	if(SDL_Flip(screen) != 0) {
@@ -193,13 +209,13 @@ void drag_letter(int letter1, int letter2)
 	if(event.motion.x >= 360 - lettersRect[0][0].w) {
 		event.motion.x = 360 - lettersRect[0][0].w;
 	}
-	else if(event.motion.y >= 640 - lettersRect[0][0].h) {
+	
+	if(event.motion.y >= 640 - lettersRect[0][0].h) {
 		event.motion.y = 640 - lettersRect[0][0].h;
 	}
-	if(event.motion.x && event.motion.y != 0) {
-		lettersX[letter1][letter2] = event.motion.x;
-		lettersY[letter1][letter2] = event.motion.y;
-		lettersRect[letter1][letter2].x = event.motion.x;
-		lettersRect[letter1][letter2].y = event.motion.y;
-	}
+	lettersX[letter1][letter2] = event.motion.x;
+	lettersY[letter1][letter2] = event.motion.y;
+
+	lettersRect[letter1][letter2].x = event.motion.x;
+	lettersRect[letter1][letter2].y = event.motion.y;
 }

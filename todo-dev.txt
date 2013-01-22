@@ -1,0 +1,12 @@
+The snap feature has been implemented.
+
+Next feature that needs to be implemented is removing letters from the
+containers. This is going to be somewhat challenging because the letters that
+are in the containers are only copies of the letters that are falling so
+introducing the letter into the falling mix by clicking and dragging would be
+very difficult.
+
+A very easy implementation would be to just have a right click(on pc) or a
+double tap on touch screens remove the letter from the square. This is what I
+am going to do because it actually makes more sense, and it is way easier to
+implement for me.
