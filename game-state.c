@@ -13,6 +13,7 @@ int letter1 = 0;
 int letter2 = 0;
 int randomLetter = 0;
 int randomFallSpot = 0;
+char containerAscii[8] = {' ',' ',' ',' ',' ',' ',' ','\0'};
 
 int lettersY[4][26] = {{0}};
 int lettersX[4][26] = {{0}};
@@ -38,7 +39,7 @@ void game_events(void)
 					(event.motion.x < submitRect.x + submitRect.w) &&
 					(event.motion.y > submitRect.y) &&
 					(event.motion.y < submitRect.y + submitRect.h)) {
-					printf("Submit button clicked\n");
+					printf("Submit is: %s\n", containerAscii);
 				}
 				for(int i = 0; i < 4; i++) {
 					for(int j = 0; j < 26; j++) {
@@ -60,6 +61,12 @@ void game_events(void)
 					(event.motion.y > containerRect[i].y) &&
 					(event.motion.y < containerRect[i].y + containerRect[i].h)) {
 						containerLetters[i] = 0;
+						// implements a space character in the ascii array
+						// I'm choosing space because I can parse it out
+						// later in the python script
+						// Don't want to use 0 because it would be a null
+						// terminator
+						containerAscii[i] = 32;
 					}
 				}
 			}
@@ -73,6 +80,7 @@ void game_events(void)
 					lettersX[letter1][letter2] = containerRect[i].x;
 					lettersY[letter1][letter2] = containerRect[i].y;
 					containerLetters[i] = letters[letter1][letter2];
+					containerAscii[i] = letter2+97;
 				}
 				else if((lettersX[letter1][letter2] > containerRect[i].x) &&
 				(lettersX[letter1][letter2] < containerRect[i].x + containerRect[i].w) &&
@@ -81,6 +89,7 @@ void game_events(void)
 					lettersX[letter1][letter2] = containerRect[i].x;
 					lettersY[letter1][letter2] = containerRect[i].y;
 					containerLetters[i] = letters[letter1][letter2];
+					containerAscii[i] = letter2+97;
 				}
 			}
 			letterDrag = 0;
@@ -154,6 +163,9 @@ void game_logic(void)
 			}
 		}
 	}
+	/*for(int i = 0; i < 7; i++) {
+		printf("%c", containerAscii[i]);
+	}*/
 }
 
 void game_render(void)

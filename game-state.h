@@ -29,6 +29,7 @@ extern int fallStart;
 extern int randomLetter;
 // This is the first array value for lettersY[][]
 extern int randomFallSpot;
+extern char containerAscii[8];
 
 void drag_letter(int letter1, int letter2);
 /*
