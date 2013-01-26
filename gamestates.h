@@ -5,7 +5,6 @@
 void intro_events(void);
 void intro_logic(void);
 void intro_render(void);
-int introTimeStart;
 
 //  intro transition
 void intro_transition_events(void);

@@ -36,18 +36,9 @@ enum gameStates {
 extern int currentState;
 extern int nextState;
 
-// Word Fall logo globals
-/*
-extern int titleX[];
-extern int titleY[];
-
-
-extern int soundOnHighlight;
-extern int soundOffHighlight;
-extern int backHighlight;
-extern int playRectHighlight;
-extern int optionsRectHighlight;
-*/
+// Dictionary globals
+extern char **dict;
+extern int dictNum;
 
 int init();
 void quit();

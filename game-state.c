@@ -39,7 +39,14 @@ void game_events(void)
 					(event.motion.x < submitRect.x + submitRect.w) &&
 					(event.motion.y > submitRect.y) &&
 					(event.motion.y < submitRect.y + submitRect.h)) {
-					printf("Submit is: %s\n", containerAscii);
+					// Need to clean up word first
+					//printf("Submit is: %s\n", containerAscii);
+					if(isword(containerAscii) == 1){
+						printf("Word!!\n");
+					}
+					else {
+						printf("Not a word!\n");
+					}
 				}
 				for(int i = 0; i < 4; i++) {
 					for(int j = 0; j < 26; j++) {
@@ -230,4 +237,21 @@ void drag_letter(int letter1, int letter2)
 
 	lettersRect[letter1][letter2].x = event.motion.x;
 	lettersRect[letter1][letter2].y = event.motion.y;
+}
+
+int isword(char *word)
+{
+	int isWord = 0;
+	for(int i = 0; i < dictNum; i++) {
+		if(strcmp(dict[i], word) == 0) {
+			isWord = 1;
+			break;
+		}
+	}
+	if(isWord == 1) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
 }

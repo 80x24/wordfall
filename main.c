@@ -12,6 +12,10 @@
 int currentState = STATE_INTRO_TRANSITION;
 int nextState = STATE_NULL;
 
+// Dictionary
+char **dict = 0;
+int dictNum = 0;
+
 // Surface Globals
 // These should probably be reduced in scope
 SDL_Surface *screen = 0;
@@ -332,10 +336,51 @@ int load_content()
 		}
 	}
 
+	// =========== LOAD DICTIONARY ======================================
+	long fileSize = 0;
+	size_t fileReadSize = 0;
+	char *buffer = 0;
+	char *tokens = 0;
+	FILE *dictFile;
+	char *dictLocation = "/usr/share/dict/words";
+	dictFile = fopen(dictLocation, "r");
+	if(dictFile == NULL) {
+		fprintf(stderr, "Dictionary loading failed\n");
+		return 1;
+	}
+	fseek(dictFile, 0, SEEK_END);
+	fileSize = ftell(dictFile);
+	rewind(dictFile);
+
+	buffer = malloc(sizeof(char)*fileSize);
+	dict = malloc(sizeof(char)*fileSize*45);
+	if(buffer == NULL || dict == NULL) {
+		fprintf(stderr, "Malloc failed!\n");
+		return 1;
+	}
+
+	// Read the file
+	fileReadSize = fread(buffer, 1, fileSize, dictFile);
+	if(fileReadSize != fileSize) {
+		fprintf(stderr, "Dictionary read failed\n");
+		return 1;
+	}
+	fclose(dictFile);
+
+	tokens = strtok(buffer, "\n");
+	while(tokens != NULL) {
+		dict[dictNum] = tokens;
+		tokens = strtok(NULL, "\n");
+		dictNum++;
+	}
+	free(buffer);
+	// =============================================================
+
 	for(int i = 0; i < 7; i++) {
 		container[i] = load_image("assets/images/container-2.png");
 		if(container[i] == NULL) {
 			fprintf(stderr, "Container loading failed\n%s\n", IMG_GetError());
+			return 1;
 		}
 	}
 
@@ -420,6 +465,8 @@ void quit()
 	TTF_CloseFont(optionsSoundFontOn);
 	TTF_CloseFont(optionsSoundFontOff);
 	TTF_CloseFont(optionsBackFont);
+
+	free(dict);
 
 	TTF_Quit();
 	SDL_Quit();

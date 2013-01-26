@@ -6,6 +6,7 @@
 #include "render.h"
 #include "main.h"
 
+int introTimeStart = 0;
 
 void intro_events(void)
 {
