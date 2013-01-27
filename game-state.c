@@ -40,9 +40,12 @@ void game_events(void)
 					(event.motion.y > submitRect.y) &&
 					(event.motion.y < submitRect.y + submitRect.h)) {
 					char *safeWord = containerAscii;
+					printf("%s\n", safeWord);
 					safeWord = sanitize(safeWord);
 					if(isword(safeWord) == 1){
 						printf("Word!!\n");
+						// TODO: Add transition for letter disappear
+						// after submit
 					}
 					else {
 						printf("Not a word!\n");

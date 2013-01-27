@@ -9,6 +9,9 @@
 
 int wordY = 150;
 int fallY = 200;
+int playButtonY = 700;
+int optionsButtonY = 750;
+unsigned int buttonsFall = 1;
 
 void title_fall_events(void)
 {	
@@ -85,6 +88,17 @@ void title_fall_logic(void)
 	if(titleY[7] == fallY) {
 		set_next_state(STATE_TITLE);
 	}
+
+	if(playButtonY <= 300 || optionsButtonY <= 350) {
+		playButtonY = 300;
+		optionsButtonY = 350;
+		buttonsFall = 0;
+	}
+
+	if(buttonsFall) {
+		playButtonY -= 8;
+		optionsButtonY -= 8;
+	}
 }
 
 void title_fall_render(void)
@@ -105,19 +119,19 @@ void title_fall_render(void)
 	SDL_Color hoverColor = {254,210,6};
 	if(playRectHighlight == 1) {
 		play = render_font(playFont, "Play", hoverColor);
-		render_image(148, 300, play, screen);
+		render_image(148, playButtonY, play, screen);
 	}
 	if(playRectHighlight != 1) {
 		play = render_font(playFont, "Play", playColor);
-		render_image(148, 300, play, screen);
+		render_image(148, playButtonY, play, screen);
 	}
 	if(optionsRectHighlight == 1) {
 		options = render_font(optionsFont, "Options", hoverColor);
-		render_image(115, 350, options, screen);
+		render_image(115, optionsButtonY, options, screen);
 	}
 	if(optionsRectHighlight != 1) {
 		options = render_font(optionsFont, "Options", playColor);
-		render_image(115, 350, options, screen);
+		render_image(115, optionsButtonY, options, screen);
 	}
 
 	// Collision rects for play and option buttons
