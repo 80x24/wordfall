@@ -13,7 +13,7 @@ int letter1 = 0;
 int letter2 = 0;
 int randomLetter = 0;
 int randomFallSpot = 0;
-char containerAscii[8] = {' ',' ',' ',' ',' ',' ',' ','\0'};
+char containerAscii[8] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0'};
 
 int lettersY[4][26] = {{0}};
 int lettersX[4][26] = {{0}};
@@ -39,9 +39,9 @@ void game_events(void)
 					(event.motion.x < submitRect.x + submitRect.w) &&
 					(event.motion.y > submitRect.y) &&
 					(event.motion.y < submitRect.y + submitRect.h)) {
-					// Need to clean up word first
-					//printf("Submit is: %s\n", containerAscii);
-					if(isword(containerAscii) == 1){
+					char *safeWord = containerAscii;
+					safeWord = sanitize(safeWord);
+					if(isword(safeWord) == 1){
 						printf("Word!!\n");
 					}
 					else {
@@ -68,11 +68,6 @@ void game_events(void)
 					(event.motion.y > containerRect[i].y) &&
 					(event.motion.y < containerRect[i].y + containerRect[i].h)) {
 						containerLetters[i] = 0;
-						// implements a space character in the ascii array
-						// I'm choosing space because I can parse it out
-						// later in the python script
-						// Don't want to use 0 because it would be a null
-						// terminator
 						containerAscii[i] = 32;
 					}
 				}
@@ -171,7 +166,7 @@ void game_logic(void)
 		}
 	}
 	/*for(int i = 0; i < 7; i++) {
-		printf("%c", containerAscii[i]);
+		printf("%c", *(containerAscii + i));
 	}*/
 }
 
@@ -237,6 +232,26 @@ void drag_letter(int letter1, int letter2)
 
 	lettersRect[letter1][letter2].x = event.motion.x;
 	lettersRect[letter1][letter2].y = event.motion.y;
+}
+
+char *sanitize(char *word)
+{
+	char *newWord = 0;
+	int i = 0;
+	int numSpaces = 0;
+	for(i = 6; i >= 0; i--) {
+		if(isspace(word[i])) {
+			numSpaces++;
+		}
+	}
+	unsigned long size = strlen(word) - numSpaces;
+	newWord = malloc(sizeof(char)*size);
+	strncpy(newWord, word, strlen(newWord));
+	newWord[size] = '\0';
+	word = newWord;
+	free(newWord);
+	newWord = 0;
+	return word;
 }
 
 int isword(char *word)

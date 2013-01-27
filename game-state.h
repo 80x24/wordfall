@@ -33,6 +33,7 @@ extern char containerAscii[8];
 
 void drag_letter(int letter1, int letter2);
 int isword(char *word);
+char *sanitize(char *word);
 /*
 --- Note on the Submit Container ---
 When the user drops the letter into a container, I am going to have to
