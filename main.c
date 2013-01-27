@@ -342,7 +342,7 @@ int load_content()
 	char *buffer = 0;
 	char *tokens = 0;
 	FILE *dictFile;
-	char *dictLocation = "/usr/share/dict/words";
+	char *dictLocation = "assets/dict.txt";
 	dictFile = fopen(dictLocation, "r");
 	if(dictFile == NULL) {
 		fprintf(stderr, "Dictionary loading failed\n");
