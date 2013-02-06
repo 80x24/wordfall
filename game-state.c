@@ -40,8 +40,9 @@ void game_events(void)
 					(event.motion.y > submitRect.y) &&
 					(event.motion.y < submitRect.y + submitRect.h)) {
 					char *safeWord = containerAscii;
-					printf("%s\n", safeWord);
+					printf("safe word: %s\n", safeWord);
 					safeWord = sanitize(safeWord);
+					printf("safe word sanitized: %s\n", safeWord);
 					if(isword(safeWord) == 1){
 						printf("Word!!\n");
 						// TODO: Add transition for letter disappear
@@ -261,7 +262,7 @@ int isword(char *word)
 {
 	int isWord = 0;
 	for(int i = 0; i < dictNum; i++) {
-		if(strcmp(dict[i], word) == 0) {
+		if(strncmp(dict[i], word, strlen(word)) == 0) {
 			isWord = 1;
 			break;
 		}

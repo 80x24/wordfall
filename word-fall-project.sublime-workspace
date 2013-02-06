@@ -45,25 +45,6 @@
 			]
 		]
 	},
-	"buffers":
-	[
-		{
-			"file": "game-state.c",
-			"settings":
-			{
-				"buffer_size": 7673,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "game-state.h",
-			"settings":
-			{
-				"buffer_size": 1089,
-				"line_ending": "Unix"
-			}
-		}
-	],
 	"build_system": "",
 	"command_palette":
 	{
@@ -191,69 +172,6 @@
 		"whole_word": false,
 		"wrap": true
 	},
-	"groups":
-	[
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"file": "game-state.c",
-					"settings":
-					{
-						"buffer_size": 7673,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1052,
-								1052
-							]
-						],
-						"settings":
-						{
-							"spell_check": false,
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "game-state.h",
-					"settings":
-					{
-						"buffer_size": 1089,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								585,
-								585
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		}
-	],
 	"incremental_find":
 	{
 		"height": 34.0
