@@ -40,9 +40,7 @@ void game_events(void)
 					(event.motion.y > submitRect.y) &&
 					(event.motion.y < submitRect.y + submitRect.h)) {
 					char *safeWord = containerAscii;
-					printf("safe word: %s\n", safeWord);
 					safeWord = sanitize(safeWord);
-					printf("safe word sanitized: %s\n", safeWord);
 					if(isword(safeWord) == 1){
 						printf("Word!!\n");
 						// TODO: Add transition for letter disappear
@@ -144,6 +142,7 @@ void game_logic(void)
 	// letter. Preliminary testing is showing that this isn't going to be
 	// a problem, but this could definitely be improved with some sort of list
 	// that is storing the current letters.
+	
 	if(SDL_GetTicks() - timeStart >= 1000) {
 		randomFallSpot = rand() % 4;
 		randomLetter = rand() % 26;
@@ -252,14 +251,18 @@ char *sanitize(char *word)
 	newWord = malloc(sizeof(char)*size);
 	strncpy(newWord, word, strlen(newWord));
 	newWord[size] = '\0';
-	word = newWord;
+	for(i = 0; i < size; i++) {
+		*(word + i) = newWord[i];
+	}
+	char *final = newWord;
 	free(newWord);
 	newWord = 0;
-	return word;
+	return final;
 }
 
 int isword(char *word)
 {
+	printf("word: %s\n", word);
 	int isWord = 0;
 	for(int i = 0; i < dictNum; i++) {
 		if(strncmp(dict[i], word, strlen(word)) == 0) {
