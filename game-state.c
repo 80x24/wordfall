@@ -44,7 +44,12 @@ void game_events(void)
 					if(isword(safeWord) == 1){
 						printf("Word!!\n");
 						// TODO: Add transition for letter disappear
-						// after submit
+						// after submit. Currently, it disappears instantly
+						for(int i = 0; i < 7; i++) {
+							containerLetters[i] = 0;
+							containerAscii[i] = 32;
+						}
+
 					}
 					else {
 						printf("Not a word!\n");
