@@ -76,6 +76,9 @@ extern SDL_Surface *optionsSoundOff;
 extern SDL_Surface *optionsBack;
 extern SDL_Surface *pause;
 extern SDL_Surface *submit;
+extern SDL_Surface *scorePopup;
+extern SDL_Surface *notWord;
+extern SDL_Surface *score;
 
 extern TTF_Font *playFont;
 extern TTF_Font *optionsFont;
@@ -83,6 +86,9 @@ extern TTF_Font *optionsSoundFont;
 extern TTF_Font *optionsSoundFontOn;
 extern TTF_Font *optionsSoundFontOff;
 extern TTF_Font *optionsBackFont;
+extern TTF_Font *scoreFontPopup;
+extern TTF_Font *notWordFont;
+extern TTF_Font *scoreFont;
 // =================================================
 extern SDL_Event event;
 

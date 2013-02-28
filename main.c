@@ -41,6 +41,9 @@ SDL_Surface *optionsSoundOff = 0;
 SDL_Surface *optionsBack = 0;
 SDL_Surface *pause = 0;
 SDL_Surface *submit = 0;
+SDL_Surface *notWord = 0;
+SDL_Surface *score = 0;
+SDL_Surface *scorePopup = 0;
 
 TTF_Font *playFont = 0;
 TTF_Font *optionsFont = 0;
@@ -48,6 +51,9 @@ TTF_Font *optionsSoundFont = 0;
 TTF_Font *optionsSoundFontOn = 0;
 TTF_Font *optionsSoundFontOff = 0;
 TTF_Font *optionsBackFont = 0;
+TTF_Font *scoreFontPopup = 0;
+TTF_Font *notWordFont = 0;
+TTF_Font *scoreFont = 0;
 
 SDL_Event event;
 
@@ -418,6 +424,21 @@ int load_content()
 		fprintf(stderr, "options back font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
+	scoreFontPopup = load_font("assets/fonts/Roboto-Bold.ttf", 36);
+	if(scoreFontPopup == NULL) {
+		fprintf(stderr, "score font popup loading failed\n%s\n", TTF_GetError());
+		return 1;
+	}
+	notWordFont = load_font("assets/fonts/Roboto-Bold.ttf", 48);
+	if(notWordFont == NULL) {
+		fprintf(stderr, "not word font loading failed\n%s\n", TTF_GetError());
+		return 1;
+	}
+	scoreFont = load_font("assets/font/Roboto-bold.ttf", 16);
+	if(scoreFont == NULL) {
+		fprintf(stderr, "score font loading failed\n%s\n", TTF_GetError());
+		return 1;
+	}
 	return 0;
 }
 
@@ -441,6 +462,9 @@ void quit()
 	SDL_FreeSurface(introTransition);
 	SDL_FreeSurface(pause);
 	SDL_FreeSurface(submit);
+	SDL_FreeSurface(score);
+	SDL_FreeSurface(scorePopup);
+	SDL_FreeSurface(notWord);
 
 	for(int i = 0; i < 8; i++) {
 		SDL_FreeSurface(title[i]);
@@ -465,6 +489,9 @@ void quit()
 	TTF_CloseFont(optionsSoundFontOn);
 	TTF_CloseFont(optionsSoundFontOff);
 	TTF_CloseFont(optionsBackFont);
+	TTF_CloseFont(scoreFontPopup);
+	TTF_CloseFont(notWordFont);
+	TTF_CloseFont(scoreFont);
 
 	free(dict);
 

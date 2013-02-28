@@ -14,6 +14,7 @@ int letter2 = 0;
 int randomLetter = 0;
 int randomFallSpot = 0;
 char containerAscii[8] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0'};
+int scoreValues[26] = {1,4,4,1,4,3,3,1,10,5,2,4,2,1,4,10,1,1,1,2,5,4,8,3,10};
 
 int lettersY[4][26] = {{0}};
 int lettersX[4][26] = {{0}};
@@ -23,6 +24,7 @@ SDL_Rect submitRect;
 SDL_Rect containerRect[7];
 
 int fallStart = 0;
+int theScore = 0;
 
 void game_events(void)
 {
@@ -45,6 +47,8 @@ void game_events(void)
 						printf("Word!!\n");
 						// TODO: Add transition for letter disappear
 						// after submit. Currently, it disappears instantly
+						// Might not do at all because making the letters
+						// rapidly smaller is hard to do.
 						for(int i = 0; i < 7; i++) {
 							containerLetters[i] = 0;
 							containerAscii[i] = 32;

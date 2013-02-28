@@ -18,6 +18,9 @@ extern int containerY;
 extern int submitX;
 extern int submitY;
 
+extern int theScore;
+extern int scoreValues[26];
+
 extern SDL_Rect submitRect;
 extern SDL_Rect lettersRect[4][26];
 extern SDL_Rect containerRect[7];
