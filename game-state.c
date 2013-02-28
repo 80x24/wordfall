@@ -14,7 +14,8 @@ int letter2 = 0;
 int randomLetter = 0;
 int randomFallSpot = 0;
 char containerAscii[8] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0'};
-int scoreValues[26] = {1,4,4,1,4,3,3,1,10,5,2,4,2,1,4,10,1,1,1,2,5,4,8,3,10};
+int scoreValues[26] = {1,4,4,2,1,4,3,3,1,10,5,2,4,2,1,4,10,1,1,1,2,5,4,8,3,10};
+int scoreArray[7] = {-1,-1,-1,-1,-1,-1,-1};
 
 int lettersY[4][26] = {{0}};
 int lettersX[4][26] = {{0}};
@@ -49,11 +50,17 @@ void game_events(void)
 						// after submit. Currently, it disappears instantly
 						// Might not do at all because making the letters
 						// rapidly smaller is hard to do.
+						printf("scores:{");
 						for(int i = 0; i < 7; i++) {
+							if(scoreArray[i] != -1) {
+								theScore += scoreValues[scoreArray[i]];
+							}
 							containerLetters[i] = 0;
 							containerAscii[i] = 32;
+							printf("%d,", scoreArray[i]);
 						}
-
+						printf("}\n");
+						printf("score: %d\n", theScore);
 					}
 					else {
 						printf("Not a word!\n");
@@ -80,6 +87,7 @@ void game_events(void)
 					(event.motion.y < containerRect[i].y + containerRect[i].h)) {
 						containerLetters[i] = 0;
 						containerAscii[i] = 32;
+						scoreArray[i] = -1;
 					}
 				}
 			}
@@ -94,6 +102,7 @@ void game_events(void)
 					lettersY[letter1][letter2] = containerRect[i].y;
 					containerLetters[i] = letters[letter1][letter2];
 					containerAscii[i] = letter2+97;
+					scoreArray[i] = letter2;
 				}
 				else if((lettersX[letter1][letter2] > containerRect[i].x) &&
 				(lettersX[letter1][letter2] < containerRect[i].x + containerRect[i].w) &&
@@ -103,6 +112,7 @@ void game_events(void)
 					lettersY[letter1][letter2] = containerRect[i].y;
 					containerLetters[i] = letters[letter1][letter2];
 					containerAscii[i] = letter2+97;
+					scoreArray[i] = letter2;
 				}
 			}
 			letterDrag = 0;

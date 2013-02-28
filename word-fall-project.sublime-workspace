@@ -51,7 +51,7 @@
 			"file": "game-state.c",
 			"settings":
 			{
-				"buffer_size": 8003,
+				"buffer_size": 8539,
 				"line_ending": "Unix"
 			}
 		}
@@ -84,16 +84,16 @@
 	},
 	"file_history":
 	[
+		"/Users/kyle/word-fall/main.c",
 		"/Users/kyle/word-fall/game-state.h",
 		"/Users/kyle/word-fall/main.h",
-		"/Users/kyle/word-fall/main.c",
+		"/Users/kyle/word-fall/title-state.c",
 		"/Users/kyle/word-fall/gamestates.h",
 		"/Users/kyle/word-fall/intro-state.c",
 		"/Users/kyle/word-fall/game-transition-state.c",
 		"/Users/kyle/word-fall/game-state.c",
 		"/Users/kyle/word-fall/title-transition-state.c",
 		"/Users/kyle/word-fall/intro-transition-state.c",
-		"/Users/kyle/word-fall/title-state.c",
 		"/Users/kyle/word-fall/title-options-state.c",
 		"/Users/kyle/word-fall/title-fall-state.c",
 		"/Users/kyle/word-fall/Makefile",
@@ -149,6 +149,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"letter2",
+			"ascii",
 			"containerAscii",
 			"introTimeStart",
 			"letter",
@@ -194,15 +196,15 @@
 					"file": "game-state.c",
 					"settings":
 					{
-						"buffer_size": 8003,
+						"buffer_size": 8539,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7809,
-								7809
+								473,
+								473
 							]
 						],
 						"settings":
@@ -211,7 +213,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2509.0,
+						"translation.y": 79.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

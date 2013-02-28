@@ -20,6 +20,7 @@ extern int submitY;
 
 extern int theScore;
 extern int scoreValues[26];
+extern int scoreArray[7];
 
 extern SDL_Rect submitRect;
 extern SDL_Rect lettersRect[4][26];
