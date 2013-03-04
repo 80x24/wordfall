@@ -19,8 +19,13 @@ extern int submitX;
 extern int submitY;
 
 extern int theScore;
+extern int finalScore;
 extern int scoreValues[26];
 extern int scoreArray[7];
+extern int addScore;
+extern int addScoreFail;
+extern int addTransition;
+extern float addTransitionY;
 
 extern SDL_Rect submitRect;
 extern SDL_Rect lettersRect[4][26];

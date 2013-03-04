@@ -424,12 +424,12 @@ int load_content()
 		fprintf(stderr, "options back font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
-	scoreFontPopup = load_font("assets/fonts/Roboto-Bold.ttf", 36);
+	scoreFontPopup = load_font("assets/fonts/Roboto-Bold.ttf", 20);
 	if(scoreFontPopup == NULL) {
 		fprintf(stderr, "score font popup loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
-	notWordFont = load_font("assets/fonts/Roboto-Bold.ttf", 48);
+	notWordFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
 	if(notWordFont == NULL) {
 		fprintf(stderr, "not word font loading failed\n%s\n", TTF_GetError());
 		return 1;

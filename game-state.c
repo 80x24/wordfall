@@ -16,6 +16,10 @@ int randomFallSpot = 0;
 char containerAscii[8] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0'};
 int scoreValues[26] = {1,4,4,2,1,4,3,3,1,10,5,2,4,2,1,4,10,1,1,1,2,5,4,8,3,10};
 int scoreArray[7] = {-1,-1,-1,-1,-1,-1,-1};
+int addScore = 0;
+int addScoreFail = 0;
+int addTransition = 0;
+float addTransitionY = 550;
 
 int lettersY[4][26] = {{0}};
 int lettersX[4][26] = {{0}};
@@ -26,6 +30,7 @@ SDL_Rect containerRect[7];
 
 int fallStart = 0;
 int theScore = 0;
+int finalScore = 0;
 
 void game_events(void)
 {
@@ -51,6 +56,7 @@ void game_events(void)
 						// Might not do at all because making the letters
 						// rapidly smaller is hard to do.
 						printf("scores:{");
+						addScore = 1;
 						for(int i = 0; i < 7; i++) {
 							if(scoreArray[i] != -1) {
 								theScore += scoreValues[scoreArray[i]];
@@ -58,12 +64,21 @@ void game_events(void)
 							containerLetters[i] = 0;
 							containerAscii[i] = 32;
 							printf("%d,", scoreArray[i]);
+							scoreArray[i] = -1;
 						}
+						finalScore += theScore;
 						printf("}\n");
-						printf("score: %d\n", theScore);
+						printf("final score: %d\n", finalScore);
 					}
 					else {
 						printf("Not a word!\n");
+						addScore = 1;
+						addScoreFail = 1;
+						for(int i = 0; i < 7; i++) {
+							scoreArray[i] = -1;
+							containerLetters[i] = 0;
+							containerAscii[i] = 32;
+						}
 					}
 				}
 				for(int i = 0; i < 4; i++) {
@@ -174,6 +189,27 @@ void game_logic(void)
 		drag_letter(letter1, letter2);
 	}
 
+	if(addScore) {
+		static int called = 0;
+		if(!called) {
+			addTransition = SDL_GetTicks();
+			called += 1;
+		}
+		if(SDL_GetTicks() - addTransition <= 250) {
+			addTransitionY -= 0.25;
+		}
+		if(SDL_GetTicks() - addTransition >= 250) {
+			addTransitionY = 550;
+			called -= 1;
+			addScore = 0;
+			theScore = 0;
+			if(addScoreFail == 1) {
+				addScoreFail = 0;
+			}
+			addTransition = SDL_GetTicks();
+		}
+	}
+
 	// This for loop within the main loop might be bad.
 	for(int i = 0; i < 4; i++) {
 		for(int j = 0; j < 26; j++) {
@@ -224,10 +260,31 @@ void game_render(void)
 
 	// Pause button
 	render_image(pauseX, pauseY, pause, screen);
-	
+
+	// Score
+	SDL_Color blackColor = {0,0,0};
+	char finalScoreString[16];
+	sprintf(finalScoreString, "Score: %d", finalScore);
+	score = render_font(scoreFont, finalScoreString, blackColor);
+	render_image(32, 8, score, screen);
+
 	if(letterDrag) { 
 		if(lettersY[letter1][letter2] >= GRASS_Y - lettersRect[0][0].h) {
 			render_image(lettersX[letter1][letter2], lettersY[letter1][letter2], letters[letter1][letter2], screen);
+		}
+	}
+	if(addScore) {
+		if(!addScoreFail) {
+			SDL_Color scoreColor = {0,0,0};
+			char tmpScore[16];
+			sprintf(tmpScore, "+%d", theScore);
+			scorePopup = render_font(scoreFontPopup, tmpScore, scoreColor);
+			render_image(310, addTransitionY, scorePopup, screen);
+		}
+		else {
+			SDL_Color failColor = {255,0,0};
+			notWord = render_font(notWordFont, "X", failColor);
+			render_image(320, addTransitionY, notWord, screen);
 		}
 	}
 
@@ -281,7 +338,9 @@ char *sanitize(char *word)
 
 int isword(char *word)
 {
-	printf("word: %s\n", word);
+	if(strlen(word) < 1) {
+		return 0;
+	}
 	int isWord = 0;
 	for(int i = 0; i < dictNum; i++) {
 		if(strncmp(dict[i], word, strlen(word)) == 0) {
