@@ -52,7 +52,6 @@ int load_content();
 // future if the main game states get too complicated, but the way I am
 // currently implementing states is very stupid.
 
-// These need to be externs
 extern SDL_Surface *screen;
 extern SDL_Surface *introBackground;
 extern SDL_Surface *introTransition;

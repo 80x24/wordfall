@@ -51,6 +51,7 @@ void game_events(void)
 					safeWord = sanitize(safeWord);
 					if(isword(safeWord) == 1){
 						printf("Word!!\n");
+						//printf("%d\n", sparta);
 						// TODO: Add transition for letter disappear
 						// after submit. Currently, it disappears instantly
 						// Might not do at all because making the letters
