@@ -33,6 +33,7 @@ extern SDL_Rect containerRect[7];
 
 extern int lettersY[4][26];
 extern int lettersX[4][26];
+//extern int letterDistribution[98];
 
 extern int fallStart;
 extern int randomLetter;

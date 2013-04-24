@@ -16,6 +16,12 @@ int randomFallSpot = 0;
 char containerAscii[8] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0'};
 int scoreValues[26] = {1,4,4,2,1,4,3,3,1,10,5,2,4,2,1,4,10,1,1,1,2,5,4,8,3,10};
 int scoreArray[7] = {-1,-1,-1,-1,-1,-1,-1};
+// This is the scrabble distribution for letters
+int letterDistribution[] = {
+0,0,0,0,0,0,0,0,0,1,1,2,2,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,5,5,6,6,6,7,7,8,8,8,8,8,8,8,8,8,
+9,10,11,11,11,11,12,12,13,13,13,13,13,13,14,14,14,14,14,14,14,14,15,15,16,
+17,17,17,17,17,17,18,18,18,18,19,19,19,19,19,19,20,20,20,20,21,21,22,22,23,24,24,25
+};
 int addScore = 0;
 int addScoreFail = 0;
 int addTransition = 0;
@@ -48,7 +54,10 @@ void game_events(void)
 					(event.motion.y > submitRect.y) &&
 					(event.motion.y < submitRect.y + submitRect.h)) {
 					char *safeWord = containerAscii;
+					printf("containerAscii: %s\n", containerAscii);
+					printf("safeWord before sanitize: %s\n", safeWord);
 					safeWord = sanitize(safeWord);
+					printf("safeWord after sanitize: %s\n", safeWord);
 					if(isword(safeWord) == 1){
 						printf("Word!!\n");
 						//printf("%d\n", sparta);
@@ -180,8 +189,11 @@ void game_logic(void)
 	
 	if(SDL_GetTicks() - timeStart >= 1000) {
 		randomFallSpot = rand() % 4;
-		randomLetter = rand() % 26;
-		lettersY[randomFallSpot][randomLetter]++;
+		randomLetter = rand() % 98;
+		//printf("randomLetter: %d\n", randomLetter);
+		int randomLetterSpot = letterDistribution[randomLetter];
+		//printf("randomLetterSpot: %d: %c\n", randomLetterSpot, randomLetterSpot+65);
+		lettersY[randomFallSpot][randomLetterSpot]++;
 		//printf("Random letter chosen from timer [%d][%d]\n", randomFallSpot, randomLetter);
 		timeStart = SDL_GetTicks();
 	}
@@ -316,25 +328,15 @@ void drag_letter(int letter1, int letter2)
 
 char *sanitize(char *word)
 {
-	char *newWord = 0;
-	int i = 0;
-	int numSpaces = 0;
-	for(i = 6; i >= 0; i--) {
-		if(isspace(word[i])) {
-			numSpaces++;
-		}
-	}
-	unsigned long size = strlen(word) - numSpaces;
-	newWord = malloc(sizeof(char)*size);
-	strncpy(newWord, word, strlen(newWord));
-	newWord[size] = '\0';
-	for(i = 0; i < size; i++) {
-		*(word + i) = newWord[i];
-	}
-	char *final = newWord;
-	free(newWord);
-	newWord = 0;
-	return final;
+	printf("word in sanitize: %s\n", word);
+	char *strchrLoc = strchr(word, ' ');
+	int spaceLocation = strchrLoc - word;
+	printf("spaceLocation: %d\n", spaceLocation);
+	char *word2 = malloc(sizeof(char)*spaceLocation);
+	strncpy(word2, word, sizeof(word2));
+	word2[spaceLocation] = '\0';
+	printf("word2: %s\n", word2);
+	return word2;
 }
 
 int isword(char *word)
