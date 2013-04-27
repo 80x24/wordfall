@@ -329,9 +329,23 @@ void drag_letter(int letter1, int letter2)
 char *sanitize(char *word)
 {
 	printf("word in sanitize: %s\n", word);
+	// Get the location of the first space.
 	char *strchrLoc = strchr(word, ' ');
 	int spaceLocation = strchrLoc - word;
 	printf("spaceLocation: %d\n", spaceLocation);
+	// This is a performance bottleneck and
+	// could be sped up if needed.
+	// This loop checks if there is a space between
+	// the submitted word.
+	for(int i = 0; i < 26; i++) {
+		char *tmp = strchr(word, i+97);
+		int letterLocation = tmp - word;
+		if(letterLocation > spaceLocation) {
+			//printf("there was a space between the letters\n");
+			// Should return an empty string which will be invalid.
+			return "";
+		}
+	}
 	char *word2 = malloc(sizeof(char)*spaceLocation);
 	strncpy(word2, word, sizeof(word2));
 	word2[spaceLocation] = '\0';

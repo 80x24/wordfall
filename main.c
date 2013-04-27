@@ -211,17 +211,12 @@ int init()
 	
 	//SDL_WM_SetIcon will set the icon for the window.
 	
-	if(load_content() != 0) {
+	/*if(load_content() != 0) {
 		fprintf(stderr, "File loading failed\n");
 		return 1;
-	}
+	}*/
 
-	return 0;
-}
-
-int load_content()
-{
-	// ===== Intro =====
+	// ===== Intro Assets called before load_content() =====
 	introTransition = load_image_noalpha("assets/images/intro-transition.png");
 	if(introTransition == NULL) {
 		fprintf(stderr, "introTransition image not found\n%s\n", IMG_GetError());
@@ -233,6 +228,12 @@ int load_content()
 		fprintf(stderr,"Intro background image not found\n %s \n", IMG_GetError());
 		return 1;
 	}
+
+	return 0;
+}
+
+int load_content()
+{
 	
 	background = load_image_noalpha("assets/images/background.png");
 	if(background == NULL) {
