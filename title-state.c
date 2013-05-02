@@ -89,7 +89,20 @@ void title_logic(void)
 }
 
 void title_render(void)
-{	
+{
+
+	// Collision rects for play and option buttons
+	// This is horribly inefficient. Most of these values
+	// can be pre-computed and would not have to be calculated each time.
+	playRect.x = 148;
+	playRect.y = 300;
+	playRect.w = play->clip_rect.w;
+	playRect.h = play->clip_rect.h;
+	optionsRect.x = 115;
+	optionsRect.y = 350;
+	optionsRect.w = options->clip_rect.w;
+	optionsRect.h = options->clip_rect.h;
+
 	render_image(0,0,background,screen);
 	
 	render_image(-5,-5,cloud1,screen);
@@ -106,30 +119,20 @@ void title_render(void)
 	SDL_Color hoverColor = {254,210,6};
 	if(playRectHighlight == 1) {
 		play = render_font(playFont, "Play", hoverColor);
-		render_image(148, 300, play, screen);
+		render_image((360 - play->clip_rect.w)/2, 300, play, screen); // x was 148
 	}
 	if(playRectHighlight != 1) {
 		play = render_font(playFont, "Play", playColor);
-		render_image(148, 300, play, screen);
+		render_image((360 - play->clip_rect.w)/2, 300, play, screen);
 	}
 	if(optionsRectHighlight == 1) {
 		options = render_font(optionsFont, "Options", hoverColor);
-		render_image(115, 350, options, screen);
+		render_image((360 - options->clip_rect.w)/2, 350, options, screen); // was 115
 	}
 	if(optionsRectHighlight != 1) {
 		options = render_font(optionsFont, "Options", playColor);
-		render_image(115, 350, options, screen);
+		render_image((360 - options->clip_rect.w)/2, 350, options, screen);
 	}
-	
-	// Collision rects for play and option buttons
-	playRect.x = 148;
-	playRect.y = 300;
-	playRect.w = play->clip_rect.w;
-	playRect.h = play->clip_rect.h;
-	optionsRect.x = 115;
-	optionsRect.y = 350;
-	optionsRect.w = options->clip_rect.w;
-	optionsRect.h = options->clip_rect.h;
 
 	if(SDL_Flip(screen) != 0) {
 		fprintf(stderr, "screen update failed\n");

@@ -274,12 +274,12 @@ void game_render(void)
 	// Pause button
 	render_image(pauseX, pauseY, pause, screen);
 
-	// Score
-	SDL_Color blackColor = {0,0,0};
+	// Score yellow: 254,210,6
+	SDL_Color scoreColor = {0,0,0};
 	char finalScoreString[16];
-	sprintf(finalScoreString, "Score: %d", finalScore);
-	score = render_font(scoreFont, finalScoreString, blackColor);
-	render_image(32, 8, score, screen);
+	sprintf(finalScoreString, "SCORE: %d", finalScore);
+	score = render_font(scoreFont, finalScoreString, scoreColor);
+	render_image(32, ((score->clip_rect.h - pause->clip_rect.h)/2), score, screen);
 
 	if(letterDrag) { 
 		if(lettersY[letter1][letter2] >= GRASS_Y - lettersRect[0][0].h) {

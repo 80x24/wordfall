@@ -119,19 +119,19 @@ void title_fall_render(void)
 	SDL_Color hoverColor = {254,210,6};
 	if(playRectHighlight == 1) {
 		play = render_font(playFont, "Play", hoverColor);
-		render_image(148, playButtonY, play, screen);
+		render_image((360 - play->clip_rect.w)/2, playButtonY, play, screen); // x was 148
 	}
 	if(playRectHighlight != 1) {
 		play = render_font(playFont, "Play", playColor);
-		render_image(148, playButtonY, play, screen);
+		render_image((360 - play->clip_rect.w)/2, playButtonY, play, screen);
 	}
 	if(optionsRectHighlight == 1) {
 		options = render_font(optionsFont, "Options", hoverColor);
-		render_image(115, optionsButtonY, options, screen);
+		render_image((360 - options->clip_rect.w)/2, optionsButtonY, options, screen);
 	}
 	if(optionsRectHighlight != 1) {
 		options = render_font(optionsFont, "Options", playColor);
-		render_image(115, optionsButtonY, options, screen);
+		render_image((360 - options->clip_rect.w)/2, optionsButtonY, options, screen);
 	}
 
 	// Collision rects for play and option buttons

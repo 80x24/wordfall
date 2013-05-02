@@ -435,7 +435,7 @@ int load_content()
 		fprintf(stderr, "not word font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
-	scoreFont = load_font("assets/fonts/Roboto-bold.ttf", 16);
+	scoreFont = load_font("assets/fonts/Roboto-bold.ttf", 20);
 	if(scoreFont == NULL) {
 		fprintf(stderr, "score font loading failed\n%s\n", TTF_GetError());
 		return 1;

@@ -102,7 +102,7 @@ void game_transition_render(void)
 	render_image(submitX, submitY, submit, screen);
 
 	// Pause button
-	render_image(pauseX, pauseY, pause, screen);
+	//render_image(pauseX, pauseY, pause, screen);
 
 	SDL_Color playColor = {0,0,0};
 
