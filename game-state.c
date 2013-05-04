@@ -177,7 +177,7 @@ void game_logic(void)
 
 		for(int i = 0; i < 4; i++) {
 			for(int j = 0; j < 26; j++) {
-				lettersX[i][j] = (i*75)+15;
+				lettersX[i][j] = (i*75)+45;
 				lettersY[i][j] = 45;
 				lettersRect[i][j].x = lettersX[i][j];
 				lettersRect[i][j].y = lettersY[i][j];
