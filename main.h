@@ -30,7 +30,13 @@ enum gameStates {
 	STATE_TITLE,
 	STATE_GAME,
 	STATE_GAME_TRANSITION,
+	STATE_PAUSE,
 };
+
+typedef struct {
+	int x;
+	int y;
+}cloud;
 
 // state globals
 extern int currentState;
@@ -78,6 +84,8 @@ extern SDL_Surface *submit;
 extern SDL_Surface *scorePopup;
 extern SDL_Surface *notWord;
 extern SDL_Surface *score;
+extern SDL_Surface *pauseFontSurface;
+extern SDL_Surface *resume;
 
 extern TTF_Font *playFont;
 extern TTF_Font *optionsFont;
@@ -88,7 +96,12 @@ extern TTF_Font *optionsBackFont;
 extern TTF_Font *scoreFontPopup;
 extern TTF_Font *notWordFont;
 extern TTF_Font *scoreFont;
+extern TTF_Font *pauseFont;
+extern TTF_Font *resumeFont;
 // =================================================
 extern SDL_Event event;
+extern cloud cloudPos1;
+extern cloud cloudPos2;
+extern cloud cloudPos3;
 
 #endif

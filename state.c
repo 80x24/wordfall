@@ -41,6 +41,9 @@ void change_state(void)
 			case STATE_GAME_TRANSITION:
 				currentState = STATE_GAME_TRANSITION;
 				break;
+			case STATE_PAUSE:
+				currentState = STATE_PAUSE;
+				break;
 			case STATE_EXIT:
 				currentState = STATE_EXIT;
 				break;

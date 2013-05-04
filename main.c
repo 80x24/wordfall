@@ -44,6 +44,8 @@ SDL_Surface *submit = 0;
 SDL_Surface *notWord = 0;
 SDL_Surface *score = 0;
 SDL_Surface *scorePopup = 0;
+SDL_Surface *pauseFontSurface = 0;
+SDL_Surface *resume = 0;
 
 TTF_Font *playFont = 0;
 TTF_Font *optionsFont = 0;
@@ -54,6 +56,13 @@ TTF_Font *optionsBackFont = 0;
 TTF_Font *scoreFontPopup = 0;
 TTF_Font *notWordFont = 0;
 TTF_Font *scoreFont = 0;
+TTF_Font *pauseFont = 0;
+TTF_Font *resumeFont = 0;
+
+// cloud position global because fuck the clouds.
+cloud cloudPos1;
+cloud cloudPos2;
+cloud cloudPos3;
 
 SDL_Event event;
 
@@ -101,6 +110,9 @@ int main(int argc, char *argv[])
 			case STATE_GAME:
 				game_events();
 				break;
+			case STATE_PAUSE:
+				pause_events();
+				break;
 		}
 		
 		// =============================
@@ -136,7 +148,9 @@ int main(int argc, char *argv[])
 			case STATE_GAME:
 				game_logic();
 				break;
-
+			case STATE_PAUSE:
+				pause_logic();
+				break;
 		}
 		
 		change_state();
@@ -171,6 +185,9 @@ int main(int argc, char *argv[])
 				break;
 			case STATE_GAME:
 				game_render();
+				break;
+			case STATE_PAUSE:
+				pause_render();
 				break;
 		}
 		
@@ -228,6 +245,13 @@ int init()
 		fprintf(stderr,"Intro background image not found\n %s \n", IMG_GetError());
 		return 1;
 	}
+
+	cloudPos1.x = -5;
+	cloudPos1.y = 23;
+	cloudPos2.x = 105;
+	cloudPos2.y = 2;
+	cloudPos3.x = 215;
+	cloudPos3.y = 20;
 
 	return 0;
 }
@@ -435,11 +459,22 @@ int load_content()
 		fprintf(stderr, "not word font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
-	scoreFont = load_font("assets/fonts/Roboto-bold.ttf", 20);
+	scoreFont = load_font("assets/fonts/Roboto-Bold.ttf", 20);
 	if(scoreFont == NULL) {
 		fprintf(stderr, "score font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
+	pauseFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
+	if(pauseFont == NULL) {
+		fprintf(stderr, "pause font loading failed\n%s\n", TTF_GetError());
+		return 1;
+	}
+	resumeFont = load_font("assets/fonts/Roboto-Bold.ttf", 24);
+	if(resumeFont == NULL) {
+		fprintf(stderr, "resume font loading failed\n%s\n", TTF_GetError());
+		return 1;
+	}
+
 	return 0;
 }
 
@@ -466,6 +501,8 @@ void quit()
 	SDL_FreeSurface(score);
 	SDL_FreeSurface(scorePopup);
 	SDL_FreeSurface(notWord);
+	SDL_FreeSurface(pauseFontSurface);
+	SDL_FreeSurface(resume);
 
 	for(int i = 0; i < 8; i++) {
 		SDL_FreeSurface(title[i]);
@@ -493,6 +530,8 @@ void quit()
 	TTF_CloseFont(scoreFontPopup);
 	TTF_CloseFont(notWordFont);
 	TTF_CloseFont(scoreFont);
+	TTF_CloseFont(pauseFont);
+	TTF_CloseFont(resumeFont);
 
 	free(dict);
 

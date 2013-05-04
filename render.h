@@ -11,8 +11,8 @@
 #include <SDL/SDL_mixer.h>
 #endif
 
-
 void render_image(int x, int y, SDL_Surface *source, SDL_Surface *destination);
 SDL_Surface *render_font(TTF_Font *font, const char *text, SDL_Color color);
 void render_music(Mix_Music *music, int loops);
+
 #endif

@@ -97,9 +97,9 @@ void title_options_render(void)
 {	
 	render_image(0,0,background,screen);
 	
-	render_image(-5,-5,cloud1,screen);
-	render_image(215,-5,cloud3,screen);
-	render_image(105,5,cloud2,screen);
+	render_image(cloudPos1.x, cloudPos1.y, cloud1, screen);
+	render_image(cloudPos2.x, cloudPos2.y, cloud2, screen);
+	render_image(cloudPos3.x, cloudPos3.y, cloud3, screen);
 	
 	// Word Fall title
 	for(int i = 0; i < 8; i++) {

@@ -33,6 +33,7 @@ int lettersX[4][26] = {{0}};
 SDL_Rect lettersRect[4][26];
 SDL_Rect submitRect;
 SDL_Rect containerRect[7];
+SDL_Rect pauseRect;
 
 int fallStart = 0;
 int theScore = 0;
@@ -90,6 +91,12 @@ void game_events(void)
 							containerAscii[i] = 32;
 						}
 					}
+				}
+				else if((event.motion.x > pauseRect.x) &&
+					(event.motion.x < pauseRect.x + pauseRect.w) &&
+					(event.motion.y > pauseRect.y) &&
+					(event.motion.y < pauseRect.y + pauseRect.h)) {
+					set_next_state(STATE_PAUSE);
 				}
 				for(int i = 0; i < 4; i++) {
 					for(int j = 0; j < 26; j++) {
@@ -155,6 +162,12 @@ void game_logic(void)
 		submitRect.y = submitY;
 		submitRect.w = submit->clip_rect.w;
 		submitRect.h = submit->clip_rect.h;
+
+		pauseRect.x = pauseX;
+		pauseRect.y = pauseY;
+		pauseRect.w = pause->clip_rect.w;
+		pauseRect.h = pause->clip_rect.h;
+
 		for(int i = 0; i < 7; i++) {
 			containerRect[i].x = containerX[i];
 			containerRect[i].y = containerY;
@@ -255,9 +268,9 @@ void game_render(void)
 		}
 	}
 
-	render_image(-5,-5,cloud1,screen);
-	render_image(215,-5,cloud3,screen);
-	render_image(105,5,cloud2,screen);
+	render_image(cloudPos1.x, cloudPos1.y, cloud1, screen);
+	render_image(cloudPos2.x, cloudPos2.y, cloud2, screen);
+	render_image(cloudPos3.x, cloudPos3.y, cloud3, screen);
 
 	render_image(0,GRASS_Y,grass,screen);
 

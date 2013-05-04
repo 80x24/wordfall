@@ -44,4 +44,8 @@ void game_transition_events(void);
 void game_transition_logic(void);
 void game_transition_render(void);
 
+void pause_events(void);
+void pause_logic(void);
+void pause_render(void);
+
 #endif
