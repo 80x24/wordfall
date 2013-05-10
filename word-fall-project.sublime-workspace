@@ -54,6 +54,14 @@
 				"buffer_size": 13432,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "game-state.c",
+			"settings":
+			{
+				"buffer_size": 11581,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -197,7 +205,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -223,6 +231,33 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "game-state.c",
+					"settings":
+					{
+						"buffer_size": 11581,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8465,
+								8465
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3624.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

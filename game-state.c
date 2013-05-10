@@ -80,6 +80,14 @@ void game_events(void)
 						finalScore += theScore;
 						printf("}\n");
 						printf("final score: %d\n", finalScore);
+
+						// Play win sound
+						if(sound) {
+							if(Mix_PlayChannel(-1, win, 0) == -1) {
+								fprintf(stderr, "win sound failed!\n%s\n",
+									Mix_GetError());
+							}
+						}
 					}
 					else {
 						printf("Not a word!\n");
@@ -89,6 +97,11 @@ void game_events(void)
 							scoreArray[i] = -1;
 							containerLetters[i] = 0;
 							containerAscii[i] = 32;
+						}
+						if(sound) {
+							if(Mix_PlayChannel(-1, error, 0) == -1) {
+								fprintf(stderr, "error sound failed!\n%s\n", Mix_GetError());
+							}
 						}
 					}
 				}
@@ -135,6 +148,12 @@ void game_events(void)
 					containerLetters[i] = letters[letter1][letter2];
 					containerAscii[i] = letter2+97;
 					scoreArray[i] = letter2;
+					if(sound) {
+						Mix_VolumeChunk(click, 64);
+						if(Mix_PlayChannel(-1, click, 0) == -1) {
+							fprintf(stderr, "click sound failed!\n%s\n", Mix_GetError());
+						}
+					}
 				}
 				else if((lettersX[letter1][letter2] > containerRect[i].x) &&
 				(lettersX[letter1][letter2] < containerRect[i].x + containerRect[i].w) &&
@@ -145,6 +164,12 @@ void game_events(void)
 					containerLetters[i] = letters[letter1][letter2];
 					containerAscii[i] = letter2+97;
 					scoreArray[i] = letter2;
+					if(sound) {
+						Mix_VolumeChunk(click, 64);
+						if(Mix_PlayChannel(-1, click, 0) == -1) {
+							fprintf(stderr, "click sound failed!\n%s\n", Mix_GetError());
+						}
+					}
 				}
 			}
 			letterDrag = 0;
@@ -179,8 +204,8 @@ void game_logic(void)
 			for(int j = 0; j < 26; j++) {
 				lettersX[i][j] = (i*75)+45;
 				lettersY[i][j] = 45;
-				lettersRect[i][j].x = lettersX[i][j];
-				lettersRect[i][j].y = lettersY[i][j];
+				//lettersRect[i][j].x = lettersX[i][j];
+				//lettersRect[i][j].y = lettersY[i][j];
 				lettersRect[i][j].w = letters[i][j]->clip_rect.w;
 				lettersRect[i][j].h = letters[i][j]->clip_rect.h;
 			}
@@ -239,13 +264,19 @@ void game_logic(void)
 	// This for loop within the main loop might be bad.
 	for(int i = 0; i < 4; i++) {
 		for(int j = 0; j < 26; j++) {
-			lettersRect[i][j].x = lettersX[i][j];
-			lettersRect[i][j].y = lettersY[i][j];
 			if(lettersY[i][j] != 45) {
+				lettersRect[i][j].x = lettersX[i][j];
+				lettersRect[i][j].y = lettersY[i][j];
 				lettersY[i][j]++;
 			}
 			if((lettersY[i][j] >= (GRASS_Y+lettersRect[i][j].h+20)) && letters[i][j] != letters[letter1][letter2]) {
+				// May fix the bug.
 				lettersY[i][j] = 45;
+				lettersX[i][j] = (i*75)+45;
+				lettersRect[i][j].x = lettersX[i][j];
+				lettersRect[i][j].y = lettersY[i][j];
+				lettersRect[i][j].w = letters[i][j]->clip_rect.w;
+				lettersRect[i][j].h = letters[i][j]->clip_rect.h;
 			}
 		}
 	}

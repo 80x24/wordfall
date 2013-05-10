@@ -16,6 +16,8 @@ int nextState = STATE_NULL;
 char **dict = 0;
 int dictNum = 0;
 
+int sound = 1;
+
 // Surface Globals
 // These should probably be reduced in scope
 SDL_Surface *screen = 0;
@@ -58,6 +60,11 @@ TTF_Font *notWordFont = 0;
 TTF_Font *scoreFont = 0;
 TTF_Font *pauseFont = 0;
 TTF_Font *resumeFont = 0;
+
+Mix_Music *backgroundMusic = 0;
+Mix_Chunk *win = 0;
+Mix_Chunk *click = 0;
+Mix_Chunk *error = 0;
 
 // cloud position global because fuck the clouds.
 cloud cloudPos1;
@@ -213,6 +220,16 @@ int init()
 	
 	if(TTF_Init() == -1) {
 		fprintf(stderr, "SDL TTF initialization failed\n %s\n", TTF_GetError());
+		return 1;
+	}
+
+	if(Mix_Init(MIX_INIT_MP3) == -1) {
+		fprintf(stderr, "SDL Mixer initialization failed\n%s\n", Mix_GetError());
+		return 1;
+	}
+	// 4KB buffer might not be enough.
+	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) < 0) {
+		fprintf(stderr, "SDL Mix open audio failed\n%s\n", Mix_GetError());
 		return 1;
 	}
 	
@@ -449,6 +466,7 @@ int load_content()
 		fprintf(stderr, "options back font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
+
 	scoreFontPopup = load_font("assets/fonts/Roboto-Bold.ttf", 20);
 	if(scoreFontPopup == NULL) {
 		fprintf(stderr, "score font popup loading failed\n%s\n", TTF_GetError());
@@ -459,19 +477,47 @@ int load_content()
 		fprintf(stderr, "not word font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
+
 	scoreFont = load_font("assets/fonts/Roboto-Bold.ttf", 20);
 	if(scoreFont == NULL) {
 		fprintf(stderr, "score font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
+
 	pauseFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
 	if(pauseFont == NULL) {
 		fprintf(stderr, "pause font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
+
 	resumeFont = load_font("assets/fonts/Roboto-Bold.ttf", 24);
 	if(resumeFont == NULL) {
 		fprintf(stderr, "resume font loading failed\n%s\n", TTF_GetError());
+		return 1;
+	}
+
+	// --- Load Sounds ---
+	backgroundMusic = Mix_LoadMUS("assets/sounds/background-music/super-friendly.mp3");
+	if(backgroundMusic == NULL) {
+		fprintf(stderr, "background music loading failed\n%s\n", Mix_GetError());
+		return 1;
+	}
+	
+	win = Mix_LoadWAV("assets/sounds/effects/pling.wav");
+	if(win == NULL) {
+		fprintf(stderr, "Win music loading failed\n%s\n", Mix_GetError());
+		return 1;
+	}
+
+	click = Mix_LoadWAV("assets/sounds/effects/click.wav");
+	if(click == NULL) {
+		fprintf(stderr, "Click music loading failed\n%s\n", Mix_GetError());
+		return 1;
+	}
+
+	error = Mix_LoadWAV("assets/sounds/effects/error.wav");
+	if(error == NULL) {
+		fprintf(stderr, "error music loading failed\n%s\n", Mix_GetError());
 		return 1;
 	}
 
@@ -481,6 +527,11 @@ int load_content()
 void quit()
 {
 	//printf("I'm quitting!!\n");
+	Mix_HaltMusic();
+	Mix_FreeChunk(win);
+	Mix_FreeChunk(click);
+	Mix_FreeChunk(error);
+	Mix_FreeMusic(backgroundMusic);
 
 	// There must be a better way to do this
 	SDL_FreeSurface(background);
@@ -534,7 +585,8 @@ void quit()
 	TTF_CloseFont(resumeFont);
 
 	free(dict);
-
+	Mix_CloseAudio();
+	Mix_Quit();
 	TTF_Quit();
 	SDL_Quit();
 }

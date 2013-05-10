@@ -46,6 +46,9 @@ extern int nextState;
 extern char **dict;
 extern int dictNum;
 
+// sound global
+extern int sound;
+
 int init();
 void quit();
 int load_content();
@@ -98,6 +101,12 @@ extern TTF_Font *notWordFont;
 extern TTF_Font *scoreFont;
 extern TTF_Font *pauseFont;
 extern TTF_Font *resumeFont;
+
+extern Mix_Music *backgroundMusic;
+extern Mix_Chunk *win;
+extern Mix_Chunk *click;
+extern Mix_Chunk *error;
+
 // =================================================
 extern SDL_Event event;
 extern cloud cloudPos1;
