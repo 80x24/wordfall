@@ -116,7 +116,8 @@ void game_events(void)
 						if((event.motion.x > lettersRect[i][j].x) &&
 							(event.motion.x < lettersRect[i][j].x + lettersRect[i][j].w) &&
 							(event.motion.y > lettersRect[i][j].y) &&
-							(event.motion.y < lettersRect[i][j].y + lettersRect[i][j].h)) {
+							(event.motion.y < lettersRect[i][j].y + lettersRect[i][j].h)
+							&& (event.motion.y > 40)) {
 							letterDrag = 1;
 							letter1 = i;
 							letter2 = j;
@@ -330,6 +331,7 @@ void game_render(void)
 			render_image(lettersX[letter1][letter2], lettersY[letter1][letter2], letters[letter1][letter2], screen);
 		}
 	}
+
 	if(addScore) {
 		if(!addScoreFail) {
 			SDL_Color scoreColor = {0,0,0};
@@ -344,7 +346,7 @@ void game_render(void)
 			render_image(320, addTransitionY, notWord, screen);
 		}
 	}
-
+	
 	if(SDL_Flip(screen) != 0) {
 		fprintf(stderr, "screen update failed\n");
 	}

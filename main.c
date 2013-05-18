@@ -48,6 +48,7 @@ SDL_Surface *score = 0;
 SDL_Surface *scorePopup = 0;
 SDL_Surface *pauseFontSurface = 0;
 SDL_Surface *resume = 0;
+SDL_Surface *returnMenu = 0;
 
 TTF_Font *playFont = 0;
 TTF_Font *optionsFont = 0;
@@ -60,6 +61,7 @@ TTF_Font *notWordFont = 0;
 TTF_Font *scoreFont = 0;
 TTF_Font *pauseFont = 0;
 TTF_Font *resumeFont = 0;
+TTF_Font *returnMenuFont = 0;
 
 Mix_Music *backgroundMusic = 0;
 Mix_Chunk *win = 0;
@@ -495,6 +497,12 @@ int load_content()
 		fprintf(stderr, "resume font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
+	
+	returnMenuFont = load_font("assets/fonts/Roboto-Bold.ttf", 20);
+	if(returnMenuFont == NULL) {
+		fprintf(stderr, "Return to main menu font loading failed\n%s\n", TTF_GetError());
+		return 1;
+	}
 
 	// --- Load Sounds ---
 	backgroundMusic = Mix_LoadMUS("assets/sounds/background-music/super-friendly.mp3");
@@ -554,6 +562,7 @@ void quit()
 	SDL_FreeSurface(notWord);
 	SDL_FreeSurface(pauseFontSurface);
 	SDL_FreeSurface(resume);
+	SDL_FreeSurface(returnMenu);
 
 	for(int i = 0; i < 8; i++) {
 		SDL_FreeSurface(title[i]);
@@ -583,6 +592,7 @@ void quit()
 	TTF_CloseFont(scoreFont);
 	TTF_CloseFont(pauseFont);
 	TTF_CloseFont(resumeFont);
+	TTF_CloseFont(returnMenuFont);
 
 	free(dict);
 	Mix_CloseAudio();

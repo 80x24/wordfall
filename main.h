@@ -89,6 +89,7 @@ extern SDL_Surface *notWord;
 extern SDL_Surface *score;
 extern SDL_Surface *pauseFontSurface;
 extern SDL_Surface *resume;
+extern SDL_Surface *returnMenu;
 
 extern TTF_Font *playFont;
 extern TTF_Font *optionsFont;
@@ -101,6 +102,7 @@ extern TTF_Font *notWordFont;
 extern TTF_Font *scoreFont;
 extern TTF_Font *pauseFont;
 extern TTF_Font *resumeFont;
+extern TTF_Font *returnMenuFont;
 
 extern Mix_Music *backgroundMusic;
 extern Mix_Chunk *win;

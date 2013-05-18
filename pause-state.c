@@ -6,9 +6,10 @@
 #include "render.h"
 #include "main.h"
 #include "game-state.h"
+#include "pause-state.h"
 
-SDL_Rect resumeRect;
-int resumeX,resumeY,pauseFontX,pauseFontY = 0;
+SDL_Rect resumeRect, returnMenuRect;
+static loc resumeLoc, returnLoc, pauseFontLoc;
 
 void pause_events(void)
 {
@@ -32,6 +33,12 @@ void pause_events(void)
 					(event.motion.y > pauseRect.y) &&
 					(event.motion.y < pauseRect.y + pauseRect.h)) {
 					set_next_state(STATE_GAME);
+				}
+				else if((event.motion.x > returnMenuRect.x) &&
+				(event.motion.x < returnMenuRect.x + returnMenuRect.w) &&
+				(event.motion.y > returnMenuRect.y) &&
+				(event.motion.y < returnMenuRect.y + returnMenuRect.h)) {
+					set_next_state(STATE_TITLE_FALL);
 				}
 			}
 		}
@@ -80,29 +87,39 @@ void pause_render(void)
 	char finalScoreString[16];
 	sprintf(finalScoreString, "SCORE: %d", finalScore);
 	score = render_font(scoreFont, finalScoreString, scoreColor);
-	render_image(32, ((score->clip_rect.h - pause->clip_rect.h)/2), score, screen);
 
 	pauseFontSurface = render_font(pauseFont, "Paused", scoreColor);
 	resume = render_font(resumeFont, "Resume", scoreColor);
+	returnMenu = render_font(returnMenuFont, "Main Menu", scoreColor);
 
-	pauseFontX = (360 - pauseFontSurface->clip_rect.w)/2;
-	pauseFontY = 200;
-	resumeX = (360 - resume->clip_rect.w)/2;
-	resumeY = pauseFontY+75;
+	pauseFontLoc.x = (360 - pauseFontSurface->clip_rect.w)/2;
+	pauseFontLoc.y = 200;
+	resumeLoc.x = (360 - resume->clip_rect.w)/2;
+	resumeLoc.y = pauseFontLoc.y+75;
+	returnLoc.x = (360 - returnMenu->clip_rect.w)/2;
+	returnLoc.y = resumeLoc.y+75;
 
-	// May be inefficient 
-	resumeRect.x = resumeX;
-	resumeRect.y = resumeY;
-	resumeRect.w = resume->clip_rect.w;
-	resumeRect.h = resume->clip_rect.h;
-
+	// May be inefficient
 	pauseRect.x = pauseX;
 	pauseRect.y = pauseY;
 	pauseRect.w = pause->clip_rect.w;
 	pauseRect.h = pause->clip_rect.h;
 
-	render_image(pauseFontX, pauseFontY, pauseFontSurface, screen);
-	render_image(resumeX, resumeY, resume, screen);
+	resumeRect.x = resumeLoc.x;
+	resumeRect.y = resumeLoc.y;
+	resumeRect.w = resume->clip_rect.w;
+	resumeRect.h = resume->clip_rect.h;
+
+	returnMenuRect.x = returnLoc.x;
+	returnMenuRect.y = returnLoc.y;
+	returnMenuRect.w = returnMenu->clip_rect.w;
+	returnMenuRect.h = returnMenu->clip_rect.h;
+
+	
+	render_image(32, ((score->clip_rect.h - pause->clip_rect.h)/2), score, screen);
+	render_image(pauseFontLoc.x, pauseFontLoc.y, pauseFontSurface, screen);
+	render_image(resumeLoc.x, resumeLoc.y, resume, screen);
+	render_image(returnLoc.x, returnLoc.y, returnMenu, screen);
 
 	if(SDL_Flip(screen) != 0) {
 		fprintf(stderr, "screen update failed\n");

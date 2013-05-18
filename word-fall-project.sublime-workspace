@@ -48,18 +48,10 @@
 	"buffers":
 	[
 		{
-			"file": "main.c",
-			"settings":
-			{
-				"buffer_size": 13432,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "game-state.c",
 			"settings":
 			{
-				"buffer_size": 11581,
+				"buffer_size": 12539,
 				"line_ending": "Unix"
 			}
 		}
@@ -92,25 +84,25 @@
 	},
 	"file_history":
 	[
+		"/Users/kyle/word-fall/main.c",
 		"/Users/kyle/word-fall/pause-state.c",
-		"/Users/kyle/word-fall/title-state.c",
+		"/Users/kyle/word-fall/game-state.h",
+		"/Users/kyle/word-fall/pause-state.h",
 		"/Users/kyle/word-fall/game-state.c",
+		"/Users/kyle/word-fall/main.h",
+		"/Users/kyle/word-fall/game-transition-state.c",
+		"/Users/kyle/word-fall/intro-state.c",
+		"/Users/kyle/word-fall/gamestates.h",
 		"/Users/kyle/word-fall/title-transition-state.c",
+		"/Users/kyle/word-fall/title-state.c",
 		"/Users/kyle/word-fall/title-options-state.c",
 		"/Users/kyle/word-fall/title-fall-state.c",
 		"/Users/kyle/word-fall/intro-transition-state.c",
-		"/Users/kyle/word-fall/intro-state.c",
-		"/Users/kyle/word-fall/game-transition-state.c",
-		"/Users/kyle/word-fall/main.c",
-		"/Users/kyle/word-fall/pause-state.h",
-		"/Users/kyle/word-fall/main.h",
 		"/Users/kyle/word-fall/state.c",
 		"/Users/kyle/word-fall/state.h",
-		"/Users/kyle/word-fall/game-state.h",
 		"/Users/kyle/word-fall/Makefile",
 		"/Users/kyle/word-fall/render.h",
 		"/Users/kyle/word-fall/render.c",
-		"/Users/kyle/word-fall/gamestates.h",
 		"/Users/kyle/git-repos/tuxtype/src/SDL_extras.h",
 		"/Users/kyle/word-fall/load.h",
 		"/Users/kyle/word-fall/load.c",
@@ -160,6 +152,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"containerLetters",
+			"container",
+			"containerLetters",
+			"containerX",
+			"containerLetters",
 			"blackColor",
 			"scoreFont",
 			"randomLetter",
@@ -205,50 +202,23 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "main.c",
-					"settings":
-					{
-						"buffer_size": 13432,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5495,
-								5495
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "game-state.c",
 					"settings":
 					{
-						"buffer_size": 11581,
+						"buffer_size": 12539,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8465,
-								8465
+								8405,
+								8405
 							]
 						],
 						"settings":
@@ -257,7 +227,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3624.0,
+						"translation.y": 4656.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
