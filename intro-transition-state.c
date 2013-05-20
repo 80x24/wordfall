@@ -8,6 +8,11 @@
 
 int alpha = 255;
 
+void intro_transition_init(void)
+{
+	alpha = 255;
+}
+
 void intro_transition_events(void)
 {
 	//printf("fade in\n");
@@ -41,6 +46,11 @@ void intro_transition_render(void)
 	if(SDL_Flip(screen) != 0) {
 		fprintf(stderr, "screen update failed\n");
 	}
+}
+
+void intro_transition_fade_init(void)
+{
+	
 }
 
 void intro_transition_fade_events(void)

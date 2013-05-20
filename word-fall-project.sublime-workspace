@@ -48,10 +48,26 @@
 	"buffers":
 	[
 		{
+			"file": "pause-state.c",
+			"settings":
+			{
+				"buffer_size": 3618,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "main.h",
+			"settings":
+			{
+				"buffer_size": 2714,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "game-state.c",
 			"settings":
 			{
-				"buffer_size": 12539,
+				"buffer_size": 12573,
 				"line_ending": "Unix"
 			}
 		}
@@ -84,15 +100,15 @@
 	},
 	"file_history":
 	[
-		"/Users/kyle/word-fall/main.c",
-		"/Users/kyle/word-fall/pause-state.c",
-		"/Users/kyle/word-fall/game-state.h",
-		"/Users/kyle/word-fall/pause-state.h",
 		"/Users/kyle/word-fall/game-state.c",
+		"/Users/kyle/word-fall/game-state.h",
+		"/Users/kyle/word-fall/main.c",
 		"/Users/kyle/word-fall/main.h",
+		"/Users/kyle/word-fall/pause-state.h",
 		"/Users/kyle/word-fall/game-transition-state.c",
-		"/Users/kyle/word-fall/intro-state.c",
 		"/Users/kyle/word-fall/gamestates.h",
+		"/Users/kyle/word-fall/pause-state.c",
+		"/Users/kyle/word-fall/intro-state.c",
 		"/Users/kyle/word-fall/title-transition-state.c",
 		"/Users/kyle/word-fall/title-state.c",
 		"/Users/kyle/word-fall/title-options-state.c",
@@ -141,7 +157,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			""
@@ -152,6 +168,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"resumeX",
 			"containerLetters",
 			"container",
 			"containerLetters",
@@ -202,23 +219,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "game-state.c",
+					"file": "pause-state.c",
 					"settings":
 					{
-						"buffer_size": 12539,
+						"buffer_size": 3618,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8405,
-								8405
+								1294,
+								1294
 							]
 						],
 						"settings":
@@ -227,7 +244,61 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4656.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "main.h",
+					"settings":
+					{
+						"buffer_size": 2714,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "game-state.c",
+					"settings":
+					{
+						"buffer_size": 12573,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6144,
+								6144
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

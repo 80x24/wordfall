@@ -11,6 +11,11 @@
 SDL_Rect resumeRect, returnMenuRect;
 static loc resumeLoc, returnLoc, pauseFontLoc;
 
+void pause_init(void)
+{
+
+}
+
 void pause_events(void)
 {
 	while(SDL_PollEvent(&event)) {
@@ -53,12 +58,10 @@ void pause_render(void)
 {
 	render_image(0,0,background,screen);
 
-	if(gameInit) {
-		for(int i = 0; i < 4; i++) {
-			for(int j = 0; j < 26; j++) {
-				if(lettersY[i][j] <= GRASS_Y) {
-					render_image(lettersX[i][j], lettersY[i][j], letters[i][j], screen);
-				}
+	for(int i = 0; i < 4; i++) {
+		for(int j = 0; j < 26; j++) {
+			if(lettersY[i][j] <= GRASS_Y) {
+				render_image(lettersX[i][j], lettersY[i][j], letters[i][j], screen);
 			}
 		}
 	}

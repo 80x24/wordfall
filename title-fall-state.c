@@ -7,11 +7,47 @@
 #include "main.h"
 #include "title-state.h"
 
-int wordY = 150;
-int fallY = 200;
+const int wordY = 165; // was 150
+const int fallY = 215; // was 200
 int playButtonY = 700;
 int optionsButtonY = 750;
 unsigned int buttonsFall = 1;
+// word fall titles
+int titleX[] = {75, 118, 161, 204, 118, 161, 204, 247};
+int titleY[] = {-50, -75, -100, -125, -175, -200, -225, -250};
+
+void title_fall_init(void)
+{
+	//wordY = 150;
+	//fallY = 200;
+	playButtonY = 700;
+	optionsButtonY = 750;
+	buttonsFall = 1;
+	for(int i = 0; i < 8; i++) {
+		if(i == 0) {
+			titleY[i] = -50;
+		}
+		else {
+			titleY[i] = (titleY[i-1] - 25);
+		}
+	}
+	for(int i = 0; i < 4; i++) {
+		if(i == 0) {
+			titleX[i] = 75;
+		}
+		else {
+			titleX[i] = titleX[i - 1] + 43;
+		}
+	}
+	for(int i = 4; i < 8; i++) {
+		if(i == 4) {
+			titleX[i] = 118;
+		}
+		else {
+			titleX[i] = titleX[i - 1] + 43;
+		}
+	}
+}
 
 void title_fall_events(void)
 {	

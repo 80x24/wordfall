@@ -38,7 +38,6 @@ extern int lettersY[4][26];
 extern int lettersX[4][26];
 //extern int letterDistribution[98];
 
-extern int fallStart;
 extern int randomLetter;
 // This is the first array value for lettersY[][]
 extern int randomFallSpot;

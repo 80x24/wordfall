@@ -6,7 +6,11 @@
 #include "render.h"
 #include "main.h"
 
-extern int alpha;
+
+void title_transition_init(void)
+{
+	alpha = 255;
+}
 
 void title_transition_events(void)
 {

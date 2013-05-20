@@ -8,6 +8,15 @@
 
 int introTimeStart = 0;
 
+void intro_init(void) 
+{
+	introTimeStart = SDL_GetTicks();
+	if(load_content() != 0) {
+		fprintf(stderr, "File loading failed\n");
+		exit(1);
+	}
+}
+
 void intro_events(void)
 {
 	//printf("intro\n");
@@ -23,18 +32,6 @@ void intro_events(void)
 
 void intro_logic(void)
 {
-	static int tmp = 1;
-	if(tmp == 1) {
-		introTimeStart = SDL_GetTicks();
-		printf("calling load content!!\n");
-		if(load_content() != 0) {
-			fprintf(stderr, "File loading failed\n");
-			exit(1);
-		}
-		printf("load content call finished\n");
-		tmp -= 1;
-	}
-
 	if(SDL_GetTicks() - introTimeStart >= 1000) {
 		set_next_state(STATE_INTRO_TRANSITION_FADE);
 	}

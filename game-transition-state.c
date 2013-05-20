@@ -25,6 +25,29 @@ int containerY = 685;
 int submitX = 320;
 int submitY = 685;
 
+void game_transition_init(void)
+{
+	timeStart = 0;
+	playX = 148;
+	playY = 300;
+	pauseX = 5;
+	pauseY = -25;
+	optionsX = 115;
+	optionsY = 350;
+	for(int i = 0; i < 7; i++) {
+		if(i == 0) {
+			containerX[i] = 2;
+		}
+		else {
+			containerX[i] = containerX[i-1] + 45;
+		}
+	}
+	containerY = 685;
+	submitX = 320;
+	submitY = 685;
+	timeStart = SDL_GetTicks();
+}
+
 
 void game_transition_events(void)
 {
@@ -40,12 +63,7 @@ void game_transition_events(void)
 
 void game_transition_logic(void)
 {
-	
-	static int tmp = 1;
-	if(tmp == 1) {
-		timeStart = SDL_GetTicks();
-		tmp -= 1;
-	}
+	// timeStart = SDL_GetTicks();
 	
 	if(SDL_GetTicks() - timeStart >= 1250) {
 		set_next_state(STATE_GAME);

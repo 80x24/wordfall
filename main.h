@@ -49,6 +49,8 @@ extern int dictNum;
 // sound global
 extern int sound;
 
+extern int alpha;
+
 int init();
 void quit();
 int load_content();

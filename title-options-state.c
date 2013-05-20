@@ -7,6 +7,11 @@
 #include "main.h"
 #include "title-state.h"
 
+void title_options_init(void)
+{
+	
+}
+
 void title_options_events(void)
 {
 	
@@ -131,11 +136,11 @@ void title_options_render(void)
 	}
 	if(backHighlight == 1) {
 		optionsBack = render_font(optionsBackFont, "Back", hoverColor);
-		render_image(140, 500, optionsBack, screen);
+		render_image(140, 475, optionsBack, screen);
 	}
 	if(backHighlight != 1) {
 		optionsBack = render_font(optionsBackFont, "Back", optionsColor);
-		render_image(140, 500, optionsBack, screen);
+		render_image(140, 475, optionsBack, screen);
 	}
 	
 	// Collision rects
@@ -150,7 +155,7 @@ void title_options_render(void)
 	soundOffRect.h = optionsSoundOff->clip_rect.h;
 
 	optionsBackRect.x = 140;
-	optionsBackRect.y = 500;
+	optionsBackRect.y = 475;
 	optionsBackRect.w = optionsBack->clip_rect.w;
 	optionsBackRect.h = optionsBack->clip_rect.h;
 

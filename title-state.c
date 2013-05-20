@@ -7,9 +7,7 @@
 #include "main.h"
 #include "title-state.h"
 
-// word fall titles
-int titleX[] = {75, 118, 161, 204, 118, 161, 204, 247};
-int titleY[] = {-50, -75, -100, -125, -175, -200, -225, -250};
+
 
 // highlights
 int soundOnHighlight =  0;
@@ -23,6 +21,17 @@ SDL_Rect optionsRect;
 SDL_Rect soundOnRect;
 SDL_Rect soundOffRect;
 SDL_Rect optionsBackRect;
+
+void title_init(void)
+{
+
+	// Line below might be an issue.
+	soundOnHighlight = 0;
+	soundOffHighlight = 0;
+	backHighlight = 0;
+	playRectHighlight = 0;
+	optionsRectHighlight = 0;
+}
 
 void title_events(void)
 {
