@@ -16,10 +16,10 @@ all:
 	@echo "usage: make osx or make linux"
 osx:
 	$(CC) $(CFLAGS) -c $(CFILES) $(OSXEXTRA)
-	$(CC) $(CFLAGS) $(LDFLAGSOSX) $(OBJECTS) $(OBJECTSOSX) -o word-fall
+	$(CC) $(CFLAGS) $(OBJECTS) $(OBJECTSOSX) $(LDFLAGSOSX) -o word-fall
 linux:
 	$(CC) $(CFLAGS) -c $(CFILES) $(LINUXEXTRA)
-	$(CC) $(CFLAGS) $(LDFLAGSLINUX) $(OBJECTS) $(OBJECTSLINUX) -o word-fall
+	$(CC) $(CFLAGS) $(OBJECTS) $(OBJECTSLINUX) $(LDFLAGSLINUX) -o word-fall
 clean:
 	rm -rf $(OBJECTS) $(OBJECTSLINUX) $(OBJECTSOSX)
 install:
