@@ -48,26 +48,10 @@
 	"buffers":
 	[
 		{
-			"file": "pause-state.c",
+			"file": "main.c",
 			"settings":
 			{
-				"buffer_size": 3618,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "main.h",
-			"settings":
-			{
-				"buffer_size": 2714,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "game-state.c",
-			"settings":
-			{
-				"buffer_size": 12573,
+				"buffer_size": 15047,
 				"line_ending": "Unix"
 			}
 		}
@@ -101,30 +85,31 @@
 	"file_history":
 	[
 		"/Users/kyle/word-fall/game-state.c",
-		"/Users/kyle/word-fall/game-state.h",
 		"/Users/kyle/word-fall/main.c",
-		"/Users/kyle/word-fall/main.h",
-		"/Users/kyle/word-fall/pause-state.h",
-		"/Users/kyle/word-fall/game-transition-state.c",
-		"/Users/kyle/word-fall/gamestates.h",
-		"/Users/kyle/word-fall/pause-state.c",
-		"/Users/kyle/word-fall/intro-state.c",
-		"/Users/kyle/word-fall/title-transition-state.c",
-		"/Users/kyle/word-fall/title-state.c",
-		"/Users/kyle/word-fall/title-options-state.c",
-		"/Users/kyle/word-fall/title-fall-state.c",
-		"/Users/kyle/word-fall/intro-transition-state.c",
-		"/Users/kyle/word-fall/state.c",
-		"/Users/kyle/word-fall/state.h",
+		"/Users/kyle/word-fall/dictionary-check.py",
 		"/Users/kyle/word-fall/Makefile",
+		"/Users/kyle/word-fall/SDLMain.m",
+		"/Users/kyle/word-fall/SDLMain.h",
+		"/Users/kyle/word-fall/title-transition-state.c",
+		"/Users/kyle/word-fall/main.h",
+		"/Users/kyle/word-fall/intro-transition-state.c",
+		"/Users/kyle/word-fall/gamestates.h",
+		"/Users/kyle/word-fall/title-options-state.c",
+		"/Users/kyle/word-fall/title-state.h",
+		"/Users/kyle/word-fall/game-transition-state.c",
+		"/Users/kyle/word-fall/title-fall-state.c",
+		"/Users/kyle/word-fall/title-state.c",
+		"/Users/kyle/word-fall/state.c",
+		"/Users/kyle/word-fall/pause-state.c",
+		"/Users/kyle/word-fall/game-state.h",
+		"/Users/kyle/word-fall/intro-state.c",
+		"/Users/kyle/word-fall/state.h",
+		"/Users/kyle/word-fall/pause-state.h",
 		"/Users/kyle/word-fall/render.h",
 		"/Users/kyle/word-fall/render.c",
 		"/Users/kyle/git-repos/tuxtype/src/SDL_extras.h",
 		"/Users/kyle/word-fall/load.h",
 		"/Users/kyle/word-fall/load.c",
-		"/Users/kyle/word-fall/title-state.h",
-		"/Users/kyle/word-fall/SDLMain.h",
-		"/Users/kyle/word-fall/SDLMain.m",
 		"/home/kyle/word-fall/main.h",
 		"/home/kyle/word-fall/title-state.c",
 		"/home/kyle/word-fall/main.c",
@@ -157,7 +142,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -168,6 +153,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			";\n",
+			"static int alpha",
+			"fallY",
+			"gameInit",
+			"game_init",
+			"playButtonY",
+			"wordY",
+			"titleY",
+			"fallStart",
 			"resumeX",
 			"containerLetters",
 			"container",
@@ -219,23 +213,23 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "pause-state.c",
+					"file": "main.c",
 					"settings":
 					{
-						"buffer_size": 3618,
+						"buffer_size": 15047,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1294,
-								1294
+								9397,
+								10251
 							]
 						],
 						"settings":
@@ -244,61 +238,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "main.h",
-					"settings":
-					{
-						"buffer_size": 2714,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "game-state.c",
-					"settings":
-					{
-						"buffer_size": 12573,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6144,
-								6144
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 5841.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -42,10 +42,6 @@ typedef struct {
 extern int currentState;
 extern int nextState;
 
-// Dictionary globals
-extern char **dict;
-extern int dictNum;
-
 // sound global
 extern int sound;
 

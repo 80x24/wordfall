@@ -6,6 +6,7 @@
 #include "render.h"
 #include "main.h"
 #include "game-state.h"
+#include "embedded-lua.h"
 
 int letterDrag = 0;
 int letter1 = 0;
@@ -469,12 +470,14 @@ int isword(char *word)
 		return 0;
 	}
 	int isWord = 0;
-	for(int i = 0; i < dictNum; i++) {
-		if(strncmp(dict[i], word, strlen(word)) == 0) {
-			isWord = 1;
-			break;
-		}
+	
+	if(check_word(word) == 1) {
+		isWord = 1;
 	}
+	else if(check_word(word) == 0) {
+		isWord = 0;
+	}
+
 	if(isWord == 1) {
 		return 1;
 	}
