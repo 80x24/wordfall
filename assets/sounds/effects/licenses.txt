@@ -16,3 +16,6 @@ In the public domain
 
 // pling.wav
 This one is perfect and is in the public domain
+
+// error.wav
+http://soundbible.com/1540-Computer-Error-Alert.html

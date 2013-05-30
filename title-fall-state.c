@@ -7,8 +7,49 @@
 #include "main.h"
 #include "title-state.h"
 
+const int wordY = 165; // was 150
+const int fallY = 215; // was 200
+int playButtonY = 700;
+int optionsButtonY = 750;
+unsigned int buttonsFall = 1;
+// word fall titles
+int titleX[] = {75, 118, 161, 204, 118, 161, 204, 247};
+int titleY[] = {-50, -75, -100, -125, -175, -200, -225, -250};
 
-void title_fall_events()
+void title_fall_init(void)
+{
+	//wordY = 150;
+	//fallY = 200;
+	playButtonY = 700;
+	optionsButtonY = 750;
+	buttonsFall = 1;
+	for(int i = 0; i < 8; i++) {
+		if(i == 0) {
+			titleY[i] = -50;
+		}
+		else {
+			titleY[i] = (titleY[i-1] - 25);
+		}
+	}
+	for(int i = 0; i < 4; i++) {
+		if(i == 0) {
+			titleX[i] = 75;
+		}
+		else {
+			titleX[i] = titleX[i - 1] + 43;
+		}
+	}
+	for(int i = 4; i < 8; i++) {
+		if(i == 4) {
+			titleX[i] = 118;
+		}
+		else {
+			titleX[i] = titleX[i - 1] + 43;
+		}
+	}
+}
+
+void title_fall_events(void)
 {	
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
@@ -18,19 +59,31 @@ void title_fall_events()
 			set_next_state(STATE_EXIT);
 		}
 		else if(event.type == SDL_MOUSEMOTION) {
+			// turn highlighting on
+			if((event.motion.x > playRect.x) &&
+				(event.motion.x < playRect.x + playRect.w) &&
+				(event.motion.y > playRect.y) &&
+				(event.motion.y < playRect.y + playRect.h)) {
+				playRectHighlight = 1;
+			}
+			else if((event.motion.x > optionsRect.x) &&
+				(event.motion.x < optionsRect.x + optionsRect.w) &&
+				(event.motion.y > optionsRect.y) &&
+				(event.motion.y < optionsRect.y + optionsRect.h)) {
+				optionsRectHighlight = 1;
+			}
+			// turn off highlighting
 			if((event.motion.x < playRect.x) ||
 				(event.motion.x > playRect.x + playRect.w) ||
 				(event.motion.y < playRect.y) ||
 				(event.motion.y > playRect.y + playRect.h)) {
-				set_next_state(STATE_TITLE);
+				playRectHighlight = 0;
 			}
-		}
-		else if(event.type == SDL_MOUSEMOTION) {
 			if((event.motion.x < optionsRect.x) ||
 				(event.motion.x > optionsRect.x + optionsRect.w) ||
 				(event.motion.y < optionsRect.y) ||
 				(event.motion.y > optionsRect.y + optionsRect.h)) {
-				set_next_state(STATE_TITLE);
+				optionsRectHighlight = 0;
 			}
 		}
 		else if(event.type == SDL_MOUSEBUTTONDOWN) {
@@ -40,7 +93,7 @@ void title_fall_events()
 					(event.motion.y > playRect.y) &&
 					(event.motion.y < playRect.y + playRect.h)) {
 					//set_next_state(STATE_GAME_TRANSITION);
-					//printf("Play button clicked\n");
+					printf("Play button clicked - Falling\n");
 				}
 				else if((event.motion.x > optionsRect.x) &&
 					(event.motion.x < optionsRect.x + optionsRect.w) &&
@@ -54,12 +107,8 @@ void title_fall_events()
 	}
 }
 
-void title_fall_logic()
+void title_fall_logic(void)
 {
-	// The code below is atrocious but I don't know how to fix it.
-	int wordY = 150;
-	int fallY = 200;
-
 	for(int i = 0; i < 4; i++) {
 		titleY[i] += 5;
 		if(titleY[i] > wordY) {
@@ -75,27 +124,51 @@ void title_fall_logic()
 	if(titleY[7] == fallY) {
 		set_next_state(STATE_TITLE);
 	}
+
+	if(playButtonY <= 300 || optionsButtonY <= 350) {
+		playButtonY = 300;
+		optionsButtonY = 350;
+		buttonsFall = 0;
+	}
+
+	if(buttonsFall) {
+		playButtonY -= 8;
+		optionsButtonY -= 8;
+	}
 }
 
-void title_fall_render()
+void title_fall_render(void)
 {	
 	render_image(0,0,background,screen);
 	
-	render_image(-5,-5,cloud1,screen);
-	render_image(215,-5,cloud3,screen);
-	render_image(105,5,cloud2,screen);
+	render_image(cloudPos1.x, cloudPos1.y, cloud1, screen);
+	render_image(cloudPos2.x, cloudPos2.y, cloud2, screen);
+	render_image(cloudPos3.x, cloudPos3.y, cloud3, screen);
 	
 	for(int i = 0; i < 8; i++) {
 		render_image(titleX[i], titleY[i], title[i], screen);
 	}
 	
-	render_image(0,GRASS_X,grass,screen);
+	render_image(0,GRASS_Y,grass,screen);
 	
 	SDL_Color playColor = {0,0,0};
-	play = render_font(playFont, "Play", playColor);
-	render_image(148, 300, play, screen);
-	options = render_font(optionsFont, "Options", playColor);
-	render_image(115, 350, options, screen);
+	SDL_Color hoverColor = {254,210,6};
+	if(playRectHighlight == 1) {
+		play = render_font(playFont, "Play", hoverColor);
+		render_image((360 - play->clip_rect.w)/2, playButtonY, play, screen); // x was 148
+	}
+	if(playRectHighlight != 1) {
+		play = render_font(playFont, "Play", playColor);
+		render_image((360 - play->clip_rect.w)/2, playButtonY, play, screen);
+	}
+	if(optionsRectHighlight == 1) {
+		options = render_font(optionsFont, "Options", hoverColor);
+		render_image((360 - options->clip_rect.w)/2, optionsButtonY, options, screen);
+	}
+	if(optionsRectHighlight != 1) {
+		options = render_font(optionsFont, "Options", playColor);
+		render_image((360 - options->clip_rect.w)/2, optionsButtonY, options, screen);
+	}
 
 	// Collision rects for play and option buttons
 	playRect.x = 148;

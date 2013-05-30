@@ -21,10 +21,35 @@ int optionsY = 350;
 
 int containerX[7] = {0+2, 45+2, 90+2, 135+2, 180+2, 225+2, 270+2};
 int containerY = 685;
+
 int submitX = 320;
 int submitY = 685;
 
-void game_transition_events()
+void game_transition_init(void)
+{
+	timeStart = 0;
+	playX = 148;
+	playY = 300;
+	pauseX = 5;
+	pauseY = -25;
+	optionsX = 115;
+	optionsY = 350;
+	for(int i = 0; i < 7; i++) {
+		if(i == 0) {
+			containerX[i] = 2;
+		}
+		else {
+			containerX[i] = containerX[i-1] + 45;
+		}
+	}
+	containerY = 685;
+	submitX = 320;
+	submitY = 685;
+	timeStart = SDL_GetTicks();
+}
+
+
+void game_transition_events(void)
 {
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
@@ -36,14 +61,9 @@ void game_transition_events()
 	}
 }
 
-void game_transition_logic()
+void game_transition_logic(void)
 {
-	
-	static int tmp = 1;
-	if(tmp == 1) {
-		timeStart = SDL_GetTicks();
-		tmp -= 1;
-	}
+	// timeStart = SDL_GetTicks();
 	
 	if(SDL_GetTicks() - timeStart >= 1250) {
 		set_next_state(STATE_GAME);
@@ -76,20 +96,20 @@ void game_transition_logic()
 
 }
 
-void game_transition_render()
+void game_transition_render(void)
 {	
 	render_image(0,0,background,screen);
 	
-	render_image(-5,-5,cloud1,screen);
-	render_image(215,-5,cloud3,screen);
-	render_image(105,5,cloud2,screen);
+	render_image(cloudPos1.x, cloudPos1.y, cloud1, screen);
+	render_image(cloudPos2.x, cloudPos2.y, cloud2, screen);
+	render_image(cloudPos3.x, cloudPos3.y, cloud3, screen);
 	
 	// Word Fall Title fly down
 	for(int i = 0; i < 8; i++) {
 		render_image(titleX[i], titleY[i], title[i], screen);
 	}
 	
-	render_image(0,GRASS_X,grass,screen);
+	render_image(0,GRASS_Y,grass,screen);
 
 	// Containers Fly up
 	for(int i = 0; i < 7; i++) {
@@ -100,7 +120,7 @@ void game_transition_render()
 	render_image(submitX, submitY, submit, screen);
 
 	// Pause button
-	render_image(pauseX, pauseY, pause, screen);
+	//render_image(pauseX, pauseY, pause, screen);
 
 	SDL_Color playColor = {0,0,0};
 

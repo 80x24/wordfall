@@ -45,6 +45,33 @@
 			]
 		]
 	},
+	"buffers":
+	[
+		{
+			"file": "title-options-state.c",
+			"settings":
+			{
+				"buffer_size": 6318,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game-state.c",
+			"settings":
+			{
+				"buffer_size": 13918,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "main.c",
+			"settings":
+			{
+				"buffer_size": 15520,
+				"line_ending": "Unix"
+			}
+		}
+	],
 	"build_system": "",
 	"command_palette":
 	{
@@ -73,27 +100,40 @@
 	},
 	"file_history":
 	[
+		"/Users/kyle/word-fall/main.c",
+		"/Users/kyle/word-fall/main.h",
+		"/Users/kyle/word-fall/game-state.c",
+		"/Users/kyle/word-fall/game-state.h",
+		"/Users/kyle/word-fall/title-options-state.c",
+		"/Users/kyle/word-fall/title-transition-state.c",
+		"/Users/kyle/word-fall/title-state.c",
+		"/Users/kyle/word-fall/game-transition-state.c",
+		"/Users/kyle/word-fall/embedded-lua.c",
+		"/Users/kyle/word-fall/embedded-lua.h",
+		"/Users/kyle/word-fall/Makefile",
+		"/Users/kyle/word-fall/check-dict.lua",
+		"/Users/kyle/word-fall/dictionary-check.py",
+		"/Users/kyle/word-fall/SDLMain.m",
+		"/Users/kyle/word-fall/SDLMain.h",
+		"/Users/kyle/word-fall/intro-transition-state.c",
+		"/Users/kyle/word-fall/gamestates.h",
+		"/Users/kyle/word-fall/title-state.h",
+		"/Users/kyle/word-fall/title-fall-state.c",
+		"/Users/kyle/word-fall/state.c",
+		"/Users/kyle/word-fall/pause-state.c",
+		"/Users/kyle/word-fall/intro-state.c",
+		"/Users/kyle/word-fall/state.h",
+		"/Users/kyle/word-fall/pause-state.h",
+		"/Users/kyle/word-fall/render.h",
+		"/Users/kyle/word-fall/render.c",
+		"/Users/kyle/git-repos/tuxtype/src/SDL_extras.h",
+		"/Users/kyle/word-fall/load.h",
+		"/Users/kyle/word-fall/load.c",
 		"/home/kyle/word-fall/main.h",
 		"/home/kyle/word-fall/title-state.c",
 		"/home/kyle/word-fall/main.c",
-		"/Users/kyle/word-fall/state.h",
-		"/Users/kyle/word-fall/main.h",
-		"/Users/kyle/word-fall/main.c",
-		"/Users/kyle/word-fall/gamestates.h",
-		"/Users/kyle/word-fall/state.c",
-		"/Users/kyle/word-fall/game-transition-state.c",
-		"/Users/kyle/word-fall/title-state.c",
-		"/Users/kyle/word-fall/title-options-state.c",
-		"/Users/kyle/word-fall/title-fall-state.c",
-		"/Users/kyle/word-fall/title-transition-state.c",
-		"/Users/kyle/word-fall/intro-transition-state.c",
-		"/Users/kyle/word-fall/Makefile",
-		"/Users/kyle/word-fall/intro-state.c",
 		"/Users/kyle/word-fall/SDL_rotozoom.c",
 		"/Users/kyle/word-fall/SDL_rotozoom.h",
-		"/Users/kyle/word-fall/render.c",
-		"/Users/kyle/word-fall/load.c",
-		"/Users/kyle/word-fall/game-state.c",
 		"/Users/kyle/word-fall/.Makefile.swp",
 		"/Users/kyle/word-fall/code-todo.txt",
 		"/home/kyle/word-fall/intro-state.c",
@@ -107,17 +147,13 @@
 		"/home/kyle/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
 		"/Users/kyle/word-fall/title-highlight-options-state.c",
 		"/Users/kyle/word-fall/title-highlight-play-state.c",
-		"/Users/kyle/word-fall/load.h",
 		"/Users/kyle/word-fall/word-fall-design-doc.txt",
 		"/Users/kyle/word-fall/title-highlight-state.c",
 		"/Users/kyle/Documents/thoughts-and-info/mountain-lion-sucks.txt",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/kyle/word-fall/build.sublime-build",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/kyle/word-fall/other-fonts.txt",
-		"/Users/kyle/word-fall/render.h",
-		"/Users/kyle/word-fall/SDLMain.h",
-		"/Users/kyle/word-fall/SDLMain.m"
+		"/Users/kyle/word-fall/other-fonts.txt"
 	],
 	"find":
 	{
@@ -125,9 +161,12 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			"",
+			"/Users/kyle/Documents/howto/",
+			"anyhere",
 			""
 		]
 	},
@@ -136,6 +175,41 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sound = 0",
+			"sound",
+			"grep",
+			"gpg",
+			"pgp",
+			"sound",
+			"dict",
+			";\n",
+			"static int alpha",
+			"fallY",
+			"gameInit",
+			"game_init",
+			"playButtonY",
+			"wordY",
+			"titleY",
+			"fallStart",
+			"resumeX",
+			"containerLetters",
+			"container",
+			"containerLetters",
+			"containerX",
+			"containerLetters",
+			"blackColor",
+			"scoreFont",
+			"randomLetter",
+			"pauseX",
+			"scoreArray",
+			"submitX",
+			"letter2",
+			"ascii",
+			"containerAscii",
+			"introTimeStart",
+			"letter",
+			"letters",
+			"GRASS_X",
 			"nextState",
 			"running",
 			"load_content",
@@ -157,6 +231,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"GRASS_Y"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -164,6 +239,96 @@
 		"whole_word": false,
 		"wrap": true
 	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "title-options-state.c",
+					"settings":
+					{
+						"buffer_size": 6318,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4683,
+								4683
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2221.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "game-state.c",
+					"settings":
+					{
+						"buffer_size": 13918,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11267,
+								11267
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5368.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "main.c",
+					"settings":
+					{
+						"buffer_size": 15520,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9300,
+								9300
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5400.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
 	"incremental_find":
 	{
 		"height": 34.0
@@ -201,7 +366,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":

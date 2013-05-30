@@ -7,7 +7,16 @@
 #include "main.h"
 #include "title-state.h"
 
-void title_options_events()
+int soundClickedOn = 0;
+int soundClickedOff = 0;
+
+void title_options_init(void)
+{
+	playRectHighlight = 0;
+	optionsRectHighlight = 0;
+}
+
+void title_options_events(void)
 {
 	
 	while(SDL_PollEvent(&event)) {
@@ -24,12 +33,14 @@ void title_options_events()
 				(event.motion.x < soundOnRect.x + soundOnRect.w) &&
 				(event.motion.y > soundOnRect.y) &&
 				(event.motion.y < soundOnRect.y + soundOnRect.h)) {
+				soundOffHighlight = 0;
 				soundOnHighlight = 1;
 			}
 			if((event.motion.x > soundOffRect.x) &&
 				(event.motion.x < soundOffRect.x + soundOffRect.w) &&
 				(event.motion.y > soundOffRect.y) &&
 				(event.motion.y < soundOffRect.y + soundOffRect.h)) {
+				soundOnHighlight = 0;
 				soundOffHighlight = 1;
 			}
 			if((event.motion.x > optionsBackRect.x) &&
@@ -73,48 +84,80 @@ void title_options_events()
 					(event.motion.x < soundOnRect.x + soundOnRect.w) &&
 					(event.motion.y > soundOnRect.y) &&
 					(event.motion.y < soundOnRect.y + soundOnRect.h)) {
-					printf("sound turned on\n");
+					soundOffHighlight = 0;
+					soundOnHighlight = 1;
+					sound = 1;
+					soundClickedOn = 1;
+					soundClickedOff = 0;
+					printf("sound turned on: %d\n", sound);
 				}
 				// click sound off
 				else if((event.motion.x > soundOffRect.x) &&
 					(event.motion.x < soundOffRect.x + soundOffRect.w) &&
 					(event.motion.y > soundOffRect.y) &&
 					(event.motion.y < soundOffRect.y + soundOffRect.h)) {
-					printf("sound turned off\n");
+					soundOnHighlight = 0;
+					soundOffHighlight = 1;
+					sound = 0;
+					soundClickedOn = 0;
+					soundClickedOff = 1;
+					printf("sound turned off: %d\n", sound);
 				}
 			}
 		}
 	}
 }
 
-void title_options_logic()
+void title_options_logic(void)
 {
-	if(titleY[7] != 200) {
-		title_fall_logic();
+	if((sound == 1) && (soundClickedOn == 1) && (Mix_PlayingMusic() == 0) && (soundStarted == 0)) {
+		printf("playing music because it stared at 0\n");
+		soundStarted = 1;
+		soundClickedOn = 0;
+		// Set volume to max.
+		Mix_Volume(-1, MIX_MAX_VOLUME);
+		// Play background music.
+		if(Mix_PlayMusic(backgroundMusic, -1) == -1) {
+			fprintf(stderr, "Background music playing failed\n%s\n", Mix_GetError());
+		}
 	}
-	playRectHighlight = 0;
-	optionsRectHighlight = 0;
+	else if((sound == 0) && (soundClickedOff == 1) && (Mix_PlayingMusic() == 1)) {
+		printf("pausing music\n");
+		Mix_PauseMusic();
+		soundClickedOff = 0;
+	}
+	else if((sound == 1) && (soundClickedOn == 1)) {
+		printf("resuming music\n");
+		Mix_ResumeMusic();
+		soundClickedOn = 0;
+	}
 }
 
-void title_options_render()
+void title_options_render(void)
 {	
+
 	render_image(0,0,background,screen);
 	
-	render_image(-5,-5,cloud1,screen);
-	render_image(215,-5,cloud3,screen);
-	render_image(105,5,cloud2,screen);
+	render_image(cloudPos1.x, cloudPos1.y, cloud1, screen);
+	render_image(cloudPos2.x, cloudPos2.y, cloud2, screen);
+	render_image(cloudPos3.x, cloudPos3.y, cloud3, screen);
 	
 	// Word Fall title
 	for(int i = 0; i < 8; i++) {
 		render_image(titleX[i], titleY[i], title[i], screen);
 	}
 	
-	render_image(0,GRASS_X,grass,screen);
+	render_image(0,GRASS_Y,grass,screen);
 	
 	SDL_Color optionsColor = {0,0,0};
 	SDL_Color hoverColor = {254,210,6};
 	optionsSound = render_font(optionsSoundFont, "Sound:", optionsColor);
 	render_image(60, 275, optionsSound, screen);
+
+	char finalHighscoreString[64];
+	sprintf(finalHighscoreString, "High Score: %d", highscore); 
+	highscoreSurface = render_font(highscoreFont, finalHighscoreString, optionsColor);
+	render_image(60, 340, highscoreSurface, screen);
 
 	if(soundOnHighlight == 1) {
 		optionsSoundOn = render_font(optionsSoundFontOn, "On", hoverColor);
@@ -134,11 +177,11 @@ void title_options_render()
 	}
 	if(backHighlight == 1) {
 		optionsBack = render_font(optionsBackFont, "Back", hoverColor);
-		render_image(140, 500, optionsBack, screen);
+		render_image(140, 475, optionsBack, screen);
 	}
 	if(backHighlight != 1) {
 		optionsBack = render_font(optionsBackFont, "Back", optionsColor);
-		render_image(140, 500, optionsBack, screen);
+		render_image(140, 475, optionsBack, screen);
 	}
 	
 	// Collision rects
@@ -153,7 +196,7 @@ void title_options_render()
 	soundOffRect.h = optionsSoundOff->clip_rect.h;
 
 	optionsBackRect.x = 140;
-	optionsBackRect.y = 500;
+	optionsBackRect.y = 475;
 	optionsBackRect.w = optionsBack->clip_rect.w;
 	optionsBackRect.h = optionsBack->clip_rect.h;
 

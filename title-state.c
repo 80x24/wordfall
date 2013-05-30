@@ -7,9 +7,7 @@
 #include "main.h"
 #include "title-state.h"
 
-// word fall titles
-int titleX[] = {75, 118, 161, 204, 118, 161, 204, 247};
-int titleY[] = {-50, -75, -100, -125, -175, -200, -225, -250};
+
 
 // highlights
 int soundOnHighlight =  0;
@@ -18,7 +16,24 @@ int backHighlight = 0;
 int playRectHighlight = 0;
 int optionsRectHighlight = 0;
 
-void title_events()
+SDL_Rect playRect;
+SDL_Rect optionsRect;
+SDL_Rect soundOnRect;
+SDL_Rect soundOffRect;
+SDL_Rect optionsBackRect;
+
+void title_init(void)
+{
+
+	// Line below might be an issue.
+	soundOnHighlight = 0;
+	soundOffHighlight = 0;
+	backHighlight = 0;
+	playRectHighlight = 0;
+	optionsRectHighlight = 0;
+}
+
+void title_events(void)
 {
 	
 	while(SDL_PollEvent(&event)) {
@@ -77,49 +92,17 @@ void title_events()
 	}
 }
 
-void title_logic()
+void title_logic(void)
 {
 	backHighlight = 0;
-	if(titleY[7] != 200) {
-		title_fall_logic();
-	}
 }
 
-void title_render()
-{	
-	render_image(0,0,background,screen);
-	
-	render_image(-5,-5,cloud1,screen);
-	render_image(215,-5,cloud3,screen);
-	render_image(105,5,cloud2,screen);
+void title_render(void)
+{
 
-	for(int i = 0; i < 8; i++) {
-		render_image(titleX[i], titleY[i], title[i], screen);
-	}
-	
-	render_image(0,GRASS_X,grass,screen);
-	
-	SDL_Color playColor = {0,0,0};
-	SDL_Color hoverColor = {254,210,6};
-	if(playRectHighlight == 1) {
-		play = render_font(playFont, "Play", hoverColor);
-		render_image(148, 300, play, screen);
-	}
-	if(playRectHighlight != 1) {
-		play = render_font(playFont, "Play", playColor);
-		render_image(148, 300, play, screen);
-	}
-	if(optionsRectHighlight == 1) {
-		options = render_font(optionsFont, "Options", hoverColor);
-		render_image(115, 350, options, screen);
-	}
-	if(optionsRectHighlight != 1) {
-		options = render_font(optionsFont, "Options", playColor);
-		render_image(115, 350, options, screen);
-	}
-	
-	
 	// Collision rects for play and option buttons
+	// This is horribly inefficient. Most of these values
+	// can be pre-computed and would not have to be calculated each time.
 	playRect.x = 148;
 	playRect.y = 300;
 	playRect.w = play->clip_rect.w;
@@ -128,6 +111,37 @@ void title_render()
 	optionsRect.y = 350;
 	optionsRect.w = options->clip_rect.w;
 	optionsRect.h = options->clip_rect.h;
+
+	render_image(0,0,background,screen);
+	
+	render_image(cloudPos1.x, cloudPos1.y, cloud1, screen);
+	render_image(cloudPos2.x, cloudPos2.y, cloud2, screen);
+	render_image(cloudPos3.x, cloudPos3.y, cloud3, screen);
+
+	for(int i = 0; i < 8; i++) {
+		render_image(titleX[i], titleY[i], title[i], screen);
+	}
+	
+	render_image(0,GRASS_Y,grass,screen);
+	
+	SDL_Color playColor = {0,0,0};
+	SDL_Color hoverColor = {254,210,6};
+	if(playRectHighlight == 1) {
+		play = render_font(playFont, "Play", hoverColor);
+		render_image((360 - play->clip_rect.w)/2, 300, play, screen); // x was 148
+	}
+	if(playRectHighlight != 1) {
+		play = render_font(playFont, "Play", playColor);
+		render_image((360 - play->clip_rect.w)/2, 300, play, screen);
+	}
+	if(optionsRectHighlight == 1) {
+		options = render_font(optionsFont, "Options", hoverColor);
+		render_image((360 - options->clip_rect.w)/2, 350, options, screen); // was 115
+	}
+	if(optionsRectHighlight != 1) {
+		options = render_font(optionsFont, "Options", playColor);
+		render_image((360 - options->clip_rect.w)/2, 350, options, screen);
+	}
 
 	if(SDL_Flip(screen) != 0) {
 		fprintf(stderr, "screen update failed\n");

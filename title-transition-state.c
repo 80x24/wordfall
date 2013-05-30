@@ -6,9 +6,23 @@
 #include "render.h"
 #include "main.h"
 
-extern int alpha;
 
-void title_transition_events()
+void title_transition_init(void)
+{
+	if(sound == 1) {
+		printf("playing music because the default is 1\n");
+		soundStarted = 1;
+		// Set volume to max.
+		Mix_Volume(-1, MIX_MAX_VOLUME);
+		// Play background music.
+		if(Mix_PlayMusic(backgroundMusic, -1) == -1) {
+			fprintf(stderr, "Background music playing failed\n%s\n", Mix_GetError());
+		}
+	}
+	alpha = 255;
+}
+
+void title_transition_events(void)
 {
 	//printf("title transition\n");
 	while(SDL_PollEvent(&event)) {
@@ -21,7 +35,7 @@ void title_transition_events()
 	}
 }
 
-void title_transition_logic()
+void title_transition_logic(void)
 {
 	//printf("title alpha: %d\n", alpha);
 	alpha -= 5;
@@ -30,7 +44,7 @@ void title_transition_logic()
 	}
 }
 
-void title_transition_render()
+void title_transition_render(void)
 {
 	SDL_SetAlpha(introTransition, SDL_SRCALPHA, alpha);
 	
