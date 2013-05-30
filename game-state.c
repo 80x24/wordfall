@@ -383,7 +383,7 @@ void game_render(void)
 
 	// Score yellow: 254,210,6
 	SDL_Color scoreColor = {0,0,0};
-	char finalScoreString[16];
+	char finalScoreString[64];
 	sprintf(finalScoreString, "SCORE: %d", finalScore);
 	score = render_font(scoreFont, finalScoreString, scoreColor);
 	render_image(32, ((score->clip_rect.h - pause->clip_rect.h)/2), score, screen);

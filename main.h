@@ -42,14 +42,21 @@ typedef struct {
 extern int currentState;
 extern int nextState;
 
+// user preference globals
+extern int highscore;
+extern int soundPref;
+
 // sound global
 extern int sound;
+extern int soundStarted;
 
 extern int alpha;
+extern int finalScore;
 
 int init();
 void quit();
 int load_content();
+void write_pref(int value, char *location);
 
 // ============= SDL Surfaces =====================
 // Everything is loaded at startup
@@ -88,6 +95,7 @@ extern SDL_Surface *score;
 extern SDL_Surface *pauseFontSurface;
 extern SDL_Surface *resume;
 extern SDL_Surface *returnMenu;
+extern SDL_Surface *highscoreSurface;
 
 extern TTF_Font *playFont;
 extern TTF_Font *optionsFont;
@@ -101,6 +109,7 @@ extern TTF_Font *scoreFont;
 extern TTF_Font *pauseFont;
 extern TTF_Font *resumeFont;
 extern TTF_Font *returnMenuFont;
+extern TTF_Font *highscoreFont;
 
 extern Mix_Music *backgroundMusic;
 extern Mix_Chunk *win;

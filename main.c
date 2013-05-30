@@ -12,7 +12,11 @@
 int currentState = STATE_INTRO_TRANSITION;
 int nextState = STATE_NULL;
 
-int sound = 1;
+int sound = 0;
+int soundStarted = 0;
+
+int highscore = 0;
+int soundPref = 0;
 
 // Surface Globals
 // These should probably be reduced in scope
@@ -45,6 +49,7 @@ SDL_Surface *scorePopup = 0;
 SDL_Surface *pauseFontSurface = 0;
 SDL_Surface *resume = 0;
 SDL_Surface *returnMenu = 0;
+SDL_Surface *highscoreSurface = 0;
 
 TTF_Font *playFont = 0;
 TTF_Font *optionsFont = 0;
@@ -58,6 +63,7 @@ TTF_Font *scoreFont = 0;
 TTF_Font *pauseFont = 0;
 TTF_Font *resumeFont = 0;
 TTF_Font *returnMenuFont = 0;
+TTF_Font *highscoreFont = 0;
 
 Mix_Music *backgroundMusic = 0;
 Mix_Chunk *win = 0;
@@ -202,6 +208,18 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	// write user preferences to file
+	if(Mix_PlayingMusic() == 1) {
+		sound = 1;
+	}
+	if(Mix_PlayingMusic() == 0) {
+		sound = 0;
+	}
+	if(finalScore > highscore) {
+		highscore = finalScore;
+	}
+	write_pref(highscore, "assets/userpref1.txt");
+	write_pref(sound, "assets/userpref2.txt");
 	quit();
 	
 	return 0;
@@ -359,6 +377,38 @@ int load_content()
 		return 1;
 	}
 
+	// =========== CHECK USER PREFERENCES =========
+	// highscore
+	FILE *userPref1;
+	char getPref1[64];
+
+	userPref1 = fopen("assets/userpref1.txt", "r");
+	if(userPref1 == NULL) {
+		fprintf(stderr, "Error: user preference file 1 not found\n");
+		return 1;
+	}
+	if(fgets(getPref1, 16, userPref1) != NULL) {
+			highscore = atoi(getPref1);
+	}
+	if(highscore > 100000) {
+		highscore = 100000;
+	}
+	fclose(userPref1);
+
+	// sound
+	FILE *userPref2;
+	char getPref2[64];
+
+	userPref2 = fopen("assets/userpref2.txt", "r");
+	if(userPref2 == NULL) {
+		fprintf(stderr, "Error: user preference file 2 not found\n");
+		return 1;
+	}
+	if(fgets(getPref2, 16, userPref2) != NULL) {
+		sound = atoi(getPref2);
+	}
+	fclose(userPref2);
+
 	// =========== LOADING FOR LETTERS AND CONTAINERS =================
 	for(int i = 0; i < 4; i++) {
 		for(int j = 0; j < 26; j++) {
@@ -419,6 +469,13 @@ int load_content()
 		fprintf(stderr, "options sound font off loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
+
+	highscoreFont = load_font("assets/fonts/Roboto-Bold.ttf", 32);
+	if(highscoreFont == NULL) {
+		fprintf(stderr, "highscore font loading failed\n%s\n", TTF_GetError());
+		return 1;
+	}
+
 	optionsBackFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
 	if(optionsBackFont == NULL) {
 		fprintf(stderr, "options back font loading failed\n%s\n", TTF_GetError());
@@ -519,6 +576,7 @@ void quit()
 	SDL_FreeSurface(pauseFontSurface);
 	SDL_FreeSurface(resume);
 	SDL_FreeSurface(returnMenu);
+	SDL_FreeSurface(highscoreSurface);
 
 	for(int i = 0; i < 8; i++) {
 		SDL_FreeSurface(title[i]);
@@ -549,9 +607,20 @@ void quit()
 	TTF_CloseFont(pauseFont);
 	TTF_CloseFont(resumeFont);
 	TTF_CloseFont(returnMenuFont);
+	TTF_CloseFont(highscoreFont);
 
 	Mix_CloseAudio();
 	Mix_Quit();
 	TTF_Quit();
 	SDL_Quit();
+}
+
+void write_pref(int value, char *location)
+{
+	FILE *fp;
+	char buffer[64];
+	sprintf(buffer, "%d", value);
+	fp = fopen(location, "w");
+	fputs(buffer, fp);
+	fclose(fp);
 }

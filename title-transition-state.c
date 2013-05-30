@@ -9,6 +9,16 @@
 
 void title_transition_init(void)
 {
+	if(sound == 1) {
+		printf("playing music because the default is 1\n");
+		soundStarted = 1;
+		// Set volume to max.
+		Mix_Volume(-1, MIX_MAX_VOLUME);
+		// Play background music.
+		if(Mix_PlayMusic(backgroundMusic, -1) == -1) {
+			fprintf(stderr, "Background music playing failed\n%s\n", Mix_GetError());
+		}
+	}
 	alpha = 255;
 }
 
@@ -31,14 +41,6 @@ void title_transition_logic(void)
 	alpha -= 5;
 	if(alpha <= 0) {
 		set_next_state(STATE_TITLE_FALL);
-	}
-	if(sound) {
-		// Set volume to max.
-		Mix_Volume(-1, MIX_MAX_VOLUME);
-		// Play background music.
-		if(Mix_PlayMusic(backgroundMusic, -1) == -1) {
-			fprintf(stderr, "Background music playing failed\n%s\n", Mix_GetError());
-		}
 	}
 }
 
