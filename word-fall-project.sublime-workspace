@@ -54,22 +54,6 @@
 				"buffer_size": 6318,
 				"line_ending": "Unix"
 			}
-		},
-		{
-			"file": "game-state.c",
-			"settings":
-			{
-				"buffer_size": 13918,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "main.c",
-			"settings":
-			{
-				"buffer_size": 15520,
-				"line_ending": "Unix"
-			}
 		}
 	],
 	"build_system": "",
@@ -100,9 +84,9 @@
 	},
 	"file_history":
 	[
+		"/Users/kyle/word-fall/game-state.c",
 		"/Users/kyle/word-fall/main.c",
 		"/Users/kyle/word-fall/main.h",
-		"/Users/kyle/word-fall/game-state.c",
 		"/Users/kyle/word-fall/game-state.h",
 		"/Users/kyle/word-fall/title-options-state.c",
 		"/Users/kyle/word-fall/title-transition-state.c",
@@ -161,7 +145,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -242,7 +226,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -267,61 +251,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2221.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "game-state.c",
-					"settings":
-					{
-						"buffer_size": 13918,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11267,
-								11267
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 5368.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "main.c",
-					"settings":
-					{
-						"buffer_size": 15520,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9300,
-								9300
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 5400.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
