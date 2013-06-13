@@ -231,7 +231,7 @@ int main(int argc, char *argv[])
 	write_pref(highscore, "assets/userpref1.txt");
 	write_pref(sound, "assets/userpref2.txt");
 	quit();
-	
+
 	return 0;
 }
 
@@ -596,12 +596,16 @@ void quit()
 		SDL_FreeSurface(container[i]);
 	}
 	
+	// Free all of the letters
 	for(int i = 0; i < 4; i++) {
 		for(int j = 0; j < 26; j++) {
 			SDL_FreeSurface(letters[i][j]);
 		}
 	}
-	// containerLetters may need to be freed here.
+	// Free Letters in the containers
+	for(int i = 0; i < 7; i++) {
+		SDL_FreeSurface(containerLetters[i]);
+	}
 	
 	SDL_FreeSurface(screen);
 
