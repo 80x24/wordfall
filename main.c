@@ -4,7 +4,7 @@
 | |  _  | |  /   \  |  _  \  |  _ \    | ____| /    \  | |    | |
 | | | | | | | / \ | | |_| /  | | | \   | __|  |  /\  | | |    | |
  \ \|_|/ /  | \ / | | | \ \  | |_| /   | |    | |  | | | |__  | |__
-  \_/ \_/    \ _ /  |_|  \_| |___ /    |_|    |_|  |_| |____| |____| 
+  \_/ \_/    \ _ /  |_|  \_| |___ /    |_|    |_|  |_| |____| |____|
 ############################################################################
 */
 
@@ -60,6 +60,7 @@ SDL_Surface *pauseFontSurface = 0;
 SDL_Surface *resume = 0;
 SDL_Surface *returnMenu = 0;
 SDL_Surface *highscoreSurface = 0;
+SDL_Surface *appIcon = 0;
 
 TTF_Font *playFont = 0;
 TTF_Font *optionsFont = 0;
@@ -80,7 +81,7 @@ Mix_Chunk *win = 0;
 Mix_Chunk *click = 0;
 Mix_Chunk *error = 0;
 
-// cloud position global because fuck the clouds.
+// cloud position globals
 cloud cloudPos1;
 cloud cloudPos2;
 cloud cloudPos3;
@@ -135,7 +136,7 @@ int main(int argc, char *argv[])
 				pause_events();
 				break;
 		}
-		
+
 		// =============================
 		// Logic
 		// =============================
@@ -173,9 +174,9 @@ int main(int argc, char *argv[])
 				pause_logic();
 				break;
 		}
-		
+
 		change_state();
-		
+
 		// ============================
 		// Rendering
 		// ============================
@@ -211,7 +212,7 @@ int main(int argc, char *argv[])
 				pause_render();
 				break;
 		}
-		
+
 		finish = SDL_GetTicks();
 		if((1000/FPS) > (finish - start)) {
 		    SDL_Delay(1000/FPS - (finish - start));
@@ -243,7 +244,7 @@ int init()
 		fprintf(stderr, "SDL Initialization failed\n %s\n", SDL_GetError());
 		return 1;
 	}
-	
+
 	if(TTF_Init() == -1) {
 		fprintf(stderr, "SDL TTF initialization failed\n %s\n", TTF_GetError());
 		return 1;
@@ -258,23 +259,30 @@ int init()
 		fprintf(stderr, "SDL Mix open audio failed\n%s\n", Mix_GetError());
 		return 1;
 	}
-	
+
 	screen = SDL_SetVideoMode(360,640,32,SDL_HWSURFACE);
 	if(screen == NULL) {
 		fprintf(stderr, "Video initialization failed\n %s\n", SDL_GetError());
 		return 1;
 	}
-	
+
+	// The window icon is currently a 128x128 alpha png of the F tile.
+	// I want to make the icon the W tile, but I lost the AI file that has the
+	// larger letter, so if I made it the W it would be stuck at 40x40.
+	appIcon = load_image("assets/images/icon.png");
+	if(appIcon == NULL) {
+		fprintf(stderr, "App Icon not found\n%s\n", IMG_GetError());
+		return 1;
+	}
+
 	// changing the null value you can set an icon for when the window is
 	// minimized
+	// ^ What did I mean by this? Might be Windows specific.
 	SDL_WM_SetCaption("Word Fall", NULL);
-	
+
+	// Icon for the Window.
+	SDL_WM_SetIcon(appIcon, NULL);
 	//SDL_WM_SetIcon will set the icon for the window.
-	
-	/*if(load_content() != 0) {
-		fprintf(stderr, "File loading failed\n");
-		return 1;
-	}*/
 
 	// ===== Intro Assets called before load_content() =====
 	introTransition = load_image_noalpha("assets/images/intro-transition.png");
@@ -282,7 +290,7 @@ int init()
 		fprintf(stderr, "introTransition image not found\n%s\n", IMG_GetError());
 		return 1;
 	}
-	
+
 	introBackground = load_image_noalpha("assets/images/intro.png");
 	if(introBackground == NULL) {
 		fprintf(stderr,"Intro background image not found\n %s \n", IMG_GetError());
@@ -301,32 +309,32 @@ int init()
 
 int load_content()
 {
-	
+
 	background = load_image_noalpha("assets/images/background.png");
 	if(background == NULL) {
 		fprintf(stderr, "Background image loading failed\n%s\n", IMG_GetError());
 		return 1;
 	}
-	
+
 	// --- CLOUDS ---
 	cloud1 = load_image("assets/images/clouds.png");
 	if(cloud1 == NULL) {
 		fprintf(stderr, "cloud 1 loading failed\n%s\n", IMG_GetError());
 		return 1;
 	}
-	
+
 	cloud2 = load_image("assets/images/clouds.png");
 	if(cloud2 == NULL) {
 		fprintf(stderr, "cloud 2 loading failed\n%s\n", IMG_GetError());
 		return 1;
 	}
-	
+
 	cloud3 = load_image("assets/images/clouds.png");
 	if(cloud3 == NULL) {
 		fprintf(stderr, "cloud 3 loading failed\n%s\n", IMG_GetError());
 		return 1;
 	}
-	
+
 	// --- TITLE WORD FALL ---
 	title[0] = load_image("assets/images/letters/W.png");
 	if(title[0] == NULL) {
@@ -368,7 +376,7 @@ int load_content()
 		fprintf(stderr, "L2 title letter loading failed\n%s\n",IMG_GetError());
 		return 1;
 	}
-	
+
 	grass = load_image("assets/images/grass-medium.png");
 	if(grass == NULL) {
 		fprintf(stderr, "grass loading failed\n%s\n",IMG_GetError());
@@ -455,7 +463,7 @@ int load_content()
 		fprintf(stderr, "play font loading failed\n%s\n",TTF_GetError());
 		return 1;
 	}
-	
+
 	optionsFont = load_font("assets/fonts/Roboto-Bold.ttf", 36);
 	if(optionsFont == NULL) {
 		fprintf(stderr, "options font loading failed\n%s\n",TTF_GetError());
@@ -520,7 +528,7 @@ int load_content()
 		fprintf(stderr, "resume font loading failed\n%s\n", TTF_GetError());
 		return 1;
 	}
-	
+
 	returnMenuFont = load_font("assets/fonts/Roboto-Bold.ttf", 20);
 	if(returnMenuFont == NULL) {
 		fprintf(stderr, "Return to main menu font loading failed\n%s\n", TTF_GetError());
@@ -533,7 +541,7 @@ int load_content()
 		fprintf(stderr, "background music loading failed\n%s\n", Mix_GetError());
 		return 1;
 	}
-	
+
 	win = Mix_LoadWAV("assets/sounds/effects/pling.wav");
 	if(win == NULL) {
 		fprintf(stderr, "Win music loading failed\n%s\n", Mix_GetError());
@@ -587,15 +595,16 @@ void quit()
 	SDL_FreeSurface(resume);
 	SDL_FreeSurface(returnMenu);
 	SDL_FreeSurface(highscoreSurface);
+	SDL_FreeSurface(appIcon);
 
 	for(int i = 0; i < 8; i++) {
 		SDL_FreeSurface(title[i]);
 	}
-	
+
 	for(int i = 0; i < 7; i++) {
 		SDL_FreeSurface(container[i]);
 	}
-	
+
 	// Free all of the letters
 	for(int i = 0; i < 4; i++) {
 		for(int j = 0; j < 26; j++) {
@@ -606,7 +615,7 @@ void quit()
 	for(int i = 0; i < 7; i++) {
 		SDL_FreeSurface(containerLetters[i]);
 	}
-	
+
 	SDL_FreeSurface(screen);
 
 	TTF_CloseFont(playFont);
