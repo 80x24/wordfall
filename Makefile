@@ -1,4 +1,4 @@
-CC=gcc
+CC=cc
 CFLAGS=-Wall -std=c99 -pedantic
 LDFLAGSOSX=-framework SDL -framework SDL_image -framework SDL_ttf -framework SDL_mixer -framework Cocoa -llua
 LDFLAGSLINUX=-lSDL -lSDL_image -lSDL_ttf -lSDL_mixer -llua

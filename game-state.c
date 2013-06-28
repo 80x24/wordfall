@@ -459,7 +459,8 @@ char *sanitize(char *word)
 		}
 	}
 	char *word2 = malloc(sizeof(char)*spaceLocation);
-	strncpy(word2, word, sizeof(word2));
+	//strncpy(word2, word, sizeof(word2));
+	strcpy(word2, word);
 	word2[spaceLocation] = '\0';
 	printf("word2: %s\n", word2);
 	return word2;
