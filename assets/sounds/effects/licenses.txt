@@ -1,18 +1,5 @@
-// License for pop.wav
-Attribution 3.0
-http://soundbible.com/1601-Mario-Jumping.html
-
-// hole-punch.wav
-http://soundbible.com/1969-Hole-Punch.html
-
-// win-1.wav
-http://soundbible.com/1744-Shooting-Star.html
-
 // click.wav
 http://soundbible.com/1280-Click-On.html
-
-// win-2.wav
-In the public domain
 
 // pling.wav
 This one is perfect and is in the public domain

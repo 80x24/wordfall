@@ -1,3 +1,21 @@
+/*
+Word Fall
+Copyright (C) 2013  Kyle Schreiber
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <SDL/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -77,7 +95,6 @@ void title_options_events(void)
 					(event.motion.y > optionsBackRect.y) &&
 					(event.motion.y < optionsBackRect.y + optionsBackRect.h)) {
 					set_next_state(STATE_TITLE);
-					//printf("back button clicked\n");
 				}
 				// click sound on
 				else if((event.motion.x > soundOnRect.x) &&
@@ -89,7 +106,6 @@ void title_options_events(void)
 					sound = 1;
 					soundClickedOn = 1;
 					soundClickedOff = 0;
-					printf("sound turned on: %d\n", sound);
 				}
 				// click sound off
 				else if((event.motion.x > soundOffRect.x) &&
@@ -101,7 +117,6 @@ void title_options_events(void)
 					sound = 0;
 					soundClickedOn = 0;
 					soundClickedOff = 1;
-					printf("sound turned off: %d\n", sound);
 				}
 			}
 		}
@@ -111,7 +126,6 @@ void title_options_events(void)
 void title_options_logic(void)
 {
 	if((sound == 1) && (soundClickedOn == 1) && (Mix_PlayingMusic() == 0) && (soundStarted == 0)) {
-		printf("playing music because it stared at 0\n");
 		soundStarted = 1;
 		soundClickedOn = 0;
 		// Set volume to max.
@@ -122,12 +136,10 @@ void title_options_logic(void)
 		}
 	}
 	else if((sound == 0) && (soundClickedOff == 1) && (Mix_PlayingMusic() == 1)) {
-		printf("pausing music\n");
 		Mix_PauseMusic();
 		soundClickedOff = 0;
 	}
 	else if((sound == 1) && (soundClickedOn == 1)) {
-		printf("resuming music\n");
 		Mix_ResumeMusic();
 		soundClickedOn = 0;
 	}

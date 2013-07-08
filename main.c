@@ -1,4 +1,23 @@
 /*
+Word Fall
+Copyright (C) 2013  Kyle Schreiber
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
+/*
 ############################################################################
  _       _     _     ____     ___       _____   ____    _      _
 | |  _  | |  /   \  |  _  \  |  _ \    | ____| /    \  | |    | |
@@ -266,23 +285,17 @@ int init()
 		return 1;
 	}
 
-	// The window icon is currently a 128x128 alpha png of the F tile.
-	// I want to make the icon the W tile, but I lost the AI file that has the
-	// larger letter, so if I made it the W it would be stuck at 40x40.
+	// App Icon
 	appIcon = load_image("assets/images/icon.png");
 	if(appIcon == NULL) {
 		fprintf(stderr, "App Icon not found\n%s\n", IMG_GetError());
 		return 1;
 	}
 
-	// changing the null value you can set an icon for when the window is
-	// minimized
-	// ^ What did I mean by this? Might be Windows specific.
 	SDL_WM_SetCaption("Word Fall", NULL);
 
 	// Icon for the Window.
 	SDL_WM_SetIcon(appIcon, NULL);
-	//SDL_WM_SetIcon will set the icon for the window.
 
 	// ===== Intro Assets called before load_content() =====
 	introTransition = load_image_noalpha("assets/images/intro-transition.png");
@@ -377,19 +390,19 @@ int load_content()
 		return 1;
 	}
 
-	grass = load_image("assets/images/grass-medium.png");
+	grass = load_image("assets/images/grass.png");
 	if(grass == NULL) {
 		fprintf(stderr, "grass loading failed\n%s\n",IMG_GetError());
 		return 1;
 	}
 
-	submit = load_image("assets/images/yellow-check-yellow-small.png");
+	submit = load_image("assets/images/check.png");
 	if(submit == NULL) {
 		fprintf(stderr, "Check submit button loading failed\n%s\n", IMG_GetError());
 		return 1;
 	}
 
-	pause = load_image("assets/images/pause-black.png");
+	pause = load_image("assets/images/pause.png");
 	if(submit == NULL) {
 		fprintf(stderr, "Pause button loading failed\n%s\n", IMG_GetError());
 		return 1;
@@ -432,8 +445,6 @@ int load_content()
 		for(int j = 0; j < 26; j++) {
 			// This converts the array number to the corresponding ascii value.
 			int asciiCode = j+65;
-			// I really have no idea how this line works so I should probably
-			// do some more invesitgating.
 			char *letter = (char*)&asciiCode;
 			char *location = "assets/images/letters/";
 			char *png = ".png";
@@ -451,7 +462,7 @@ int load_content()
 	}
 
 	for(int i = 0; i < 7; i++) {
-		container[i] = load_image("assets/images/container-2.png");
+		container[i] = load_image("assets/images/container.png");
 		if(container[i] == NULL) {
 			fprintf(stderr, "Container loading failed\n%s\n", IMG_GetError());
 			return 1;
@@ -565,7 +576,6 @@ int load_content()
 
 void quit()
 {
-	//printf("I'm quitting!!\n");
 	Mix_HaltMusic();
 	Mix_FreeChunk(win);
 	Mix_FreeChunk(click);

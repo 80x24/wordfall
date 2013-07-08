@@ -1,3 +1,21 @@
+/*
+Word Fall
+Copyright (C) 2013  Kyle Schreiber
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <SDL/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,8 +24,6 @@
 #include "render.h"
 #include "main.h"
 #include "title-state.h"
-
-
 
 // highlights
 int soundOnHighlight =  0;
@@ -24,8 +40,6 @@ SDL_Rect optionsBackRect;
 
 void title_init(void)
 {
-
-	// Line below might be an issue.
 	soundOnHighlight = 0;
 	soundOffHighlight = 0;
 	backHighlight = 0;
@@ -101,8 +115,7 @@ void title_render(void)
 {
 
 	// Collision rects for play and option buttons
-	// This is horribly inefficient. Most of these values
-	// can be pre-computed and would not have to be calculated each time.
+	// Probably inefficient
 	playRect.x = 148;
 	playRect.y = 300;
 	playRect.w = play->clip_rect.w;
@@ -128,7 +141,7 @@ void title_render(void)
 	SDL_Color hoverColor = {254,210,6};
 	if(playRectHighlight == 1) {
 		play = render_font(playFont, "Play", hoverColor);
-		render_image((360 - play->clip_rect.w)/2, 300, play, screen); // x was 148
+		render_image((360 - play->clip_rect.w)/2, 300, play, screen);
 	}
 	if(playRectHighlight != 1) {
 		play = render_font(playFont, "Play", playColor);
@@ -136,7 +149,7 @@ void title_render(void)
 	}
 	if(optionsRectHighlight == 1) {
 		options = render_font(optionsFont, "Options", hoverColor);
-		render_image((360 - options->clip_rect.w)/2, 350, options, screen); // was 115
+		render_image((360 - options->clip_rect.w)/2, 350, options, screen);
 	}
 	if(optionsRectHighlight != 1) {
 		options = render_font(optionsFont, "Options", playColor);

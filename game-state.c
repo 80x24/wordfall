@@ -1,3 +1,21 @@
+/*
+Word Fall
+Copyright (C) 2013  Kyle Schreiber
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <SDL/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,7 +58,6 @@ int finalScore = 0;
 
 void game_init(void)
 {
-	//gameInit = 0;
 	letterDrag = 0;
 	letter1 = 0;
 	letter2 = 0;
@@ -95,8 +112,6 @@ void game_init(void)
 		for(int j = 0; j < 26; j++) {
 			lettersX[i][j] = (i*75)+45;
 			lettersY[i][j] = 45;
-			//lettersRect[i][j].x = lettersX[i][j];
-			//lettersRect[i][j].y = lettersY[i][j];
 			lettersRect[i][j].w = letters[i][j]->clip_rect.w;
 			lettersRect[i][j].h = letters[i][j]->clip_rect.h;
 		}
@@ -120,18 +135,8 @@ void game_events(void)
 					(event.motion.y > submitRect.y) &&
 					(event.motion.y < submitRect.y + submitRect.h)) {
 					char *safeWord = containerAscii;
-					printf("containerAscii: %s\n", containerAscii);
-					printf("safeWord before sanitize: %s\n", safeWord);
 					safeWord = sanitize(safeWord);
-					printf("safeWord after sanitize: %s\n", safeWord);
 					if(isword(safeWord) == 1){
-						printf("Word!!\n");
-						//printf("%d\n", sparta);
-						// TODO: Add transition for letter disappear
-						// after submit. Currently, it disappears instantly
-						// Might not do at all because making the letters
-						// rapidly smaller is hard to do.
-						printf("scores:{");
 						addScore = 1;
 						for(int i = 0; i < 7; i++) {
 							if(scoreArray[i] != -1) {
@@ -139,12 +144,9 @@ void game_events(void)
 							}
 							containerLetters[i] = 0;
 							containerAscii[i] = 32;
-							printf("%d,", scoreArray[i]);
 							scoreArray[i] = -1;
 						}
 						finalScore += theScore;
-						printf("}\n");
-						printf("final score: %d\n", finalScore);
 
 						// Play win sound
 						if(sound) {
@@ -155,7 +157,6 @@ void game_events(void)
 						}
 					}
 					else {
-						printf("Not a word!\n");
 						addScore = 1;
 						addScoreFail = 1;
 						for(int i = 0; i < 7; i++) {
@@ -245,60 +246,11 @@ void game_events(void)
 
 void game_logic(void)
 {
-	/*if(!gameInit) {
-		timeStart = SDL_GetTicks();
-		// I'm currently using this for one time
-		// initialization which is bad. 
-		submitRect.x = submitX;
-		submitRect.y = submitY;
-		submitRect.w = submit->clip_rect.w;
-		submitRect.h = submit->clip_rect.h;
-
-		pauseRect.x = pauseX;
-		pauseRect.y = pauseY;
-		pauseRect.w = pause->clip_rect.w;
-		pauseRect.h = pause->clip_rect.h;
-
-		for(int i = 0; i < 7; i++) {
-			containerRect[i].x = containerX[i];
-			containerRect[i].y = containerY;
-			containerRect[i].w = container[i]->clip_rect.w;
-			containerRect[i].h = container[i]->clip_rect.h;
-		}
-
-		for(int i = 0; i < 4; i++) {
-			for(int j = 0; j < 26; j++) {
-				lettersX[i][j] = (i*75)+45;
-				lettersY[i][j] = 45;
-				//lettersRect[i][j].x = lettersX[i][j];
-				//lettersRect[i][j].y = lettersY[i][j];
-				lettersRect[i][j].w = letters[i][j]->clip_rect.w;
-				lettersRect[i][j].h = letters[i][j]->clip_rect.h;
-			}
-		}
-		//randomFallSpot = rand() % 4;
-		//randomLetter = rand() % 26;
-		//lettersY[randomFallSpot][randomLetter]++;
-		//printf("Random init letter is [%d][%d]\n", randomFallSpot, randomLetter);
-		//gameInit += 1;
-	}*/
-
-	// This is going to be a problem if it randomly picks a letter that
-	// is already on the screen, but I will deal with that later.
-	// Basically if it picks a letter that is already on the screen all it
-	// is going to do is add one to the letter instead of introducing another
-	// letter. Preliminary testing is showing that this isn't going to be
-	// a problem, but this could definitely be improved with some sort of list
-	// that is storing the current letters.
-	
 	if(SDL_GetTicks() - timeStart >= 1000) {
 		randomFallSpot = rand() % 4;
 		randomLetter = rand() % 98;
-		//printf("randomLetter: %d\n", randomLetter);
 		int randomLetterSpot = letterDistribution[randomLetter];
-		//printf("randomLetterSpot: %d: %c\n", randomLetterSpot, randomLetterSpot+65);
 		lettersY[randomFallSpot][randomLetterSpot]++;
-		//printf("Random letter chosen from timer [%d][%d]\n", randomFallSpot, randomLetter);
 		timeStart = SDL_GetTicks();
 	}
 
@@ -327,7 +279,6 @@ void game_logic(void)
 		}
 	}
 
-	// This for loop within the main loop might be bad.
 	for(int i = 0; i < 4; i++) {
 		for(int j = 0; j < 26; j++) {
 			if(lettersY[i][j] != 45) {
@@ -336,7 +287,6 @@ void game_logic(void)
 				lettersY[i][j]++;
 			}
 			if((lettersY[i][j] >= (GRASS_Y+lettersRect[i][j].h+20)) && letters[i][j] != letters[letter1][letter2]) {
-				// May fix the bug.
 				lettersY[i][j] = 45;
 				lettersX[i][j] = (i*75)+45;
 				lettersRect[i][j].x = lettersX[i][j];
@@ -346,9 +296,6 @@ void game_logic(void)
 			}
 		}
 	}
-	/*for(int i = 0; i < 7; i++) {
-		printf("%c", *(containerAscii + i));
-	}*/
 }
 
 void game_render(void)
@@ -422,14 +369,15 @@ void drag_letter(int letter1, int letter2)
 	// time the user isn't going to be dragging the letter
 	// off of the screen.
 
-
 	if(event.motion.x >= 360 - lettersRect[0][0].w) {
 		event.motion.x = 360 - lettersRect[0][0].w;
 	}
-	
-	if(event.motion.y >= 640 - lettersRect[0][0].h) {
+	else if(event.motion.y >= 640 - lettersRect[0][0].h) {
 		event.motion.y = 640 - lettersRect[0][0].h;
 	}
+
+	printf("event.motion.x: %d\n", event.motion.x);
+	printf("event.motion.y: %d\n", event.motion.y);
 
 	lettersX[letter1][letter2] = event.motion.x;
 	lettersY[letter1][letter2] = event.motion.y;
@@ -440,11 +388,9 @@ void drag_letter(int letter1, int letter2)
 
 char *sanitize(char *word)
 {
-	printf("word in sanitize: %s\n", word);
 	// Get the location of the first space.
 	char *strchrLoc = strchr(word, ' ');
 	int spaceLocation = strchrLoc - word;
-	printf("spaceLocation: %d\n", spaceLocation);
 	// This is a performance bottleneck and
 	// could be sped up if needed.
 	// This loop checks if there is a space between
@@ -453,7 +399,6 @@ char *sanitize(char *word)
 		char *tmp = strchr(word, i+97);
 		int letterLocation = tmp - word;
 		if(letterLocation > spaceLocation) {
-			//printf("there was a space between the letters\n");
 			// Should return an empty string which will be invalid.
 			return "";
 		}
@@ -462,7 +407,6 @@ char *sanitize(char *word)
 	//strncpy(word2, word, sizeof(word2));
 	strcpy(word2, word);
 	word2[spaceLocation] = '\0';
-	printf("word2: %s\n", word2);
 	return word2;
 }
 

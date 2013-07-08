@@ -1,3 +1,21 @@
+/*
+Word Fall
+Copyright (C) 2013  Kyle Schreiber
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #ifndef _main_h
 #define _main_h
 
@@ -60,11 +78,7 @@ void write_pref(int value, char *location);
 
 // ============= SDL Surfaces =====================
 // Everything is loaded at startup
-// These are essentially all global variables. There should actually be a
-// function in each state where I do loading and initialization, but I am kind
-// of too far in to implement that now. I might have to implement it in the
-// future if the main game states get too complicated, but the way I am
-// currently implementing states is very stupid.
+// These are essentially all global variables.
 
 extern SDL_Surface *screen;
 extern SDL_Surface *introBackground;
@@ -116,7 +130,6 @@ extern Mix_Chunk *win;
 extern Mix_Chunk *click;
 extern Mix_Chunk *error;
 
-// =================================================
 extern SDL_Event event;
 extern cloud cloudPos1;
 extern cloud cloudPos2;

@@ -1,3 +1,21 @@
+/*
+Word Fall
+Copyright (C) 2013  Kyle Schreiber
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <SDL/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,8 +25,8 @@
 #include "main.h"
 #include "title-state.h"
 
-const int wordY = 165; // was 150
-const int fallY = 215; // was 200
+const int wordY = 165;
+const int fallY = 215;
 int playButtonY = 700;
 int optionsButtonY = 750;
 unsigned int buttonsFall = 1;
@@ -18,8 +36,6 @@ int titleY[] = {-50, -75, -100, -125, -175, -200, -225, -250};
 
 void title_fall_init(void)
 {
-	//wordY = 150;
-	//fallY = 200;
 	playButtonY = 700;
 	optionsButtonY = 750;
 	buttonsFall = 1;
@@ -93,7 +109,6 @@ void title_fall_events(void)
 					(event.motion.y > playRect.y) &&
 					(event.motion.y < playRect.y + playRect.h)) {
 					//set_next_state(STATE_GAME_TRANSITION);
-					printf("Play button clicked - Falling\n");
 				}
 				else if((event.motion.x > optionsRect.x) &&
 					(event.motion.x < optionsRect.x + optionsRect.w) &&
@@ -155,7 +170,7 @@ void title_fall_render(void)
 	SDL_Color hoverColor = {254,210,6};
 	if(playRectHighlight == 1) {
 		play = render_font(playFont, "Play", hoverColor);
-		render_image((360 - play->clip_rect.w)/2, playButtonY, play, screen); // x was 148
+		render_image((360 - play->clip_rect.w)/2, playButtonY, play, screen);
 	}
 	if(playRectHighlight != 1) {
 		play = render_font(playFont, "Play", playColor);
