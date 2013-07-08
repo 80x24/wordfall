@@ -1,8 +1,0 @@
-// click.wav
-http://soundbible.com/1280-Click-On.html
-
-// pling.wav
-This one is perfect and is in the public domain
-
-// error.wav
-http://soundbible.com/1540-Computer-Error-Alert.html
