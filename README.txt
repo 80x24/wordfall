@@ -20,20 +20,24 @@ Install
 - Windows
 	Use the .exe installer, and follow the installer instructions.
 - Mac OS X
-	Press option and then open the .dmg file. Drag the Word Fall.app file
-	into the applications folder link. Word Fall will then be installed.
+	Follow the compile instructions to build Word Fall for your system.
 - Linux
-	Follow the compile instructions to build word fall for your system.
+	Follow the compile instructions to build Word Fall for your system.
 
 Compile From Source
 ====================
 **Dependencies**
 *Note: version numbers lower than listed will work*
 - SDL 1.2.15
+	<http://www.libsdl.org/download-1.2.php>
 - SDL_image 1.2.12
+	<http://www.libsdl.org/projects/SDL_image/>
 - SDL_ttf 2.0.11
+	<http://www.libsdl.org/projects/SDL_ttf/>
 - SDL_mixer 1.2.12
+	<http://www.libsdl.org/projects/SDL_mixer/>
 - Lua 5.2.2
+	<http://www.lua.org/download.html>
 
 Linux
 ------
@@ -42,15 +46,17 @@ your package manager. Make sure to install the development versions. They
 should have a suffix or prefix like -dev or devel.
 
 After the dependencies are installed, just run make linux and then
-make install.
+make install. Running make install will copy the game into the
+/usr/local/bin/ folder. To install somewhere else, just 
 
 OS X
 -----
 OS X users need to either have Xcode installed, or have the command line
 utilities from Xcode installed.
 
-OS X users will need to link with the frameworks from the SDL site. The
-frameworks can be installed in /Library/Frameworks/ (or another location
+OS X users will need to link with the SDL frameworks. Just download
+all of the dependencies listed above, and copy teh .framework file
+into /Library/Frameworks/ (or another location
 of your choice, just make sure it links).
 
 After the frameworks are installed just run make osx. This will build a
@@ -61,7 +67,7 @@ Windows
 --------
 Windows users will need all of the .dll files provided by the windows binary
 in order for word fall to work properly. Make sure that the development
-versions of all of the dependencies are installed and linked in your
+versions of all SDL dependencies are installed and linked in your
 project file (Visual Studio, Code::Blocks, etc). Import all of the
 files except for the SDLMain.m and SDLMain.h files(These are mac specific)
 and build the project.
@@ -75,6 +81,8 @@ Sound Effects
 "Super Friendly" - Kevin MacLeod
 "Click" - Mike Koenig
 "Error" - Mike Koenig
+
+"Roboto" font licensed under the Apache License version 2.0
 
 Open Source Projects Used
 --------------------------
