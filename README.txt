@@ -27,7 +27,10 @@ Install
 Compile From Source
 ====================
 **Dependencies**
-*Note: version numbers lower than listed will work*
+Version numbers lower than listed will work
+Note: The assets folder will need to be next to the binary for the
+program to run
+
 - SDL 1.2.15
 	<http://www.libsdl.org/download-1.2.php>
 - SDL_image 1.2.12
@@ -45,9 +48,7 @@ The easiest way for Linux users to install the dependencies is through
 your package manager. Make sure to install the development versions. They
 should have a suffix or prefix like -dev or devel.
 
-After the dependencies are installed, just run make linux and then
-make install. Running make install will copy the game into the
-/usr/local/bin/ folder. To install somewhere else, just 
+After the dependencies are installed, just run: make linux
 
 OS X
 -----
@@ -55,7 +56,7 @@ OS X users need to either have Xcode installed, or have the command line
 utilities from Xcode installed.
 
 OS X users will need to link with the SDL frameworks. Just download
-all of the dependencies listed above, and copy teh .framework file
+all of the dependencies listed above, and copy the .framework file
 into /Library/Frameworks/ (or another location
 of your choice, just make sure it links).
 

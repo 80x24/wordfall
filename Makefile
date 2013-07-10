@@ -37,5 +37,3 @@ linux:
 	$(CC) $(CFLAGS) $(OBJECTS) $(OBJECTSLINUX) $(LDFLAGSLINUX) -o word-fall
 clean:
 	rm -rf $(OBJECTS) $(OBJECTSLINUX) $(OBJECTSOSX)
-install:
-	cp word-fall /usr/local/bin

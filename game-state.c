@@ -374,9 +374,6 @@ void drag_letter(int letter1, int letter2)
 		event.motion.y = 640 - lettersRect[0][0].h;
 	}
 
-	printf("event.motion.x: %d\n", event.motion.x);
-	printf("event.motion.y: %d\n", event.motion.y);
-
 	lettersX[letter1][letter2] = event.motion.x;
 	lettersY[letter1][letter2] = event.motion.y;
 
