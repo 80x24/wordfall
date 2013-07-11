@@ -20,7 +20,7 @@ Install
 - Windows
 	Use the .exe installer, and follow the installer instructions.
 - Mac OS X
-	Follow the compile instructions to build Word Fall for your system.
+	Copy the .app to your Applications folder.
 - Linux
 	Follow the compile instructions to build Word Fall for your system.
 
@@ -61,8 +61,7 @@ into /Library/Frameworks/ (or another location
 of your choice, just make sure it links).
 
 After the frameworks are installed just run make osx. This will build a
-version of the game that can be run from the command line. If you want to
-create a .app file you will need to create an Xcode project.
+version of the game that can be run from the command line.
 
 Windows
 --------
