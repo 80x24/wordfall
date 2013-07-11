@@ -86,21 +86,27 @@ static NSString *getApplicationName(void)
 {
 
 	// This will change the working directory to inside the .app
+	// Note that the current function is for the working directory
+	// to be within the .app
+	NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+[[NSFileManager defaultManager] 
+changeCurrentDirectoryPath:resourcePath];
+	
+	// To have the working directory be outside of the .app,
+	// uncomment the code below and comment out the code below.
 	/*
-	NSString *resourcePath = [[NSBundle mainBundle] resourcePath];[[NSFileManager defaultManager] changeCurrentDirectoryPath:resourcePath];
-	*/
-
     if (shouldChdir)
     {
         char parentdir[MAXPATHLEN];
         CFURLRef url = CFBundleCopyBundleURL(CFBundleGetMainBundle());
         CFURLRef url2 = CFURLCreateCopyDeletingLastPathComponent(0, url);
         if (CFURLGetFileSystemRepresentation(url2, 1, (UInt8 *)parentdir, MAXPATHLEN)) {
-            chdir(parentdir);   /* chdir to the binary app's parent */
+            chdir(parentdir);   // chdir to the binary app's parent
         }
         CFRelease(url);
         CFRelease(url2);
     }
+	*/
 }
 
 #if SDL_USE_NIB_FILE

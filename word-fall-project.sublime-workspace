@@ -51,7 +51,15 @@
 			"file": "main.c",
 			"settings":
 			{
-				"buffer_size": 16493,
+				"buffer_size": 16585,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "SDLMain.m",
+			"settings":
+			{
+				"buffer_size": 11470,
 				"line_ending": "Unix"
 			}
 		}
@@ -234,7 +242,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -242,15 +250,15 @@
 					"file": "main.c",
 					"settings":
 					{
-						"buffer_size": 16493,
+						"buffer_size": 16585,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								16493,
-								16493
+								0,
+								0
 							]
 						],
 						"settings":
@@ -349,6 +357,34 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "SDLMain.m",
+					"settings":
+					{
+						"buffer_size": 11470,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2579,
+								2579
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Objective-C/Objective-C.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 936.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
