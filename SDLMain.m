@@ -84,17 +84,17 @@ static NSString *getApplicationName(void)
 /* Set the working directory to the .app's parent directory */
 - (void) setupWorkingDirectory:(BOOL)shouldChdir
 {
+	// NOTE: The current working directory is OUTSIDE the .app
 
 	// This will change the working directory to inside the .app
-	// Note that the current function is for the working directory
-	// to be within the .app
+	// The only code in this function should be the code below,
+	// the if statement needs to be removed for the working
+	// directory to be changed.
+	/*
 	NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
 [[NSFileManager defaultManager] 
 changeCurrentDirectoryPath:resourcePath];
-	
-	// To have the working directory be outside of the .app,
-	// uncomment the code below and comment out the code below.
-	/*
+	*/	
     if (shouldChdir)
     {
         char parentdir[MAXPATHLEN];
@@ -106,7 +106,6 @@ changeCurrentDirectoryPath:resourcePath];
         CFRelease(url);
         CFRelease(url2);
     }
-	*/
 }
 
 #if SDL_USE_NIB_FILE
