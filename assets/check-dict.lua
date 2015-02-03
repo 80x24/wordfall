@@ -15,23 +15,17 @@ You should have received a copy of the GNU General Public License
 along with Word Fall.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
--- check for file existence
-function file_exists(file)
-	local f = io.open(file, "r")
-	if f then f:close() end
-	return f ~= nil
-end
+-- file existence is guaranteed upon startup
 
 -- get lines from file
 -- returns empty table if file doesn't exist
 function get_lines(file)
-	if not file_exists(file) then
-		return {}
-	end
 	lines = {}
-	for line in io.lines(file) do
+	local f = io.open(file, "r")
+	for line in f:lines() do
 		lines[#lines + 1] = line
 	end
+	f:close()
 	return lines
 end
 

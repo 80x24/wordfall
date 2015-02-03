@@ -48,18 +48,10 @@
 	"buffers":
 	[
 		{
-			"file": "main.c",
+			"file": "assets/check-dict.lua",
 			"settings":
 			{
-				"buffer_size": 16585,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "SDLMain.m",
-			"settings":
-			{
-				"buffer_size": 11470,
+				"buffer_size": 1312,
 				"line_ending": "Unix"
 			}
 		}
@@ -83,7 +75,10 @@
 	},
 	"console":
 	{
-		"height": 125.0
+		"height": 125.0,
+		"history":
+		[
+		]
 	},
 	"distraction_free":
 	{
@@ -94,8 +89,23 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/kyle/word-fall",
+		"/Users/kyle/word-fall/assets"
+	],
 	"file_history":
 	[
+		"/Users/kyle/word-fall/main.c",
+		"/Users/kyle/word-fall/game-state.c",
+		"/Users/kyle/word-fall/assets/check-dict.lua",
+		"/Users/kyle/word-fall/assets/dict.txt",
+		"/Users/kyle/dev/rust/phrases/src/lib.rs",
+		"/Users/kyle/word-fall/gamestates.h",
+		"/Users/kyle/word-fall/main.h",
+		"/Users/kyle/word-fall/load.h",
+		"/Users/kyle/word-fall/render.h",
+		"/Users/kyle/word-fall/SDLMain.m",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/Users/kyle/word-fall/embedded-lua.c",
@@ -103,9 +113,6 @@
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
 		"/Users/kyle/word-fall/intro-state.c",
 		"/Users/kyle/word-fall/title-options-state.c",
-		"/Users/kyle/word-fall/game-state.c",
-		"/Users/kyle/word-fall/main.c",
-		"/Users/kyle/word-fall/main.h",
 		"/Users/kyle/word-fall/game-state.h",
 		"/Users/kyle/word-fall/title-transition-state.c",
 		"/Users/kyle/word-fall/title-state.c",
@@ -113,20 +120,16 @@
 		"/Users/kyle/word-fall/embedded-lua.h",
 		"/Users/kyle/word-fall/Makefile",
 		"/Users/kyle/word-fall/check-dict.lua",
-		"/Users/kyle/word-fall/SDLMain.m",
 		"/Users/kyle/word-fall/SDLMain.h",
 		"/Users/kyle/word-fall/intro-transition-state.c",
-		"/Users/kyle/word-fall/gamestates.h",
 		"/Users/kyle/word-fall/title-state.h",
 		"/Users/kyle/word-fall/title-fall-state.c",
 		"/Users/kyle/word-fall/state.c",
 		"/Users/kyle/word-fall/pause-state.c",
 		"/Users/kyle/word-fall/state.h",
 		"/Users/kyle/word-fall/pause-state.h",
-		"/Users/kyle/word-fall/render.h",
 		"/Users/kyle/word-fall/render.c",
 		"/Users/kyle/git-repos/tuxtype/src/SDL_extras.h",
-		"/Users/kyle/word-fall/load.h",
 		"/Users/kyle/word-fall/load.c",
 		"/home/kyle/word-fall/main.h",
 		"/home/kyle/word-fall/title-state.c",
@@ -158,7 +161,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			"",
@@ -172,6 +175,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"dictionary",
+			"check_word",
+			"SDL_QUIT",
+			"write_pref",
+			"write_pref()",
+			"load_content()",
+			"printf(\"%s\\n\", dictionary);",
+			"printf(",
 			"scroll",
 			"/*",
 			"highscoreSurface",
@@ -242,151 +253,36 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "main.c",
+					"file": "assets/check-dict.lua",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16585,
+						"buffer_size": 1312,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1312,
+								1312
 							]
 						],
 						"settings":
 						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110.0
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2.0,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/C++/C.tmLanguage",
+							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "SDLMain.m",
-					"settings":
-					{
-						"buffer_size": 11470,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2579,
-								2579
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Objective-C/Objective-C.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 936.0,
-						"zoom_level": 1.0
-					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -427,6 +323,11 @@
 	{
 		"height": 119.0
 	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "word-fall-project.sublime-project",
 	"replace":
 	{
 		"height": 64.0
@@ -448,10 +349,25 @@
 		],
 		"width": 0.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 262.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }

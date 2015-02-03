@@ -123,6 +123,9 @@ int main(int argc, char *argv[])
 		// Events
 		// ==============================
 		switch(currentState) {
+			case STATE_EXIT:
+				running = 0;
+				break;
 			case STATE_INTRO_TRANSITION:
 				intro_transition_events();
 				break;
@@ -161,6 +164,7 @@ int main(int argc, char *argv[])
 		switch(currentState) {
 			case STATE_EXIT:
 				running = 0;
+				break;
 			case STATE_INTRO_TRANSITION:
 				intro_transition_logic();
 				break;
@@ -199,6 +203,9 @@ int main(int argc, char *argv[])
 		// Rendering
 		// ============================
 		switch(currentState) {
+			case STATE_EXIT:
+				running = 0;
+				break;
 			case STATE_INTRO_TRANSITION:
 				intro_transition_render();
 				break;
@@ -438,6 +445,15 @@ int load_content()
 		sound = atoi(getPref2);
 	}
 	fclose(userPref2);
+
+	// =========== CHECK THAT LUA FILE EXISTS ===========
+	FILE *luaCheck;
+	luaCheck = fopen("assets/check-dict.lua", "r");
+	if(luaCheck == NULL) {
+		fprintf(stderr, "Error: lua dictionary check not found\n");
+		return 1;
+	}
+	fclose(luaCheck);
 
 	// =========== LOADING FOR LETTERS AND CONTAINERS =================
 	for(int i = 0; i < 4; i++) {
