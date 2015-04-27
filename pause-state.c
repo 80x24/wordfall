@@ -140,6 +140,15 @@ void pause_render(void)
 	render_image(resumeLoc.x, resumeLoc.y, resume, screen);
 	render_image(returnLoc.x, returnLoc.y, returnMenu, screen);
 
+	SDL_FreeSurface(score);
+	SDL_FreeSurface(pauseFontSurface);
+	SDL_FreeSurface(resume);
+	SDL_FreeSurface(returnMenu);
+	score = NULL;
+	pauseFontSurface = NULL;
+	resume = NULL;
+	returnMenu = NULL;
+
 	if(SDL_Flip(screen) != 0) {
 		fprintf(stderr, "screen update failed\n");
 	}

@@ -114,6 +114,7 @@ void title_render(void)
 
 	// Collision rects for play and option buttons
 	// Probably inefficient
+	/*
 	playRect.x = 148;
 	playRect.y = 300;
 	playRect.w = play->clip_rect.w;
@@ -122,6 +123,7 @@ void title_render(void)
 	optionsRect.y = 350;
 	optionsRect.w = options->clip_rect.w;
 	optionsRect.h = options->clip_rect.h;
+	*/
 
 	render_image(0,0,background,screen);
 	
@@ -140,18 +142,26 @@ void title_render(void)
 	if(playRectHighlight == 1) {
 		play = render_font(playFont, "Play", hoverColor);
 		render_image((360 - play->clip_rect.w)/2, 300, play, screen);
+		SDL_FreeSurface(play);
+		play = NULL;
 	}
 	if(playRectHighlight != 1) {
 		play = render_font(playFont, "Play", playColor);
 		render_image((360 - play->clip_rect.w)/2, 300, play, screen);
+		SDL_FreeSurface(play);
+		play = NULL;
 	}
 	if(optionsRectHighlight == 1) {
 		options = render_font(optionsFont, "Options", hoverColor);
 		render_image((360 - options->clip_rect.w)/2, 350, options, screen);
+		SDL_FreeSurface(options);
+		options = NULL;
 	}
 	if(optionsRectHighlight != 1) {
 		options = render_font(optionsFont, "Options", playColor);
 		render_image((360 - options->clip_rect.w)/2, 350, options, screen);
+		SDL_FreeSurface(options);
+		options = NULL;
 	}
 
 	if(SDL_Flip(screen) != 0) {

@@ -163,35 +163,51 @@ void title_options_render(void)
 	SDL_Color hoverColor = {254,210,6};
 	optionsSound = render_font(optionsSoundFont, "Sound:", optionsColor);
 	render_image(60, 275, optionsSound, screen);
+	SDL_FreeSurface(optionsSound);
+	optionsSound = NULL;
 
 	char finalHighscoreString[64];
 	sprintf(finalHighscoreString, "High Score: %d", highscore); 
 	highscoreSurface = render_font(highscoreFont, finalHighscoreString, optionsColor);
 	render_image(60, 340, highscoreSurface, screen);
+	SDL_FreeSurface(highscoreSurface);
+	highscoreSurface = NULL;
 
 	if(soundOnHighlight == 1) {
 		optionsSoundOn = render_font(optionsSoundFontOn, "On", hoverColor);
 		render_image(180, 275, optionsSoundOn, screen);
+		SDL_FreeSurface(optionsSoundOn);
+		optionsSoundOn = NULL;
 	}
 	if(soundOnHighlight != 1) {
 		optionsSoundOn = render_font(optionsSoundFontOn, "On", optionsColor);
 		render_image(180, 275, optionsSoundOn, screen);
+		SDL_FreeSurface(optionsSoundOn);
+		optionsSoundOn = NULL;
 	}
 	if(soundOffHighlight == 1) {
 		optionsSoundOff = render_font(optionsSoundFontOff, "Off", hoverColor);
 		render_image(230, 275, optionsSoundOff, screen);
+		SDL_FreeSurface(optionsSoundOff);
+		optionsSoundOff = NULL;
 	}
 	if(soundOffHighlight != 1) {
 		optionsSoundOff = render_font(optionsSoundFontOff, "Off", optionsColor);
 		render_image(230, 275, optionsSoundOff, screen);
+		SDL_FreeSurface(optionsSoundOff);
+		optionsSoundOff = NULL;
 	}
 	if(backHighlight == 1) {
 		optionsBack = render_font(optionsBackFont, "Back", hoverColor);
 		render_image(140, 475, optionsBack, screen);
+		SDL_FreeSurface(optionsBack);
+		optionsBack = NULL;
 	}
 	if(backHighlight != 1) {
 		optionsBack = render_font(optionsBackFont, "Back", optionsColor);
 		render_image(140, 475, optionsBack, screen);
+		SDL_FreeSurface(optionsBack);
+		optionsBack = NULL;
 	}
 	
 	// Collision rects

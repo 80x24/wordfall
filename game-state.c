@@ -40,6 +40,7 @@ int letterDistribution[] = {
 };
 int addScore = 0;
 int addScoreFail = 0;
+int addScoreWin = 0;
 int addTransition = 0;
 float addTransitionY = 550;
 
@@ -133,16 +134,11 @@ void game_events(void)
 					(event.motion.y > submitRect.y) &&
 					(event.motion.y < submitRect.y + submitRect.h)) {
 					// Dangling pointers all around.
-					// This safe word needs to be a copy of containerAscii
-					// and then I can pass a buffer and the word into sanitize.
-					// Then I can pass that into isword.
-					// This should all be statically allocated and not
-					// dynamically. I'm also not freeing safeWord here
-					// after the malloc in sanitize.
 					char *safeWord = strdup(containerAscii);
 					sanitize(safeWord);
 					if(isword(safeWord) == 1){
 						addScore = 1;
+						addScoreWin = 1;
 						for(int i = 0; i < 7; i++) {
 							if(scoreArray[i] != -1) {
 								theScore += scoreValues[scoreArray[i]];
@@ -156,14 +152,14 @@ void game_events(void)
 						// Play win sound
 						if(sound) {
 							if(Mix_PlayChannel(-1, win, 0) == -1) {
-								fprintf(stderr, "win sound failed!\n%s\n",
-									Mix_GetError());
+								fprintf(stderr, "win sound failed!\n%s\n", Mix_GetError());
 							}
 						}
 					}
 					else {
 						addScore = 1;
 						addScoreFail = 1;
+						addScoreWin = 0;
 						for(int i = 0; i < 7; i++) {
 							scoreArray[i] = -1;
 							containerLetters[i] = 0;
@@ -281,6 +277,9 @@ void game_logic(void)
 			if(addScoreFail == 1) {
 				addScoreFail = 0;
 			}
+			if(addScoreWin == 1) {
+				addScoreWin = 0;
+			}
 			addTransition = SDL_GetTicks();
 		}
 	}
@@ -341,6 +340,8 @@ void game_render(void)
 	sprintf(finalScoreString, "SCORE: %d", finalScore);
 	score = render_font(scoreFont, finalScoreString, scoreColor);
 	render_image(32, ((score->clip_rect.h - pause->clip_rect.h)/2), score, screen);
+	SDL_FreeSurface(score);
+	score = NULL;
 
 	if(letterDrag) { 
 		if(lettersY[letter1][letter2] >= (GRASS_Y - lettersRect[0][0].h) && lettersY[letter1][letter2] != 1) {
@@ -349,17 +350,21 @@ void game_render(void)
 	}
 
 	if(addScore) {
-		if(!addScoreFail) {
+		if(addScoreWin) {
 			SDL_Color scoreColor = {0,0,0};
 			char tmpScore[16];
 			sprintf(tmpScore, "+%d", theScore);
 			scorePopup = render_font(scoreFontPopup, tmpScore, scoreColor);
 			render_image(310, addTransitionY, scorePopup, screen);
+			SDL_FreeSurface(scorePopup);
+			scorePopup = NULL;
 		}
-		else {
+		else if(addScoreFail) {
 			SDL_Color failColor = {255,0,0};
 			notWord = render_font(notWordFont, "X", failColor);
 			render_image(320, addTransitionY, notWord, screen);
+			SDL_FreeSurface(notWord);
+			notWord = NULL;
 		}
 	}
 	

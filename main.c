@@ -624,23 +624,49 @@ void quit()
 	SDL_FreeSurface(cloud2);
 	SDL_FreeSurface(cloud3);
 	SDL_FreeSurface(grass);
-	SDL_FreeSurface(play);
-	SDL_FreeSurface(options);
-	SDL_FreeSurface(optionsSound);
-	SDL_FreeSurface(optionsSoundOn);
-	SDL_FreeSurface(optionsSoundOff);
-	SDL_FreeSurface(optionsBack);
+	if(play != NULL) {
+		SDL_FreeSurface(play);
+	}
+	if(options != NULL) {
+		SDL_FreeSurface(options);
+	}
+	if(optionsSound != NULL) {
+		SDL_FreeSurface(optionsSound);
+	}
+	if(optionsSoundOn != NULL) {
+		SDL_FreeSurface(optionsSoundOn);
+	}
+	if(optionsSoundOff != NULL) {
+		SDL_FreeSurface(optionsSoundOff);
+	}
+	if(optionsBack != NULL) {
+		SDL_FreeSurface(optionsBack);
+	}
 	SDL_FreeSurface(introBackground);
 	SDL_FreeSurface(introTransition);
 	SDL_FreeSurface(pause);
 	SDL_FreeSurface(submit);
-	SDL_FreeSurface(score);
-	SDL_FreeSurface(scorePopup);
-	SDL_FreeSurface(notWord);
-	SDL_FreeSurface(pauseFontSurface);
-	SDL_FreeSurface(resume);
-	SDL_FreeSurface(returnMenu);
-	SDL_FreeSurface(highscoreSurface);
+	if(score != NULL) {
+		SDL_FreeSurface(score);
+	}
+	if(scorePopup != NULL) {
+		SDL_FreeSurface(scorePopup);
+	}
+	if(notWord != NULL) {
+		SDL_FreeSurface(notWord);
+	}
+	if(pauseFontSurface != NULL) {
+		SDL_FreeSurface(pauseFontSurface);
+	}
+	if(resume != NULL) {
+		SDL_FreeSurface(resume);
+	}
+	if(returnMenu != NULL) {
+		SDL_FreeSurface(returnMenu);
+	}
+	if(highscoreSurface != NULL) {
+		SDL_FreeSurface(highscoreSurface);
+	}
 	SDL_FreeSurface(appIcon);
 
 	for(int i = 0; i < 8; i++) {

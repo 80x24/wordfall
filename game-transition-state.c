@@ -141,9 +141,13 @@ void game_transition_render(void)
 	// Transition for Play and Options to float away.
 	play = render_font(playFont, "Play", playColor);
 	render_image(playX, playY, play, screen);
+	SDL_FreeSurface(play);
+	play = NULL;
 
 	options = render_font(optionsFont, "Options", playColor);
 	render_image(optionsX, optionsY, options, screen);
+	SDL_FreeSurface(options);
+	options = NULL;
 
 	if(SDL_Flip(screen) != 0) {
 		fprintf(stderr, "screen update failed\n");

@@ -43,6 +43,7 @@ extern int scoreValues[26];
 extern int scoreArray[7];
 extern int addScore;
 extern int addScoreFail;
+extern int addScoreWin;
 extern int addTransition;
 extern float addTransitionY;
 

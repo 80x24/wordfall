@@ -196,4 +196,9 @@ void title_fall_render(void)
 	if(SDL_Flip(screen) != 0) {
 		fprintf(stderr, "screen update failed\n");
 	}
+
+	SDL_FreeSurface(play);
+	play = NULL;
+	SDL_FreeSurface(options);
+	options = NULL;
 }
