@@ -62,5 +62,6 @@ extern char containerAscii[8];
 
 void drag_letter(int letter1, int letter2);
 int isword(char *word);
-char *sanitize(char *word);
+void sanitize(char *word);
+char *strdup(const char *s);
 #endif

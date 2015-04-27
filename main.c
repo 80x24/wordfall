@@ -1,6 +1,6 @@
 /*
 Word Fall
-Copyright (C) 2013  Kyle Schreiber
+Copyright (C) 2015 Kyle Schreiber
 
 Word Fall is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,11 +30,15 @@ along with Word Fall.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <assert.h>
 #include "main.h"
 #include "state.h"
 #include "load.h"
 #include "gamestates.h"
+#include "hashtable.h"
 #define FPS 60
+
+// Globals are bad
 
 // state globals
 int currentState = STATE_INTRO_TRANSITION;
@@ -45,6 +49,9 @@ int soundStarted = 0;
 
 int highscore = 0;
 int soundPref = 0;
+
+// dictionary
+Dict dictionary;
 
 // Surface Globals
 // These should probably be reduced in scope
@@ -256,6 +263,7 @@ int main(int argc, char *argv[])
 	}
 	write_pref(highscore, "assets/userpref1.txt");
 	write_pref(sound, "assets/userpref2.txt");
+	dict_destroy(dictionary);
 	quit();
 
 	return 0;
@@ -446,14 +454,27 @@ int load_content()
 	}
 	fclose(userPref2);
 
-	// =========== CHECK THAT LUA FILE EXISTS ===========
-	FILE *luaCheck;
-	luaCheck = fopen("assets/check-dict.lua", "r");
-	if(luaCheck == NULL) {
-		fprintf(stderr, "Error: lua dictionary check not found\n");
+	//============ CREATE THE DICTIONARY =============
+	FILE *dicthandle;
+	dictionary = dict_create();
+
+	dicthandle = fopen("assets/dict.txt", "r");
+	if(dicthandle == NULL) {
+		fprintf(stderr, "Error: dictionary not found!\n");
 		return 1;
 	}
-	fclose(luaCheck);
+
+	char buff[32];
+	while(fgets(buff, sizeof(buff), dicthandle)) {
+		// strip off the newline after each word
+		for(int i = 0; i < strlen(buff); i++) {
+			if(*(buff + i) == '\n') {
+				*(buff + i) = '\0';
+			}
+		}
+		dict_insert(dictionary, (const char *)buff, (const char *)buff);
+	}
+	fclose(dicthandle);
 
 	// =========== LOADING FOR LETTERS AND CONTAINERS =================
 	for(int i = 0; i < 4; i++) {

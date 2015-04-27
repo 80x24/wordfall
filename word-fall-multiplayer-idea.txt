@@ -1,0 +1,5 @@
+Word Fall Multiplayer
+
+Make the seed for the randomly generated letters the same
+so that you can send the seed to your friends and they will get
+the same letters that you get and you can compete.

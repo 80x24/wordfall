@@ -22,7 +22,7 @@ along with Word Fall.  If not, see <http://www.gnu.org/licenses/>.
 #include "render.h"
 #include "main.h"
 #include "game-state.h"
-#include "embedded-lua.h"
+#include "hashtable.h"
 
 int letterDrag = 0;
 int letter1 = 0;
@@ -132,8 +132,15 @@ void game_events(void)
 					(event.motion.x < submitRect.x + submitRect.w) &&
 					(event.motion.y > submitRect.y) &&
 					(event.motion.y < submitRect.y + submitRect.h)) {
-					char *safeWord = containerAscii;
-					safeWord = sanitize(safeWord);
+					// Dangling pointers all around.
+					// This safe word needs to be a copy of containerAscii
+					// and then I can pass a buffer and the word into sanitize.
+					// Then I can pass that into isword.
+					// This should all be statically allocated and not
+					// dynamically. I'm also not freeing safeWord here
+					// after the malloc in sanitize.
+					char *safeWord = strdup(containerAscii);
+					sanitize(safeWord);
 					if(isword(safeWord) == 1){
 						addScore = 1;
 						for(int i = 0; i < 7; i++) {
@@ -168,6 +175,7 @@ void game_events(void)
 							}
 						}
 					}
+					free(safeWord);
 				}
 				else if((event.motion.x > pauseRect.x) &&
 					(event.motion.x < pauseRect.x + pauseRect.w) &&
@@ -381,48 +389,43 @@ void drag_letter(int letter1, int letter2)
 	lettersRect[letter1][letter2].y = event.motion.y;
 }
 
-char *sanitize(char *word)
+// Sanitize looks to see if there is a space in the word sent to it,
+// and/or takes off the spaces at the end of the word.
+
+void sanitize(char *word)
 {
-	// Get the location of the first space.
-	char *strchrLoc = strchr(word, ' ');
-	int spaceLocation = strchrLoc - word;
-	// This is a performance bottleneck and
-	// could be sped up if needed.
-	// This loop checks if there is a space between
-	// the submitted word.
-	for(int i = 0; i < 26; i++) {
-		char *tmp = strchr(word, i+97);
-		int letterLocation = tmp - word;
-		if(letterLocation > spaceLocation) {
-			// Should return an empty string which will be invalid.
-			return "";
+	for(int i = 0; i < strlen(word); i++) {
+		if(word[i] == ' ') {
+			word[i] = '\0';
 		}
 	}
-	char *word2 = malloc(sizeof(char)*spaceLocation);
-	//strncpy(word2, word, sizeof(word2));
-	strcpy(word2, word);
-	word2[spaceLocation] = '\0';
-	return word2;
 }
 
 int isword(char *word)
 {
-	if(strlen(word) < 1) {
+	int isWord = -1;
+	// make sure they didn't just enter 1 letter, because technically I is a
+	// word, but I'm not going to allow it here.
+	if(strlen(word) < 2) {
 		return 0;
 	}
-	int isWord = 0;
-	
-	if(check_word(word) == 1) {
+	// cast to (const char *) should be fine here
+	if(dict_search(dictionary, (const char *)word) != NULL) {
 		isWord = 1;
 	}
-	else if(check_word(word) == 0) {
+	else {
 		isWord = 0;
 	}
+	return isWord;
+}
 
-	if(isWord == 1) {
-		return 1;
+char *strdup(const char *s)
+{
+	char *d = malloc(strlen(s)+1);
+	if(d == NULL) {
+		return NULL;
 	}
-	else {
-		return 0;
-	}
+	strcpy(d,s);
+
+	return d;
 }

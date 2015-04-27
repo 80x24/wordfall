@@ -45,21 +45,31 @@
 			]
 		]
 	},
-	"buffers":
+	"build_system": "Packages/Makefile/Make.sublime-build",
+	"build_system_choices":
 	[
-		{
-			"file": "assets/check-dict.lua",
-			"settings":
-			{
-				"buffer_size": 1312,
-				"line_ending": "Unix"
-			}
-		}
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Makefile/Make.sublime-build",
+				""
+			]
+		]
 	],
-	"build_system": "",
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 267.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -89,36 +99,36 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/Users/kyle/word-fall",
-		"/Users/kyle/word-fall/assets"
-	],
 	"file_history":
 	[
+		"/Users/kyle/word-fall/main.h",
+		"/Users/kyle/word-fall/hashtable.h",
+		"/Users/kyle/dev/completed-projects/dictionary-check/dict-search.c",
+		"/Users/kyle/word-fall/intro-state.c",
+		"/Users/kyle/word-fall/hashtable.c",
+		"/Users/kyle/word-fall/Makefile",
 		"/Users/kyle/word-fall/main.c",
 		"/Users/kyle/word-fall/game-state.c",
+		"/Users/kyle/word-fall/embedded-lua.c",
+		"/Users/kyle/word-fall/load.c",
+		"/Users/kyle/Desktop/test.cpp",
 		"/Users/kyle/word-fall/assets/check-dict.lua",
 		"/Users/kyle/word-fall/assets/dict.txt",
 		"/Users/kyle/dev/rust/phrases/src/lib.rs",
 		"/Users/kyle/word-fall/gamestates.h",
-		"/Users/kyle/word-fall/main.h",
 		"/Users/kyle/word-fall/load.h",
 		"/Users/kyle/word-fall/render.h",
 		"/Users/kyle/word-fall/SDLMain.m",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/kyle/word-fall/embedded-lua.c",
 		"/Users/kyle/word-fall/dictionary-check.py",
 		"/Users/kyle/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
-		"/Users/kyle/word-fall/intro-state.c",
 		"/Users/kyle/word-fall/title-options-state.c",
 		"/Users/kyle/word-fall/game-state.h",
 		"/Users/kyle/word-fall/title-transition-state.c",
 		"/Users/kyle/word-fall/title-state.c",
 		"/Users/kyle/word-fall/game-transition-state.c",
 		"/Users/kyle/word-fall/embedded-lua.h",
-		"/Users/kyle/word-fall/Makefile",
 		"/Users/kyle/word-fall/check-dict.lua",
 		"/Users/kyle/word-fall/SDLMain.h",
 		"/Users/kyle/word-fall/intro-transition-state.c",
@@ -130,7 +140,6 @@
 		"/Users/kyle/word-fall/pause-state.h",
 		"/Users/kyle/word-fall/render.c",
 		"/Users/kyle/git-repos/tuxtype/src/SDL_extras.h",
-		"/Users/kyle/word-fall/load.c",
 		"/home/kyle/word-fall/main.h",
 		"/home/kyle/word-fall/title-state.c",
 		"/home/kyle/word-fall/main.c",
@@ -157,7 +166,7 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -175,6 +184,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"render_f",
+			"render_te",
+			"TTF_RenderText",
+			"malloc(",
+			"free(",
+			"embedded",
+			"currentState",
+			"load_content()",
+			"containerAscii",
+			"safeWord",
+			"sanitize",
+			"free(safeWord)",
+			"char *",
+			"char \\* *",
+			"render_font",
+			"play",
+			"game_init",
+			"game_init()",
 			"dictionary",
 			"check_word",
 			"SDL_QUIT",
@@ -250,44 +277,6 @@
 		"whole_word": false,
 		"wrap": true
 	},
-	"groups":
-	[
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"file": "assets/check-dict.lua",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1312,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1312,
-								1312
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
-			]
-		}
-	],
 	"incremental_find":
 	{
 		"height": 34.0
@@ -327,7 +316,7 @@
 	{
 		"height": 0.0
 	},
-	"project": "word-fall-project.sublime-project",
+	"pinned_build_system": "Packages/Makefile/Make.sublime-build",
 	"replace":
 	{
 		"height": 64.0
@@ -336,6 +325,7 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -344,6 +334,7 @@
 	"select_project":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -352,12 +343,12 @@
 	"select_symbol":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
 	"settings":
 	{
 	},

@@ -33,6 +33,8 @@ along with Word Fall.  If not, see <http://www.gnu.org/licenses/>.
 
 #endif
 
+#include "hashtable.h"
+
 #define GRASS_Y 540
 
 enum gameStates {
@@ -55,6 +57,8 @@ typedef struct {
 	int y;
 }cloud;
 
+// globals...yeah. I know. It's bad.
+
 // state globals
 extern int currentState;
 extern int nextState;
@@ -69,6 +73,9 @@ extern int soundStarted;
 
 extern int alpha;
 extern int finalScore;
+
+// dictionary global
+extern Dict dictionary;
 
 int init();
 void quit();
