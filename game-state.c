@@ -54,6 +54,7 @@ SDL_Rect pauseRect;
 
 int theScore = 0;
 int finalScore = 0;
+int oldScore = 0;
 
 void game_init(void)
 {
@@ -338,10 +339,16 @@ void game_render(void)
 	SDL_Color scoreColor = {0,0,0};
 	char finalScoreString[64];
 	sprintf(finalScoreString, "SCORE: %d", finalScore);
-	score = render_font(scoreFont, finalScoreString, scoreColor);
+	if(oldScore != finalScore || oldScore == 0) {
+		score = render_font(scoreFont, finalScoreString, scoreColor);
+		oldScore = finalScore;
+	}
 	render_image(32, ((score->clip_rect.h - pause->clip_rect.h)/2), score, screen);
-	SDL_FreeSurface(score);
-	score = NULL;
+	if(oldScore != finalScore || oldScore == 0) {
+		SDL_FreeSurface(score);
+		score = NULL;
+		oldScore = finalScore;
+	}
 
 	if(letterDrag) { 
 		if(lettersY[letter1][letter2] >= (GRASS_Y - lettersRect[0][0].h) && lettersY[letter1][letter2] != 1) {
