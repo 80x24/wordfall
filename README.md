@@ -17,12 +17,12 @@ Send all questions, comments, concerns, and complaints to admin@mopiz.com
 
 Install
 ========
-- Windows
-	Use the .exe installer, and follow the installer instructions.
-- Mac OS X
-	Copy the .app to your Applications folder.
-- Linux
-	Follow the compile instructions to build Word Fall for your system.
++ Windows
+  - Use the .exe installer, and follow the installer instructions.
++ Mac OS X
+  - Copy the .app to your Applications folder.
++ Linux
+  - Follow the compile instructions to build Word Fall for your system.
 
 Compile From Source
 ====================
@@ -31,16 +31,16 @@ Version numbers lower than listed will work
 Note: The assets folder will need to be next to the binary for the
 program to run
 
-- SDL 1.2.15
-	<http://www.libsdl.org/download-1.2.php>
-- SDL_image 1.2.12
-	<http://www.libsdl.org/projects/SDL_image/>
-- SDL_ttf 2.0.11
-	<http://www.libsdl.org/projects/SDL_ttf/>
-- SDL_mixer 1.2.12
-	<http://www.libsdl.org/projects/SDL_mixer/>
-- Lua 5.2.2
-	<http://www.lua.org/download.html>
++ SDL 1.2.15
+  - <http://www.libsdl.org/download-1.2.php>
++ SDL_image 1.2.12
+  - <http://www.libsdl.org/projects/SDL_image/>
++ SDL_ttf 2.0.11
+  - <http://www.libsdl.org/projects/SDL_ttf/>
++ SDL_mixer 1.2.12
+  - <http://www.libsdl.org/projects/SDL_mixer/>
++ Lua 5.2.2
+  - <http://www.lua.org/download.html>
 
 Linux
 ------
